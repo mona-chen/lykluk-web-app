@@ -1,0 +1,138 @@
+.main_leftside_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-right: 3rem;
+  margin-left: 5rem;
+  margin-top: 1rem;
+  width: 20%;
+  height: 100%;
+}
+.main_leftside_wrapper h3 {
+  font-size: 1.4rem;
+  color: #333333;
+  font-weight: 400;
+}
+.main_leftside_wrapper .left_quick_actions {
+  display: flex;
+  padding-top: 3rem;
+  flex-direction: column;
+  gap: 3rem;
+}
+.main_leftside_wrapper .left_quick_actions > .item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.main_leftside_wrapper .left_quick_actions > .item figure svg {
+  width: 3rem;
+}
+.main_leftside_wrapper .dont_have_an_account {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #E0E0E0;
+  justify-content: flex-start;
+}
+.main_leftside_wrapper .dont_have_an_account span {
+  color: #BCB7B7;
+  font-size: 1.6rem;
+}
+.main_leftside_wrapper .dont_have_an_account .signup_btn {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.81) 0%, #8E00FE 101.93%) !important;
+}
+.main_leftside_wrapper .popular_accounts_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow: hidden;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #E0E0E0;
+}
+.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts {
+  overflow-y: auto;
+}
+.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts .accounts_wrapper {
+  display: flex;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts .accounts_wrapper .accounts {
+  display: flex;
+  justify-content: space-between;
+}
+.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts .accounts_wrapper .accounts .user {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts .accounts_wrapper .accounts .user figure img {
+  width: 3.5rem;
+  height: auto;
+  border-radius: 50%;
+}
+.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts .accounts_wrapper .accounts .user .user_info {
+  display: flex;
+  flex-direction: column;
+}
+.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts .accounts_wrapper .accounts .user .user_info span:first-child {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0;
+  margin: 0;
+  font-size: 1.4rem;
+  align-items: center;
+  justify-content: center;
+}
+.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts .accounts_wrapper .accounts .user .user_info span:first-child figure {
+  display: grid;
+  place-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts .accounts_wrapper .accounts .user .user_info span:first-child figure svg {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts .accounts_wrapper .accounts .user .user_info span:last-child {
+  font-size: 1.2rem;
+  color: #717171;
+}
+.main_leftside_wrapper .trending_hashtags {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.main_leftside_wrapper .trending_hashtags .hashtags_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.main_leftside_wrapper .trending_hashtags .hashtags_wrapper span {
+  display: flex;
+  flex-basis: 20%;
+  justify-content: center;
+  padding: 0.5rem;
+  color: #797979;
+  font-size: 1.2rem;
+  align-items: center;
+  border: 0.05rem solid #A2A2A2;
+  border-radius: 1.2rem;
+}
+.main_leftside_wrapper a {
+  color: #8E00FE;
+}/*# sourceMappingURL=style.module.css.map */

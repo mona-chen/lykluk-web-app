@@ -1,0 +1,49 @@
+.main_middle_wrapper {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  margin-top: 5rem;
+}
+.main_middle_wrapper .feed_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  overflow-y: auto;
+}
+.main_middle_wrapper .feed_wrapper .feed {
+  display: flex;
+  flex-direction: column;
+}
+.main_middle_wrapper .feed_wrapper .feed .user {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.main_middle_wrapper .feed_wrapper .feed .user figure img {
+  width: 5rem;
+  height: auto;
+  border-radius: 50%;
+  border: 1.96667px solid #8E00FE;
+}
+.main_middle_wrapper .feed_wrapper .feed .user .user_info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.main_middle_wrapper .feed_wrapper .feed .user .user_info span:first-child {
+  color: black;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.main_middle_wrapper .feed_wrapper .feed .user .user_info span:last-child {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: #8B8B8B;
+  font-size: 1.4rem;
+}
+.main_middle_wrapper .feed_wrapper .feed .user .user_info span:last-child figure {
+  display: grid;
+  place-items: center;
+}/*# sourceMappingURL=style.module.css.map */

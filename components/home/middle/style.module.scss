@@ -1,0 +1,57 @@
+.main_middle_wrapper {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    margin-top: 5rem;
+
+    .feed_wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        overflow-y: auto;
+
+        .feed {
+        display: flex;
+        flex-direction: column;
+
+        .user {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+
+
+            figure img {
+               width: 5rem;
+               height: auto; 
+               border-radius: 50%;
+               border: 1.96667px solid #8E00FE;
+            }
+
+            .user_info {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+
+                span:first-child {
+                    color: black;
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                }
+                
+                span:last-child {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    font-weight: 500;
+                    color: #8B8B8B;
+                    font-size: 1.4rem;
+                    figure {
+                        display: grid;
+                        place-items: center;
+                    }
+                }
+            }
+        }
+        }
+    }
+}
