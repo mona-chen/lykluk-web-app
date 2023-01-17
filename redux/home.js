@@ -1,159 +1,29 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "../utils/axios";
+import instance from "../utils/axios";
 import setAuthToken from "../utils/auth";
 import { toast } from "react-toastify";
+import { HYDRATE } from 'next-redux-wrapper';
 
-export const createTransactionPin = createAsyncThunk(
-  "admin/create-transaction-pin",
+export const getFyp = createAsyncThunk(
+  "luk/get_fyp",
+  // alert('we her'),
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.post("", payload);
-      //       // console.log("register", data);
+      const {data}  = await instance.get("fyp", payload);
+      // console.log("we here", data)
 
       if (!data.success) {
-        // toast.error(data.message, {
-        //   theme: 'colored'
-        // });
-        // return thunkAPI.rejectWithValue(data);
-      }
-      if (data.success) {
-        //   toast.success(data.data.message, {
-        //     theme: "colored",
-        //   });
-        // await thunkAPI.dispatch(login(data));
-        //   return thunkAPI.rejectWithValue(data);
-      }
-    } catch (err) {
-      // ;
-      if (err.response.data.status === "fail" && err.response.status !== 401) {
-        toast.error(err.response.data.message, {
-          theme: "colored",
-          position: "top-right",
+        toast.error(data.message, {
+          theme: 'colored'
         });
-      }
-      return thunkAPI.rejectWithValue(err);
-    }
-  }
-);
-
-export const bvnAndNinVerification = createAsyncThunk(
-  "admin/bvn-nin-verification",
-  async (payload, thunkAPI) => {
-    try {
-      const { data } = await axios.post("", payload);
-      // console.log("register", data);
-
-      if (!data.success) {
-        // toast.error(data.message, {
-        //   theme: 'colored'
-        // });
         // return thunkAPI.rejectWithValue(data);
       }
       if (data.success) {
         //   toast.success(data.data.message, {
         //     theme: "colored",
         //   });
-        // await thunkAPI.dispatch(login(data));
-        //   return thunkAPI.rejectWithValue(data);
-      }
-    } catch (err) {
-      // ;
-      if (err.response.data.status === "fail" && err.response.status !== 401) {
-        toast.error(err.response.data.message, {
-          theme: "colored",
-          position: "top-right",
-        });
-      }
-      return thunkAPI.rejectWithValue(err);
-    }
-  }
-);
-
-export const cacVerification = createAsyncThunk(
-  "admin/cac-verification",
-  async (payload, thunkAPI) => {
-    try {
-      const { data } = await axios.post("", payload);
-      // console.log("register", data);
-
-      if (!data.success) {
-        // toast.error(data.message, {
-        //   theme: 'colored'
-        // });
-        // return thunkAPI.rejectWithValue(data);
-      }
-      if (data.success) {
-        //   toast.success(data.data.message, {
-        //     theme: "colored",
-        //   });
-        // await thunkAPI.dispatch(login(data));
-        //   return thunkAPI.rejectWithValue(data);
-      }
-    } catch (err) {
-      // ;
-      if (err.response.data.status === "fail" && err.response.status !== 401) {
-        toast.error(err.response.data.message, {
-          theme: "colored",
-          position: "top-right",
-        });
-      }
-      return thunkAPI.rejectWithValue(err);
-    }
-  }
-);
-
-export const businessInfomationVerification = createAsyncThunk(
-  "admin/business-info-verification",
-  async (payload, thunkAPI) => {
-    try {
-      const { data } = await axios.post("", payload);
-      // console.log("register", data);
-
-      if (!data.success) {
-        // toast.error(data.message, {
-        //   theme: 'colored'
-        // });
-        // return thunkAPI.rejectWithValue(data);
-      }
-      if (data.success) {
-        //   toast.success(data.data.message, {
-        //     theme: "colored",
-        //   });
-        // await thunkAPI.dispatch(login(data));
-        //   return thunkAPI.rejectWithValue(data);
-      }
-    } catch (err) {
-      // ;
-      if (err.response.data.status === "fail" && err.response.status !== 401) {
-        toast.error(err.response.data.message, {
-          theme: "colored",
-          position: "top-right",
-        });
-      }
-      return thunkAPI.rejectWithValue(err);
-    }
-  }
-);
-
-export const addressVerification = createAsyncThunk(
-  "admin/address-verification",
-  async (payload, thunkAPI) => {
-    try {
-      const { data } = await axios.post("", payload);
-      // console.log("register", data);
-
-      if (!data.success) {
-        // toast.error(data.message, {
-        //   theme: 'colored'
-        // });
-        // return thunkAPI.rejectWithValue(data);
-      }
-      if (data.success) {
-        //   toast.success(data.data.message, {
-        //     theme: "colored",
-        //   });
-        // await thunkAPI.dispatch(login(data));
-        //   return thunkAPI.rejectWithValue(data);
+        await thunkAPI.dispatch(setFyp(data));
+          return data;
       }
     } catch (err) {
       // ;
@@ -174,32 +44,38 @@ export const home = createSlice({
     // user: JSON.parse(localStorage.getItem("user")),
     isAuth: false,
     loading: false,
+    fyp: {}
     // token: JSON.parse(localStorage.getItem('token')) ,
   },
   reducers: {
-    setUser: (state, action) => {
-      localStorage.setItem("user", JSON.stringify(action.payload));
+    setFyp: (state, action) => {
+      //   localStorage.setItem("user", JSON.stringify(action.payload));
       state.isAuth = true;
-      state.user = action.payload;
+      state.fyp = action.payload;
     },
   },
+
   extraReducers: {
-    [createTransactionPin.pending]: (state) => {
-      state.loading = true;
-    },
-    [createTransactionPin.fulfilled]: (state) => {
-      state.loading = false;
-    },
-    [createTransactionPin.rejected]: (state) => {
-      // localStorage.removeItem("token");
-      state.loading = false;
-      state.isAuth = false;
-      state = null;
-    },
-  },
-});
+    [HYDRATE]: (state, action) => {
+      return {
+        [getFyp.pending]: (state) => {
+          state.loading = true;
+        },
+        [getFyp.fulfilled]: (state) => {
+          state.loading = false;
+        },
+        [getFyp.rejected]: (state) => {
+          // localStorage.removeItem("token");
+          state.loading = false;
+          state.isAuth = false;
+          state = null;
+        },
+      };
+    }
+
+  }});
 
 // Action creators are generated for each case reducer function
-export const { login, setUser } = home.actions;
+export const { setFyp} = home.actions;
 
 export default home.reducer;

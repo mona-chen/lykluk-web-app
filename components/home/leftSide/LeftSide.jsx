@@ -43,7 +43,7 @@ const LeftSide = () => {
           <figure>
           {foryouIcon} 
           </figure>
-        <span>For you </span>
+        <span>Luk </span>
               
         </div>
 

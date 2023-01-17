@@ -1,0 +1,97 @@
+// .luk_player_wrapper {
+//     // display: flex;
+//     height: 50rem !important;
+//     border-radius: 0.8rem !important;
+//     // background-color: aquamarine;
+
+//     .video-js.vjs-fluid:not(.vjs-audio-only-mode), .video-js.vjs-16-9:not(.vjs-audio-only-mode), .video-js.vjs-4-3:not(.vjs-audio-only-mode), .video-js.vjs-9-16:not(.vjs-audio-only-mode), .video-js.vjs-1-1:not(.vjs-audio-only-mode) {
+//         height: 50rem !important;
+//     }
+
+// > div {
+//     height: 50rem !important;
+//     border-radius: 0.8rem !important;
+// }
+//     video-js  {
+//         border-radius: 0.8rem !important;
+//         height: 100% !important;
+//     }
+
+//     video * {
+//         border-radius: 0.8rem !important;
+//         height: 100% !important;
+//         // background-color: aquamarine;
+//     }
+
+//     .vjs-fluid {
+//         height: 100% !important;
+//         border-radius: 0.8rem !important;
+//     }
+
+//     .vjs-user-inactive {
+//         height: 100% !important;
+//         border-radius: 0.8rem !important;
+//     }
+
+//     .vjs-big-play-centered {
+//         height: 50rem !important;
+//         border-radius: 0.8rem !important;
+//     }
+
+//     .vjs-control-bar {
+//         border-bottom-right-radius: 0.8rem !important;
+//         border-bottom-left-radius: 0.8rem !important;
+//     }
+//     .video-js .vjs-tech  {
+//         border-radius: 0.8rem !important;
+//     }
+
+//     .vjs-has-started .vjs-control-bar, .vjs-audio-only-mode .vjs-control-bar {
+//         border-radius: 0.8rem !important;
+//     }
+    
+    
+// }
+
+.vjs-poster {
+    background-color: yellow !important;
+}
+
+.luk_player_wrapper {
+
+    >  * {
+        background-color: unset !important; 
+        background-size: cover !important;
+        background-repeat: no-repeat;
+        background-position: center !important;
+    }
+
+    video {
+        background-color: transparent;
+        backdrop-filter: blur(10px);
+    }
+
+    video-js {
+        background-color: transparent !important;   
+        height: 50rem !important; 
+        width: 100% !important;
+        padding: 0 !important;  
+        margin: 0 !important;  
+        backdrop-filter: blur(10px);
+        margin-bottom: 10rem;
+        z-index: 1;
+        background-size: cover !important;
+        background-repeat: no-repeat;
+        background-position: center !important;
+        border-radius: 0.8rem;
+    }
+
+    .vjs-poster {
+        backdrop-filter: blur(10px);
+        background-color: transparent !important; 
+        background-size: cover !important;
+        background-repeat: no-repeat;
+        background-position: center !important;
+        border-radius: 0.8rem;  
+    }
+}

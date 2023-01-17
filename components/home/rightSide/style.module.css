@@ -1,0 +1,119 @@
+.main_rightside_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-right: 2%;
+  margin-top: 5rem;
+  width: 28%;
+  height: 100%;
+}
+.main_rightside_wrapper .discover_banner_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  font-family: "Libre Baskerville", serif !important;
+  padding: 3rem 1.5rem;
+  background-image: url("../../../assets/images/explore_lady.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-color: rgba(231, 179, 11, 0.16);
+  border-radius: 1.8rem;
+}
+.main_rightside_wrapper .discover_banner_wrapper .banner_contents {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.main_rightside_wrapper .discover_banner_wrapper h3 {
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+.main_rightside_wrapper .discover_banner_wrapper span {
+  font-family: "Rubik";
+  font-size: 1.2rem;
+  padding-bottom: 3rem;
+}
+.main_rightside_wrapper .quick_actions_wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.main_rightside_wrapper .quick_actions_wrapper div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.main_rightside_wrapper .quick_actions_wrapper div span {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #002248;
+}
+.main_rightside_wrapper .popular_users {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+.main_rightside_wrapper .popular_users .quick_popular_stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.main_rightside_wrapper .popular_users .quick_popular_stats h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+.main_rightside_wrapper .popular_users .quick_popular_stats span {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.main_rightside_wrapper .popular_users .user_autoscroll {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.main_rightside_wrapper .popular_users .user_autoscroll .popular_content_thumbnail {
+  display: flex;
+  height: 23rem;
+  width: 48%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 1.5rem;
+  align-items: flex-end;
+}
+.main_rightside_wrapper .popular_users .user_autoscroll .popular_content_thumbnail div {
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+  display: flex;
+  height: 30%;
+  align-items: flex-end;
+  gap: 2rem;
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom-right-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+}
+.main_rightside_wrapper .popular_users .user_autoscroll .popular_content_thumbnail div .user {
+  display: flex;
+  gap: 2rem;
+  padding-left: 1rem;
+  flex-direction: row;
+  align-items: center;
+}
+.main_rightside_wrapper .popular_users .user_autoscroll .popular_content_thumbnail div .user img {
+  width: 3rem;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+.main_rightside_wrapper .popular_users .user_autoscroll .popular_content_thumbnail div .user span {
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: white;
+}/*# sourceMappingURL=style.module.css.map */
