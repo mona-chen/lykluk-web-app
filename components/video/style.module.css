@@ -21,9 +21,6 @@
   background-position: center !important;
   border-radius: 0.8rem;
 }
-.luk_player_wrapper .vjs-control-bar {
-  background-color: transparent !important;
-}
 .luk_player_wrapper .vjs-poster {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);

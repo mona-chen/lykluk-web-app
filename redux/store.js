@@ -1,20 +1,24 @@
-import { combineReducers, configureStore, applyMiddleware } from '@reduxjs/toolkit'
+import {
+  combineReducers,
+  configureStore,
+  applyMiddleware,
+} from '@reduxjs/toolkit'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import home from './home'
-import thunk from 'redux-thunk';
-
+import thunk from 'redux-thunk'
 
 const combinedReducer = combineReducers({
   home,
-});
-
+})
 
 export const makeStore = () =>
   configureStore({
     reducer: combinedReducer,
-  });
+  })
 
-  export const store = () => configureStore({ // <-- a function
+export const store = () =>
+  configureStore({
+    // <-- a function
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
@@ -23,4 +27,8 @@ export const makeStore = () =>
         },
       }),
   })
-  export const wrapper = createWrapper(makeStore, { debug: true }, applyMiddleware(thunk));
+export const wrapper = createWrapper(
+  makeStore,
+  { debug: true },
+  applyMiddleware(thunk),
+)

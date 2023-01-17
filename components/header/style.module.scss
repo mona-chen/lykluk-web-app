@@ -1,64 +1,63 @@
 .header_main_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6rem;
+  padding: 0 15rem;
+  border-bottom: 1px solid #dddddd;
+
+  figure img {
+    width: 8rem;
+    height: auto;
+  }
+
+  .header_act_btn {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 6rem;
-    padding: 0 15rem;
-    border-bottom: 1px solid #DDDDDD;
+    gap: 1rem;
 
-    figure img {
-        width: 8rem;
-        height: auto;
+    .signup_btn {
+      border: 1px solid #8e00fe !important;
+    }
+  }
+
+  .header_search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    // background: rgba(230, 233, 244, 0.42);
+    border-radius: 1.8rem;
+    // z-index: 1;
+    width: 30rem;
+
+    &:has(input:focus) {
+      img {
+        display: none;
+        visibility: hidden;
+      }
     }
 
-    .header_act_btn {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-
-        .signup_btn {
-            border: 1px solid #8E00FE !important;
-        }
+    input:not([value='']):not(:focus):invalid {
+      img {
+        display: none;
+        visibility: hidden;
+      }
     }
 
-    .header_search {
-        position: relative;
-        display: flex;
-        align-items: center;
-        // background: rgba(230, 233, 244, 0.42);
-        border-radius: 1.8rem;
-        // z-index: 1;
-        width: 30rem;
-        
-        &:has(input:focus) {
-            img {
-                display: none;
-                visibility: hidden;
-            }
-        }
-
-
-        input:not([value=""]):not(:focus):invalid {
-            img {
-                display: none;
-                visibility: hidden;
-            }
-        }
-
-        input {
-            border-style: none;
-            box-shadow: none;
-            background: rgba(230, 233, 244, 0.42);
-            &::placeholder {
-                padding-left: 2rem !important;
-            }
-        }
-
-        img {
-            position: absolute;
-            width: 1.3rem;
-            bottom: 1.1rem;
-            left: 1rem;
-        }
+    input {
+      border-style: none;
+      box-shadow: none;
+      background: rgba(230, 233, 244, 0.42);
+      &::placeholder {
+        padding-left: 2rem !important;
+      }
     }
+
+    img {
+      position: absolute;
+      width: 1.3rem;
+      bottom: 1.1rem;
+      left: 1rem;
+    }
+  }
 }

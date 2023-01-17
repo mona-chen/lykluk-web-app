@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import Image from 'next/image'
 
 // require("./style.css");
@@ -25,36 +25,36 @@ export const ButtonPrimary = (props) => {
     disabled,
     btnStyle,
     marginTop,
-  } = props;
+  } = props
   return (
     <button
       className={`btn button-black  ${btnStyle && btnStyle}`}
       style={{
-        width: width ? width : "",
-        pointerEvents: disabled ? "none" : "",
-        cursor: disabled ? "not-allowed" : "",
-        height: height ? height : "fit-content",
-        color: color ? color : "white",
-        backgroundColor: fill ? fill : "",
-        padding: !padding ? "1rem 4rem" : padding,
-        opacity: disabled ? "0.2" : "",
-        border: !border ? "" : border,
-        transition: "all 0.3s",
+        width: width ? width : '',
+        pointerEvents: disabled ? 'none' : '',
+        cursor: disabled ? 'not-allowed' : '',
+        height: height ? height : 'fit-content',
+        color: color ? color : 'white',
+        backgroundColor: fill ? fill : '',
+        padding: !padding ? '1rem 4rem' : padding,
+        opacity: disabled ? '0.2' : '',
+        border: !border ? '' : border,
+        transition: 'all 0.3s',
         marginTop: marginTop,
       }}
       onClick={action}
       // className="btn button-black"
     >
-      {icon && 
-      <div className="icon"> <Image src={icon}  alt="" 
-    width="100%"
-    height="100%"
-    />
-    </div>}
-    <div className="btn_label">{label || props.children}</div>
+      {icon && (
+        <div className="icon">
+          {' '}
+          <Image src={icon} alt="" width="100%" height="100%" />
+        </div>
+      )}
+      <div className="btn_label">{label || props.children}</div>
     </button>
-  );
-};
+  )
+}
 
 /**
  * Raven Secondary Button Component.
@@ -81,16 +81,16 @@ export const ButtonSecondary = ({
   return (
     <button
       style={{
-        fontSize: !fontSize ? "" : fontSize,
+        fontSize: !fontSize ? '' : fontSize,
         // width: width ? width : "2.4rem",
-        height: !height ? "2.4rem" : height,
-        pointerEvents: disabled ? "none" : "",
-        cursor: disabled ? "not-allowed" : "",
-        borderRadius: !radius ? "" : radius,
-        color: color ? color : "",
-        backgroundColor: fill ? fill : "",
-        padding: !padding ? "1rem 2rem" : padding,
-        opacity: disabled ? "0.2" : "",
+        height: !height ? '2.4rem' : height,
+        pointerEvents: disabled ? 'none' : '',
+        cursor: disabled ? 'not-allowed' : '',
+        borderRadius: !radius ? '' : radius,
+        color: color ? color : '',
+        backgroundColor: fill ? fill : '',
+        padding: !padding ? '1rem 2rem' : padding,
+        opacity: disabled ? '0.2' : '',
       }}
       onClick={action}
       className="btn button-secondary"
@@ -98,8 +98,8 @@ export const ButtonSecondary = ({
       <div className="btn_label">{label}</div>
       <div className="icon">{icon}</div>
     </button>
-  );
-};
+  )
+}
 
 /**
  * Raven Tertiary Button Component.
@@ -126,15 +126,15 @@ export const ButtonTertiary = ({
   return (
     <button
       style={{
-        fontSize: !fontSize ? "1.1rem" : fontSize,
-        color: color ? color : "",
-        pointerEvents: disabled ? "none" : "",
-        cursor: disabled ? "not-allowed" : "",
-        background: fill ? fill : "rgba(255, 255, 255, 0)",
-        width: width ? width : "",
+        fontSize: !fontSize ? '1.1rem' : fontSize,
+        color: color ? color : '',
+        pointerEvents: disabled ? 'none' : '',
+        cursor: disabled ? 'not-allowed' : '',
+        background: fill ? fill : 'rgba(255, 255, 255, 0)',
+        width: width ? width : '',
         // height: !height ? "2.4rem" : height,
-        padding: padding ? padding : "1rem 4rem",
-        opacity: disabled ? "0.2" : "",
+        padding: padding ? padding : '1rem 4rem',
+        opacity: disabled ? '0.2' : '',
       }}
       onClick={action}
       className="btn button-tertiary"
@@ -144,8 +144,8 @@ export const ButtonTertiary = ({
         <div className="icon">{icon}</div>
       </div>
     </button>
-  );
-};
+  )
+}
 
 /**
  * Raven Icon Button Component.
@@ -175,16 +175,16 @@ export const IconButton = ({
     <button
       className={`btn button-tertiary  ${btnStyle && btnStyle}`}
       style={{
-        border: !border ? "" : border,
-        flexDirection: reverse ? "row-reverse" : "row",
-        pointerEvents: disabled ? "none" : "",
-        cursor: disabled ? "not-allowed" : "",
-        fontSize: !fontSize ? "1.1rem" : fontSize,
-        color: color ? color : "",
-        background: fill ? fill : "rgba(255, 255, 255, 0)",
-        width: width ? width : "",
-        padding: !padding ? "1rem 4rem" : padding,
-        opacity: disabled ? "0.2" : "",
+        border: !border ? '' : border,
+        flexDirection: reverse ? 'row-reverse' : 'row',
+        pointerEvents: disabled ? 'none' : '',
+        cursor: disabled ? 'not-allowed' : '',
+        fontSize: !fontSize ? '1.1rem' : fontSize,
+        color: color ? color : '',
+        background: fill ? fill : 'rgba(255, 255, 255, 0)',
+        width: width ? width : '',
+        padding: !padding ? '1rem 4rem' : padding,
+        opacity: disabled ? '0.2' : '',
       }}
       onClick={action}
     >
@@ -193,5 +193,5 @@ export const IconButton = ({
         {label}
       </div>
     </button>
-  );
-};
+  )
+}

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600&display=swap');
 
 :root {
-  --lykluk-purple: #8E00FE;
+  --lykluk-purple: #8e00fe;
   --white-color: #ffffff;
   --box-shadow: 0.1rem 0.1rem 8rem 0.1rem rgba(0, 0, 0, 0.05);
 }
@@ -11,7 +11,6 @@
   font-family: 'Rubik', sans-serif;
   font-family: 'Libre Baskerville', serif;
 } */
-
 
 *,
 *::after,
@@ -68,7 +67,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .modal-parent > div > div > div:nth-child(2) {
   -webkit-backdrop-filter: blur(0.3rem);
-          backdrop-filter: blur(0.3rem);
+  backdrop-filter: blur(0.3rem);
   z-index: 2000 !important;
 }
 
@@ -102,11 +101,11 @@ input:-webkit-autofill:active {
 }
 .img-box .img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
   display: block;
-}/*# sourceMappingURL=index.css.map */
+} /*# sourceMappingURL=index.css.map */
 
 .input-contain div {
   margin-top: 1rem;
@@ -120,22 +119,21 @@ input {
   outline: none;
 }
 
-input[type="password"]::-webkit-autofill,
-input[type="password"]::-webkit-autofill:hover,
-input[type="password"]::-webkit-autofill:focus,
-input[type="password"]::-webkit-autofill:active {
+input[type='password']::-webkit-autofill,
+input[type='password']::-webkit-autofill:hover,
+input[type='password']::-webkit-autofill:focus,
+input[type='password']::-webkit-autofill:active {
   box-shadow: 0 0 0 30px white inset !important;
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-input[type="text"]:focus {
+input[type='text']:focus {
   box-shadow: 0px 0px 0px 3px rgba(233, 233, 233, 0.5);
 }
 
-input[type="email"]:focus {
+input[type='email']:focus {
   box-shadow: 0px 0px 0px 3px rgba(233, 233, 233, 0.5);
 }
-
 
 .select-react {
   width: 100%;
