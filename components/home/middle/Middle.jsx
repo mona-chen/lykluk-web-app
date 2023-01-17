@@ -130,7 +130,9 @@ lukplayer3 ? lukplayer3.forEach(el => el.style.backgroundColor = "transparent") 
 lukplayer3 ? lukplayer3.forEach(el => el.style.backgroundColor = "transparent") : ''
 lukplayer3 ? lukplayer3.forEach(el => el.style.background = `url(${placeImage})`) : ''
 
+// debugger;
 
+// dd(lukplayer3)
 
 
 
