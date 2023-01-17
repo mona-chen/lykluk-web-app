@@ -16,6 +16,9 @@ const Middle = ({ posts }) => {
     // autoplay: true,
     controls: true,
     responsive: true,
+    controlBar: {
+      fullscreenToggle: false
+    },
     preload: 'auto',
     fluid: true,
     width: 20,
@@ -216,15 +219,13 @@ const Middle = ({ posts }) => {
                 (el) => (el.style.backgroundColor = 'transparent'),
               )
             : ''
-          lukplayer3
-            ? lukplayer3.forEach(
-                (el) => (el.style.background = `url(${placeImage})`),
-              )
-            : ''
+          // lukplayer3
+          //   ? lukplayer3.forEach(
+          //       (el) => (el.style.background = `url(${placeImage})`),
+          //     )
+          //   : ''
 
-          // debugger;
 
-          // dd(lukplayer3)
 
           return (
             <div key={idx} className={style.feed_wrapper}>
@@ -259,7 +260,11 @@ const Middle = ({ posts }) => {
                 </div>
               </div>
               <div className={style.feed_player_wrapper}>
-                <div className={style.luk_player}>
+                <div 
+                style={{ 
+                  backgroundImage: `url("${placeImage}")` 
+                }}
+                className={style.luk_player}>
                   <LukPlayer
                     width="720"
                     height="420"

@@ -22,7 +22,9 @@
   gap: 2rem;
   padding: 0 10rem;
   width: 100%;
-  height: 60rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .main_middle_wrapper .post_container .feed_wrapper .feed_player_wrapper {
   width: 100%;
@@ -32,6 +34,9 @@
 }
 .main_middle_wrapper .post_container .feed_wrapper .feed_player_wrapper .luk_player {
   width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 0.8rem;
   height: 100%;
 }

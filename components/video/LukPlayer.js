@@ -74,6 +74,7 @@ export const LukPlayer = (props) => {
         if (entry.isIntersecting) {
           // play video if it's in view
           playerRef.current.play()
+          playerRef.current.tech_?.off('dblclick');
         } else {
           // pause video if it's not in view
           playerRef.current.pause()
