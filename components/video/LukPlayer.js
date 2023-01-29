@@ -9,7 +9,7 @@ export const LukPlayer = (props) => {
   const observerRef = React.useRef(null)
   const { options, onReady } = props
 
-  // Add event listener for spacebar key press
+  // // Add event listener for spacebar key press
   React.useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.code === 'Space') {
@@ -25,10 +25,10 @@ export const LukPlayer = (props) => {
       }
     }
 
-    document.addEventListener('keydown', handleKeyPress)
+    // document.addEventListener('keydown', handleKeyPress)
     // check if the video element is in view
     const checkIfVideoInView = (entries) => {
-      entries.forEach((entry) => {
+      entries?.forEach((entry) => {
         if (entry.isIntersecting) {
           // if the video is in view, attach keydown event listener to play/pause
           document.addEventListener('keydown', handleKeyPress)
@@ -38,7 +38,8 @@ export const LukPlayer = (props) => {
         }
       })
     }
-
+    checkIfVideoInView()
+    
     return () => {
       document.removeEventListener('keydown', handleKeyPress)
       observerRef.current.disconnect()
@@ -71,7 +72,13 @@ export const LukPlayer = (props) => {
     // create an observer and observe the element
     observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        playerRef.current.pause()
+
+
+        if (entry.isIntersecting && entry.intersectionRatio > 0) {
+          console.log(entry.intersectionRect.height, 'intersection ratio')
+
+          // alert('int')
           // play video if it's in view
           playerRef.current.play()
           playerRef.current.tech_?.off('dblclick');
@@ -79,7 +86,7 @@ export const LukPlayer = (props) => {
           // pause video if it's not in view
           playerRef.current.pause()
         }
-      })
+      }), { threshold: [1] }
     })
     observerRef.current.observe(videoRef.current)
 

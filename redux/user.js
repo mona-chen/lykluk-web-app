@@ -1,15 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import instance from '../utils/axios'
 import setAuthToken from '../utils/auth'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 import { HYDRATE } from 'next-redux-wrapper'
+import { toast } from 'react-hot-toast';
 
-export const getFyp = createAsyncThunk(
-  'luk/get_fyp',
+export const login = createAsyncThunk(
+  'luk/login',
   // alert('we her'),
+  // toast.error('Something went wrong, try again', {
+  //   theme: 'colored',
+  // }),
   async (payload, thunkAPI) => {
     try {
-      const { data } = await instance.get('video/fyp', payload)
+      const  data  = await instance.post('signin', payload)
       // console.log("we here", data)
 
       if (!data.success) {
@@ -22,7 +26,7 @@ export const getFyp = createAsyncThunk(
         //   toast.success(data.data.message, {
         //     theme: "colored",
         //   });
-        await thunkAPI.dispatch(setFyp(data))
+        await thunkAPI.dispatch(LOGIN(data))
         return data
       }
     } catch (err) {
@@ -38,8 +42,8 @@ export const getFyp = createAsyncThunk(
   },
 )
 
-export const home = createSlice({
-  name: 'home',
+export const user = createSlice({
+  name: 'user',
   initialState: {
     // user: JSON.parse(localStorage.getItem("user")),
     isAuth: false,
@@ -48,7 +52,7 @@ export const home = createSlice({
     // token: JSON.parse(localStorage.getItem('token')) ,
   },
   reducers: {
-    setFyp: (state, action) => {
+    LOGIN: (state, action) => {
       //   localStorage.setItem("user", JSON.stringify(action.payload));
       state.isAuth = true
       state.fyp = action.payload
@@ -58,13 +62,13 @@ export const home = createSlice({
   extraReducers: {
     [HYDRATE]: (state, action) => {
       return {
-        [getFyp.pending]: (state) => {
+        [login.pending]: (state) => {
           state.loading = true
         },
-        [getFyp.fulfilled]: (state) => {
+        [login.fulfilled]: (state) => {
           state.loading = false
         },
-        [getFyp.rejected]: (state) => {
+        [login.rejected]: (state) => {
           // localStorage.removeItem("token");
           state.loading = false
           state.isAuth = false
@@ -76,6 +80,6 @@ export const home = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setFyp } = home.actions
+export const { LOGIN } = user.actions
 
-export default home.reducer
+export default user.reducer

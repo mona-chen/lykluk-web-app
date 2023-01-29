@@ -5,7 +5,8 @@ import '../styles/home/home.css'
 import { Provider } from 'react-redux'
 import store from '../redux/store'
 import { wrapper } from '../redux/store'
-import '@vidstack/player/hydrate.js'
+import { Toaster } from 'react-hot-toast'
+
 
 function App({ Component, ...rest }) {
   const { store, props } = wrapper.useWrappedStore(rest)
@@ -13,6 +14,7 @@ function App({ Component, ...rest }) {
 
   return (
     <Provider store={store}>
+      <Toaster/>
       <Component {...pageProps} />
     </Provider>
   )

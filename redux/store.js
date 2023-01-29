@@ -5,10 +5,12 @@ import {
 } from '@reduxjs/toolkit'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import home from './home'
+import user from './user'
 import thunk from 'redux-thunk'
 
 const combinedReducer = combineReducers({
   home,
+  user
 })
 
 export const makeStore = () =>

@@ -5,7 +5,7 @@
 }
 
 button {
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 :root {
@@ -14,12 +14,12 @@ button {
   --select-arrow: var(--select-border);
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
   /* Add if not using autoprefixer */
   -webkit-appearance: none;
   /* Remove most all native input styles */
-  -moz-appearance: none;
-       appearance: none;
+  appearance: none;
+
   font: muli;
   color: currentColor;
   width: 1.5rem;
@@ -27,79 +27,73 @@ input[type=checkbox] {
   border: 0.15rem solid currentColor;
   border-radius: 0.15rem;
   transform: translateY(-0.075em);
+
   display: grid;
   place-content: center;
 }
 
-input[type=checkbox]::before {
+input[type="checkbox"]::before {
   content: "";
   width: 0.65em;
   height: 0.65em;
-  -webkit-clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-          clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   transform: scale(0);
   transform-origin: bottom left;
   transition: 120ms transform ease-in-out;
   box-shadow: inset 1em 1em white;
 }
 
-input[type=checkbox]:checked::before {
+input[type="checkbox"]:checked::before {
   transform: scale(1);
   background-color: var(--lykluk-black);
 }
 
-input[type=checkbox]:checked {
+input[type="checkbox"]:checked {
   background-color: var(--lykluk-black);
+
   /* color: white */
 }
 
-input[type=checkbox]:disabled {
+input[type="checkbox"]:disabled {
   --form-control-color: var(--form-control-disabled);
+
   color: var(--lykluk-mercury);
   cursor: not-allowed;
 }
 
-input[type=text] {
+input[type='text'] {
   padding: 1rem;
   border: 0.5px solid #cccccc;
   border-radius: 12px;
   width: 100%;
 }
 
-input[type=date] {
+input[type='password'] {
   padding: 1rem;
   border: 0.5px solid #cccccc;
   border-radius: 12px;
   width: 100%;
 }
 
-input[type=password] {
-  padding: 1rem;
-  border: 0.5px solid #cccccc;
-  border-radius: 12px;
-  width: 100%;
-}
-
-.input[type=text]:focus {
+.input[type='text']:focus {
   border: 1px solid #020202;
 }
 
-input[type=number] {
+input[type='number'] {
   padding: 1rem;
   border: 0.5px solid #cccccc;
   border-radius: 12px;
   width: 100%;
 }
 
-.input[type=number]:focus {
+.input[type='number']:focus {
   border: 1px solid #020202;
 }
 
 /* begin select input type reset and styling */
+
 select {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   background-color: transparent;
   border: none;
   margin: 0;
@@ -131,12 +125,11 @@ select::-ms-expand {
 }
 
 .select select::after {
-  content: "";
+  content: '';
   width: 0.8em;
   height: 0.5em;
   background-color: var(--lykluk-black);
-  -webkit-clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-          clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 }
 
 .select select:after {
@@ -156,7 +149,6 @@ select::-ms-expand {
   height: 6rem;
   padding-right: 0;
 }
-
 select[multiple] option {
   white-space: normal;
 }
@@ -167,11 +159,17 @@ select[multiple] option {
   background-image: linear-gradient(to top, #ddd, #eee 33%);
 }
 
-input[type=radio] {
+// .phone-input {
+//  input {
+//     padding: 0;
+//     margin: 0;
+//  }
+// }
+
+input[type='radio'] {
   /* Add if not using autoprefixer */
   -webkit-appearance: none;
-  -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   /* For iOS < 15 to remove gradient background */
   background-color: #fff;
   /* Not removed via appearance */
@@ -201,8 +199,8 @@ label {
   margin-right: 1rem;
 }
 
-input[type=radio]::before {
-  content: "";
+input[type='radio']::before {
+  content: '';
   width: 0.65em;
   height: 0.65em;
   border-radius: 50%;
@@ -211,7 +209,7 @@ input[type=radio]::before {
   box-shadow: inset 1em 1em var(--lykluk-black);
 }
 
-input[type=radio]:checked::before {
+input[type='radio']:checked::before {
   transform: scale(1);
 }
 
@@ -227,7 +225,7 @@ textarea:focus {
   border: 1px solid var(--lykluk-black);
 }
 
-input[type=date] {
+input[type='date'] {
   font-family: inherit;
   font: inherit;
   font-size: 12px;
@@ -235,33 +233,33 @@ input[type=date] {
 
 /********** Range Input Styles **********/
 /*Range Reset*/
-input[type=range] {
+input[type='range'] {
   -webkit-appearance: none;
-  -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   background: transparent;
   cursor: pointer;
   width: 15rem;
 }
 
 /* Removes default focus */
-input[type=range]:focus {
+input[type='range']:focus {
   outline: none;
 }
 
 /***** Chrome, Safari, Opera and Edge Chromium styles *****/
 /* slider track */
-input[type=range]::-webkit-slider-runnable-track {
+input[type='range']::-webkit-slider-runnable-track {
   background-color: var(--lykluk-black);
   border-radius: 0.5rem;
   height: 0.5rem;
 }
 
 /* slider thumb */
-input[type=range]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   margin-top: -6px; /* Centers thumb on the track */
+
   /*custom styles*/
   width: 28.55px;
   height: 16.65px;
@@ -271,7 +269,7 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 66.6105px;
 }
 
-input[type=range]:focus::-webkit-slider-thumb {
+input[type='range']:focus::-webkit-slider-thumb {
   border: 1px solid #053a5f;
   outline: 1px solid #053a5f;
   outline-offset: 0.125rem;
@@ -279,37 +277,40 @@ input[type=range]:focus::-webkit-slider-thumb {
 
 /******** Firefox styles ********/
 /* slider track */
-input[type=range]::-moz-range-track {
+input[type='range']::-moz-range-track {
   background-color: var(--lykluk-black);
   border-radius: 0.5rem;
   height: 0.5rem;
 }
 
 /* slider thumb */
-input[type=range]::-moz-range-thumb {
+input[type='range']::-moz-range-thumb {
   border: none; /*Removes extra border that FF applies*/
   border-radius: 0; /*Removes default border-radius that FF applies*/
+
   /*custom styles*/
   background-color: #5cd5eb;
   height: 2rem;
   width: 1rem;
 }
 
-input[type=range]:focus::-moz-range-thumb {
+input[type='range']:focus::-moz-range-thumb {
   border: 1px solid #053a5f;
   outline: 1px solid #053a5f;
   outline-offset: 0.125rem;
 }
 
-input[type=range] {
+input[type='range'] {
   width: 100%;
   margin-top: 1rem;
 }
 
-input[type=password]::-webkit-autofill,
-input[type=password]::-webkit-autofill:hover,
-input[type=password]::-webkit-autofill:focus,
-input[type=password]::-webkit-autofill:active {
+input[type='password']::-webkit-autofill,
+input[type='password']::-webkit-autofill:hover,
+input[type='password']::-webkit-autofill:focus,
+input[type='password']::-webkit-autofill:active {
   box-shadow: 0 0 0 30px white inset !important;
   -webkit-box-shadow: 0 0 0 30px white inset !important;
-}/*# sourceMappingURL=reset.css.map */
+}
+
+

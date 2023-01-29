@@ -9,9 +9,11 @@ import {
 } from '../buttons/ButtonReuse'
 import style from './style.module.css'
 import addIcon from './images/addIcon.svg'
+import AuthModal from '../modal/auth/AuthModal'
 
 const Header = () => {
   const [search, setSearch] = useState()
+  const [pop, setPop] = useState(false)
   return (
     <div className={style.header_main_wrapper}>
       <figure className={style.header_logo}>
@@ -38,8 +40,14 @@ const Header = () => {
         >
           Post
         </ButtonPrimary>
-        <ButtonPrimary>Log in</ButtonPrimary>
+        <ButtonPrimary action={() => setPop(true)}>Log in</ButtonPrimary>
       </div>
+      <AuthModal
+        show={pop}
+        onClose={(close) => {
+          setPop(close);
+        }}
+      ></AuthModal>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import style from './style.module.css'
 import { ButtonPrimary } from '../../buttons/ButtonReuse'
 import Link from 'next/link'
+const album = require('../../../assets/images/album_placeholder.png')
 import dynamic from 'next/dynamic'
 // const ReactPlayer = dynamic(() => import("react-player"), { ssr: true });
 import env from '../../../env'
@@ -19,10 +20,11 @@ const Middle = ({ posts }) => {
     controlBar: {
       fullscreenToggle: false
     },
-    preload: 'auto',
+    preload: 'true',
     fluid: true,
     width: 20,
     height: 50,
+    loop: true,
     aspectRatio: '9:16',
   }
 
@@ -301,6 +303,12 @@ const Middle = ({ posts }) => {
                   <div>
                     {icon.share}
                     <span>4k</span>
+                  </div>
+                  <div>
+                    <figure>
+                      <Image src={album} alt="" width={500} height={500} />
+                    </figure>
+                    {/* <span>4k</span> */}
                   </div>
                 </div>
               </div>
