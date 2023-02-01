@@ -6,10 +6,9 @@ import { HYDRATE } from 'next-redux-wrapper'
 
 export const getFyp = createAsyncThunk(
   'luk/get_fyp',
-  // alert('we her'),
   async (payload, thunkAPI) => {
     try {
-      const { data } = await instance.get('video/fyp', payload)
+      const { data } = await instance.video.get('video/fyp', payload)
       // console.log("we here", data)
 
       if (!data.success) {

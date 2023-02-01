@@ -76,13 +76,17 @@ function AuthModal(props) {
 
         {stage === 'email-login' && 
         <>
-        <EmailPhoneLogin/>
+        <EmailPhoneLogin
+        onFinish={() => closeHandler()}
+        />
         </>
         }
 
       {stage === 'email-signup' && 
         <>
-        <EmailPhoneSignup/>
+        <EmailPhoneSignup
+        onFinish={() => closeHandler()}
+        />
         </>
         }
 

@@ -19,6 +19,7 @@ function Modal(props) {
 
   const [isCopied, setIsCopied] = useState("Tap to Copy");
   const [email, setEmail] = useState();
+  
   const copyLink = () => {
     navigator.clipboard.writeText(props.link);
     setIsCopied("Copied");

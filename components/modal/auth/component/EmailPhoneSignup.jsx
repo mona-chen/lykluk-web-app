@@ -6,12 +6,49 @@ import { ButtonPrimary } from '../../../buttons/ButtonReuse';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import Flatpickr from "react-flatpickr";
+import { signup } from '../../../../redux/user';
+import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
+import 'react-day-picker/dist/style.css';
+import {ThreeDots} from 'react-loader-spinner'
 
-function EmailPhoneSignup() {
+
+function EmailPhoneSignup({onFinish}) {
   const [tab, setTab] = useState('phone')
   const [visible, setVisible] = useState(true);
-  const [dob, setDob] = useState('')
-  const [phone, setPhone] = useState('')
+  const [dob, setDob] = React.useState(Date.now());
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    name: '',
+    dob: '',
+    phone: '',
+    terms: 1
+  })
+
+  const handleFieldChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const { loading } = useSelector((state) => state.user)
+
+  const dispatch = useDispatch()
+
+  const signupUser = async (e) => {
+    let payload = {
+     ...formData,
+     app_token: String(Math.random()),
+    }
+     const data = await dispatch(signup(payload))
+     if (data?.payload?.sucess) {
+       onFinish()
+     }
+   }
+
   return (
     <div className={style.email_phone_auth_wrapper}>
         <div className={style.auth_option_tab}>
@@ -26,29 +63,35 @@ function EmailPhoneSignup() {
         <div className={style.input_contain}>
             <label for="email">What's your name?</label>
             <span>
-              <input type="text" />
+              <input
+              name='name' 
+              value={formData.name}
+              onChange={handleFieldChange}
+              type="text" />
             </span>
           </div>
         
           <div className={style.input_contain}>
             <label for="email">What's your birthday?</label>
             <span>
-              <input type="date" />
-            {/* <Flatpicker
-                              options={{ enableTime: true }}
-                              id="input-calendar"
-                              name="from"
-                              className={`input-calendar`}
-                              autoComplete="off"
-                              value={fromDate}
-                              onChange={(date) =>
-                                setFromDate(
-                                  moment(date[0]).format("YYYY-MM-DD HH:mm:ss")
-                                )
-                              }
-                              placeholder="DD / MM / YYYY"
-                            /> */}
-      
+              <input type="date" 
+              name='dob'
+              value={formData.dob}
+              onChange={(date) =>
+                setFormData({
+                  ...formData,
+                  dob: date.target.value
+                }
+                )
+              }
+              placeholder="DD / MM / YYYY"
+              />
+               
+           {/* <Flatpickr
+                            
+          placeholder="DD / MM / YYYY"
+        /> 
+       */}
             </span>
           </div>
 
@@ -57,16 +100,24 @@ function EmailPhoneSignup() {
             <label for="email">Email</label>
             <span>
               <figure>{authIcons.email_icon}</figure>
-              <input type="text" />
+              <input 
+              type="text"
+              name='email'
+              value={formData.email}
+              onChange={handleFieldChange}
+               />
             </span>
           </div> : 
           <div className={style.phone_input_contain}>
-          <label for="email">Phone</label>
+          <label for="phone">Phone</label>
           <PhoneInput
           className={style.phone_input}
           initialCountry="ng"
-          value={phone}
-          onChange={(phone) => setPhone(phone)}
+          value={formData.phone}
+          onChange={(phone) => setFormData({
+            ...formData,
+            phone: phone,
+          })}
         />
         </div>
           
@@ -76,7 +127,11 @@ function EmailPhoneSignup() {
             <label for="email">Password</label>
             <span>
               <figure onClick={() => setVisible(!visible)}>{visible ? authIcons.eye_opened : authIcons.eye_closed}</figure>
-              <input type={visible ? 'text' : 'password'} />
+              <input 
+              name="password"
+              onChange={handleFieldChange}
+              type={visible ? 'text' : 'password'} 
+              />
             </span>
           </div>
 
@@ -93,9 +148,24 @@ function EmailPhoneSignup() {
           <div className={style.actBtn2}>
             <ButtonPrimary
             // btnStyle={style.actBtn}
+            action={() => signupUser()}
             width="100%"
             >
-              Login
+              {loading ? (
+            <div style={{ margin: "0rem auto" }}>
+              <ThreeDots
+                height="14"
+                width="110"
+                radius="9"
+                color="white"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+              />
+            </div>
+          ) : 
+          'Sign Up'}
             </ButtonPrimary>
           </div>
         </div>

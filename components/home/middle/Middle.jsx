@@ -16,6 +16,7 @@ const Middle = ({ posts }) => {
   const videoJsOptions = {
     // autoplay: true,
     controls: true,
+    autoplay: false,
     responsive: true,
     controlBar: {
       fullscreenToggle: false

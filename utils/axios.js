@@ -1,14 +1,33 @@
 import axios from 'axios'
 import env from '../env'
 
-const API = env.base_url
 
 /** base url to make request to the BE end point */
+const instance = {
+  video : axios.create({
+    baseURL: env.video_url,
+  }),
+  auth : axios.create({
+    baseURL: env.auth,
+  }),
+  search : axios.create({
+    baseURL: env.search,
+  }),
+  discover : axios.create({
+    baseURL: env.discover,
+  }),
+  message : axios.create({
+    baseURL: env.message,
+  }),
+  sharing : axios.create({
+    baseURL: env.sharing,
+  }),
+  abuse : axios.create({
+    baseURL: env.abuse,
+  })
+}
 
-const instance = axios.create({
-  baseURL: API,
-})
 
-// console.log(env.base_url, process.env.NODE_ENV);
+// console.log(env.video_url, process.env.NODE_ENV);
 
 export default instance

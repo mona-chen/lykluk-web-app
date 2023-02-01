@@ -80,7 +80,7 @@ export const LukPlayer = (props) => {
 
           // alert('int')
           // play video if it's in view
-          playerRef.current.play()
+          // playerRef.current.play()
           playerRef.current.tech_?.off('dblclick');
         } else {
           // pause video if it's not in view

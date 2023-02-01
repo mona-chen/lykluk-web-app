@@ -9,7 +9,7 @@ import { login } from '../../../../redux/user';
 import { useDispatch, useSelector } from 'react-redux';
 import {ThreeDots} from 'react-loader-spinner'
 
-function EmailPhoneLogin() {
+function EmailPhoneLogin({onFinish}) {
   const [tab, setTab] = useState('phone')
   const [visible, setVisible] = useState(true);
   const [phone, setPhone] = useState('')
@@ -17,7 +17,6 @@ function EmailPhoneLogin() {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    app_token: 'isoo92s-ilsw-1ssd-2lo0ssxd2'
   })
 
   const { loading } = useSelector((state) => state.user)
@@ -25,10 +24,15 @@ function EmailPhoneLogin() {
   const dispatch = useDispatch();
 
   const loginUser = async (e) => {
-   
-    const data = await dispatch(login(formData))
-    if (data?.payload?.sucess) {
-      return data
+   let payload = {
+    ...formData,
+    app_token: String(Math.random()),
+   }
+  //  setPop(false);
+    const data = await dispatch(login(payload))
+    // console.log(data, 'fini')
+    if (data.payload?.success) {
+      onFinish();
     }
   }
   return (
@@ -65,7 +69,7 @@ function EmailPhoneLogin() {
           value = {formData.username}
           onChange={(e) => setFormData({
             ...formData,
-            username: e.target.value,
+            username: e
           })}
         />
         </div>
@@ -109,7 +113,7 @@ function EmailPhoneLogin() {
                 height="14"
                 width="110"
                 radius="9"
-                color="#020202"
+                color="white"
                 ariaLabel="three-dots-loading"
                 wrapperStyle={{}}
                 wrapperClassName=""

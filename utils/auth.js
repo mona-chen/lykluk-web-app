@@ -1,12 +1,21 @@
 import axios from './axios'
 
 const setAuthToken = () => {
-  const token = localStorage.getItem('token')
+  
+  if (typeof window !== 'undefined'){
+    const token = localStorage.getItem('token')
+  
   if (token) {
-    axios.defaults.headers.common = { Authorization: `Bearer ${token}` }
+    for (const keys in axios){
+      // console.log(keys, 'DEFA')
+      axios[keys].defaults.headers.common = { Authorization: `Bearer ${token}` }
+    }
+    // axios.defaults.headers.common = { Authorization: `Bearer ${token}` }
   } else {
-    delete axios.defaults.headers.common['Authorization']
+    if (axios.default){
+      delete axios.defaults.headers.common['Authorization']
+    }
   }
-}
+}}
 
 export default setAuthToken

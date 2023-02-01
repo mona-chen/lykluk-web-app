@@ -59,6 +59,7 @@
 .overlay .popup .auth_header_wrapper div:first-child {
   width: 2.5rem;
   height: 2.5rem;
+  cursor: pointer;
 }
 .overlay .popup .auth_header_wrapper div:first-child svg {
   width: 100%;
@@ -67,10 +68,14 @@
 .overlay .popup .auth_header_wrapper div:last-child {
   width: 3.5rem;
   height: 3.5rem;
+  cursor: pointer;
 }
 .overlay .popup .auth_header_wrapper div:last-child svg {
   width: 100%;
   height: 100%;
+}
+.overlay .popup .cancel_btn {
+  cursor: pointer;
 }
 .overlay .popup .login_actions_wrapper {
   margin-top: 3rem;
@@ -180,7 +185,7 @@
   position: relative;
 }
 .overlay .popup .email_phone_auth_wrapper .auth_tab_body_wrapper .email_input_contain > span input {
-  padding-left: 4rem;
+  padding-left: 12.5%;
 }
 .overlay .popup .email_phone_auth_wrapper .auth_tab_body_wrapper .email_input_contain > span figure {
   position: absolute;

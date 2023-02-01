@@ -21,6 +21,47 @@
     }
   }
 
+  .header_act_btn_loggedin {
+    display: flex;
+    align-items: center;
+    gap: 4.5rem;
+
+    figure {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: fit-content;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      
+
+
+      span {
+        font-size: 1rem;
+        color: #8E00FE;
+        font-weight: 400;
+      }
+    }
+
+   svg{
+    width: 2.5rem;
+    height: 2.5rem;
+   }
+
+   svg:hover{
+    -webkit-transform: translateY(-0.1rem);
+    transform: translateY(-0.1rem);
+   }
+
+   img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+   }
+  }
+
+
   .header_search {
     position: relative;
     display: flex;

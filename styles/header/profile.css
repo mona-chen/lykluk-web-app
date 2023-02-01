@@ -1,0 +1,257 @@
+.business-profile-wrap-styles {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 4rem;
+  align-items: flex-start;
+  padding-bottom: 10rem;
+}
+@media only screen and (max-width: 63em) {
+  .business-profile-wrap-styles {
+    padding: 10rem 2rem;
+  }
+}
+@media only screen and (max-width: 42em) {
+  .business-profile-wrap-styles {
+    padding: 3rem 1rem;
+  }
+}
+.business-profile-wrap-styles .common-header-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.business-profile-wrap-styles .common-header-wrap .top-box {
+  display: flex;
+  align-items: center;
+}
+.business-profile-wrap-styles .common-header-wrap .top-box .img-wrap {
+  margin-right: 2rem;
+}
+.business-profile-wrap-styles .common-header-wrap .top-box .img-wrap .img-box {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 38em) {
+  .business-profile-wrap-styles .common-header-wrap .top-box .img-wrap .img-box {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+.business-profile-wrap-styles .common-header-wrap .top-box .img-wrap .img-box .img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: inline-block;
+}
+.business-profile-wrap-styles .common-header-wrap .top-box .name-email-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.business-profile-wrap-styles .common-header-wrap .top-box .name-email-box .name {
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-transform: capitalize;
+}
+@media only screen and (max-width: 38em) {
+  .business-profile-wrap-styles .common-header-wrap .top-box .name-email-box .name {
+    font-size: 1.8rem;
+  }
+}
+.business-profile-wrap-styles .common-header-wrap .top-box .name-email-box .email {
+  color: #676767;
+  font-size: 500;
+}
+@media only screen and (max-width: 38em) {
+  .business-profile-wrap-styles .common-header-wrap .top-box .name-email-box .email {
+    font-size: 1.3rem;
+  }
+}
+.business-profile-wrap-styles .common-header-wrap .bottom-box {
+  margin-top: 5rem;
+  width: 100%;
+}
+.business-profile-wrap-styles .common-header-wrap .bottom-box .nav-link-box {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 0.05rem solid #cccccc;
+  padding-bottom: 4rem;
+}
+.business-profile-wrap-styles .common-header-wrap .bottom-box .nav-link-box > *:not(:last-child) {
+  margin-right: 3rem;
+}
+.business-profile-wrap-styles .common-header-wrap .bottom-box .nav-link-box .link {
+  cursor: pointer;
+  color: #676767;
+  font-weight: 500;
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  position: relative;
+}
+.business-profile-wrap-styles .common-header-wrap .bottom-box .nav-link-box .link-active {
+  background-color: #f7f8f7;
+  color: #020202;
+  font-weight: 800;
+}
+.business-profile-wrap-styles .common-header-wrap .bottom-box .nav-link-box .link-active::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(2.1rem);
+  height: 0.4rem;
+  border-radius: 1rem;
+  background-color: #020202;
+}
+.business-profile-wrap-styles .form-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 4rem;
+  width: 100%;
+}
+@media only screen and (max-width: 63em) {
+  .business-profile-wrap-styles .form-wrap {
+    display: flex;
+    flex-direction: column;
+    grid-gap: unset;
+  }
+  .business-profile-wrap-styles .form-wrap > *:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}
+.business-profile-wrap-styles .form-wrap .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.business-profile-wrap-styles .form-wrap .form-group .form-label {
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+@media only screen and (max-width: 38em) {
+  .business-profile-wrap-styles .form-wrap .form-group .form-label {
+    font-size: 1.5rem;
+  }
+}
+.business-profile-wrap-styles .form-wrap .form-group .form-input {
+  width: 100%;
+  padding: 1.8rem 2rem;
+  border-radius: 1.2rem;
+  font-size: 1.5rem;
+  color: #020202;
+  font-weight: 500;
+  border: none;
+  background-color: #f7f8f7;
+}
+@media only screen and (max-width: 38em) {
+  .business-profile-wrap-styles .form-wrap .form-group .form-input {
+    font-size: 1.35rem;
+  }
+}
+.business-profile-wrap-styles .form-wrap .form-group .form-input-active {
+  border: 0.07rem solid #cccccc;
+  background-color: #ffffff;
+  outline: none;
+}
+.business-profile-wrap-styles .form-wrap .form-group .form-input-active:focus {
+  border: 0.07rem solid #cccccc;
+  outline: none;
+}
+.business-profile-wrap-styles .form-wrap .form-group .phone-input {
+  background-color: #f7f8f7;
+  display: flex;
+  padding: 1rem 2rem;
+  border-radius: 1.2rem;
+}
+.business-profile-wrap-styles .form-wrap .form-group .phone-input > * {
+  background-color: #f7f8f7;
+  border: none;
+}
+.business-profile-wrap-styles .form-wrap .form-group .phone-input .input-class {
+  flex: 1;
+}
+.business-profile-wrap-styles .form-wrap .form-group .phone-input-active {
+  border: 0.07rem solid #cccccc;
+  background-color: #ffffff;
+}
+.business-profile-wrap-styles .form-wrap .form-group .phone-input-active > * {
+  background-color: #ffffff;
+  border: none;
+}
+.business-profile-wrap-styles .form-wrap .form-group-two {
+  margin-bottom: 2rem;
+}
+
+.profile-wrap-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.profile-wrap-box .text-btn-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 3rem 0rem;
+}
+@media only screen and (max-width: 38em) {
+  .profile-wrap-box .text-btn-box {
+    flex-direction: column;
+    margin-bottom: 0rem;
+  }
+}
+.profile-wrap-box .text-btn-box .text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@media only screen and (max-width: 38em) {
+  .profile-wrap-box .text-btn-box .text-box {
+    align-self: flex-start;
+  }
+}
+.profile-wrap-box .text-btn-box .text-box .big-text {
+  font-size: 2.5rem;
+  color: #020202;
+  font-weight: 800;
+}
+@media only screen and (max-width: 38em) {
+  .profile-wrap-box .text-btn-box .text-box .big-text {
+    font-size: 1.8rem;
+  }
+}
+.profile-wrap-box .text-btn-box .text-box .small-text {
+  font-size: 1.4rem;
+  color: #676767;
+}
+@media only screen and (max-width: 38em) {
+  .profile-wrap-box .text-btn-box .text-box .small-text {
+    font-size: 1.3rem;
+  }
+}
+.profile-wrap-box .text-btn-box .btn {
+  margin-left: auto;
+  padding: 1.3rem 4rem;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+@media only screen and (max-width: 38em) {
+  .profile-wrap-box .text-btn-box .btn {
+    margin-top: 2rem;
+  }
+}
+.profile-wrap-box .text-btn-box .btn:hover {
+  transform: translateY(-0.1rem);
+}/*# sourceMappingURL=profile.css.map */
