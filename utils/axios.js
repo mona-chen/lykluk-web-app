@@ -10,6 +10,9 @@ const instance = {
   auth : axios.create({
     baseURL: env.auth,
   }),
+  profile : axios.create({
+    baseURL: env.profile,
+  }),
   search : axios.create({
     baseURL: env.search,
   }),
@@ -26,7 +29,6 @@ const instance = {
     baseURL: env.abuse,
   })
 }
-
 
 // console.log(env.video_url, process.env.NODE_ENV);
 

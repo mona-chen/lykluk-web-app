@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import instance from '../utils/axios'
 import setAuthToken from '../utils/auth'
-import { toast } from 'react-toastify'
 import { HYDRATE } from 'next-redux-wrapper'
+import { ToastBar, toast } from 'react-hot-toast'
 
-export const getFyp = createAsyncThunk(
+export const followUser = createAsyncThunk(
   'luk/get_fyp',
-  async (payload, thunkAPI) => {
+  async (e, thunkAPI) => {
     try {
-      const { data } = await instance.video.get('video/fyp', payload)
+      const { data } = await instance.profile.post(`follow/${e}`, e)
       // console.log("we here", data)
 
       if (!data.success) {
@@ -18,10 +18,10 @@ export const getFyp = createAsyncThunk(
         // return thunkAPI.rejectWithValue(data);
       }
       if (data.success) {
-        //   toast.success(data.data.message, {
-        //     theme: "colored",
-        //   });
-        await thunkAPI.dispatch(setFyp(data))
+          toast.success(data.message, {
+            theme: "colored",
+          });
+        // await thunkAPI.dispatch(setFyp(data))
         return data
       }
     } catch (err) {
@@ -41,8 +41,8 @@ export const getTrending = createAsyncThunk(
   'luk/get_fyp',
   async (payload, thunkAPI) => {
     try {
-      const { data } = await instance.discover.get('trending', payload)
-      console.log("trending", data)
+      const { data } = await instance.video.get('video/trending', payload)
+      // console.log("we here", data)
 
       if (!data.success) {
         toast.error(data.message, {
@@ -70,14 +70,12 @@ export const getTrending = createAsyncThunk(
   },
 )
 
-export const home = createSlice({
-  name: 'home',
+export const profile = createSlice({
+  name: 'profile',
   initialState: {
     // user: JSON.parse(localStorage.getItem("user")),
     isAuth: false,
-    loading: false,
-    trending: {},
-    fyp: {},
+    followLoading: false,
     // token: JSON.parse(localStorage.getItem('token')) ,
   },
   reducers: {
@@ -94,39 +92,24 @@ export const home = createSlice({
   },
 
   extraReducers: {
-    [HYDRATE]: (state, action) => {
-      return {
-        [getFyp.pending]: (state) => {
-          state.loading = true
-        },
-        [getFyp.fulfilled]: (state) => {
-          state.loading = false
-        },
-        [getFyp.rejected]: (state) => {
-          // localStorage.removeItem("token");
-          state.loading = false
-          state.isAuth = false
-          state = null
-        },
-
-        [setTrending.pending]: (state) => {
-          state.loading = true
-        },
-        [setTrending.fulfilled]: (state) => {
-          state.loading = false
-        },
-        [setTrending.rejected]: (state) => {
-          // localStorage.removeItem("token");
-          state.loading = false
-          state.isAuth = false
-          state = null
-        },
-      }
+    
+    [followUser.pending]: (state) => {
+      state.followLoading = true
     },
+    [followUser.fulfilled]: (state) => {
+      state.followLoading = false
+    },
+    [followUser.rejected]: (state) => {
+      // localStorage.removeItem("token");
+      state.followLoading = false
+      state.isAuth = false
+      state = null
+    },
+
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setFyp, setTrending } = home.actions
+export const {  } = profile.actions
 
-export default home.reducer
+export default profile.reducer

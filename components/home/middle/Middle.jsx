@@ -9,10 +9,13 @@ import dynamic from 'next/dynamic'
 import env from '../../../env'
 import ReactPlayer from 'react-player/lazy'
 import LukPlayer from '../../video/LukPlayer'
+import { followUser } from '../../../redux/profile';
+import { useDispatch, useSelector } from 'react-redux';
+import { ThreeDots } from 'react-loader-spinner';
 
-const Middle = ({ posts }) => {
+const Middle = ({ posts, trending }) => {
+
   const playerRef = React.useRef(null)
-
   const videoJsOptions = {
     // autoplay: true,
     controls: true,
@@ -42,6 +45,8 @@ const Middle = ({ posts }) => {
     })
   }
 
+  const dispatch = useDispatch()
+
   const verifiedIcon = (
     <svg
       width="12"
@@ -53,7 +58,7 @@ const Middle = ({ posts }) => {
       <path
         d="M12 6.59961C12 9.91341 9.3138 12.5996 6 12.5996C2.68632 12.5996 0 9.91341 0 6.59961C0 3.28593 2.68632 0.599609 6 0.599609C9.3138 0.599609 12 3.28593 12 6.59961Z"
         fill="#A257DC"
-        fill-opacity="0.53"
+        fillOpacity="0.53"
       />
       <path
         d="M12 6C12 9.3138 9.3138 12 6 12C2.68632 12 0 9.3138 0 6C0 2.68632 2.68632 0 6 0C9.3138 0 12 2.68632 12 6Z"
@@ -62,7 +67,7 @@ const Middle = ({ posts }) => {
       <path
         d="M8.39844 4.19971L4.79844 7.79971L3.29844 6.29971L2.02344 7.55969L3.52344 9.05969L4.72344 10.2597L4.79844 10.3197L9.67344 5.45969L8.39844 4.19971Z"
         fill="#A257DC"
-        fill-opacity="0.53"
+        fillOpacity="0.53"
       />
       <path
         d="M8.39844 3.59961L4.79844 7.19961L3.29844 5.69961L2.02344 6.95959L3.52344 8.45959L4.72344 9.6596L4.79844 9.71958L9.67344 4.85959L8.39844 3.59961Z"
@@ -99,7 +104,7 @@ const Middle = ({ posts }) => {
         <path
           d="M36.6207 16.5052C33.2167 13.0338 29.2749 14.4979 26.8342 16.0461C25.455 16.921 23.5446 16.921 22.1655 16.0461C19.7247 14.4979 15.783 13.0338 12.3789 16.5052C4.29829 24.7457 18.1559 40.625 24.4999 40.625C30.8438 40.625 44.7014 24.7457 36.6207 16.5052Z"
           fill="#8E00FE"
-          fill-opacity="0.53"
+          fillOpacity="0.53"
         />
       </svg>
     ),
@@ -113,11 +118,11 @@ const Middle = ({ posts }) => {
       >
         <circle cx="25" cy="25" r="25" fill="#ECECEC" />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M37.9727 29.9012C40.7972 24.4911 38.1083 18.0737 35.0175 14.9828C29.4851 9.45039 20.5152 9.45039 14.9828 14.9828C9.45039 20.5152 9.45039 29.4851 14.9828 35.0175C18.2051 38.2398 24.5128 40.8192 29.9032 37.976C30.4571 37.6838 30.7343 37.5376 30.8697 37.4831C31.4417 37.2531 31.7426 37.218 32.3521 37.3105C32.4964 37.3325 32.6853 37.3814 33.0629 37.4793C34.1958 37.7729 34.7625 37.9198 35.1754 37.9049C36.6602 37.8514 37.8514 36.6602 37.9049 35.1754C37.9198 34.7625 37.773 34.196 37.4793 33.0631C37.3815 32.6855 37.3325 32.4966 37.3106 32.3531C37.2178 31.7436 37.2512 31.4514 37.4791 30.8786C37.5328 30.7437 37.6794 30.4629 37.9727 29.9012ZM20.5489 24.7989C20.5489 25.5813 19.9146 26.2155 19.1322 26.2155C18.3498 26.2155 17.7155 25.5813 17.7155 24.7989C17.7155 24.0165 18.3498 23.3822 19.1322 23.3822C19.9146 23.3822 20.5489 24.0165 20.5489 24.7989ZM26.2155 24.7989C26.2155 25.5813 25.5813 26.2155 24.7989 26.2155C24.0165 26.2155 23.3822 25.5813 23.3822 24.7989C23.3822 24.0165 24.0165 23.3822 24.7989 23.3822C25.5813 23.3822 26.2155 24.0165 26.2155 24.7989ZM30.4655 26.2155C31.2479 26.2155 31.8822 25.5813 31.8822 24.7989C31.8822 24.0165 31.2479 23.3822 30.4655 23.3822C29.6831 23.3822 29.0489 24.0165 29.0489 24.7989C29.0489 25.5813 29.6831 26.2155 30.4655 26.2155Z"
           fill="#8E00FE"
-          fill-opacity="0.53"
+          fillOpacity="0.53"
         />
       </svg>
     ),
@@ -130,19 +135,19 @@ const Middle = ({ posts }) => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <circle cx="25" cy="25" r="25" fill="#ECECEC" />
-        <g clip-path="url(#clip0_2259_7470)">
+        <g clipPath="url(#clip0_2259_7470)">
           <path
             d="M27.875 27.7024C21.5583 27.7024 16.1889 30.9515 14.125 35.5V34.1154C14.125 25.8434 20.2039 19.0963 27.875 18.5903V12.125L38.875 23.125L27.875 34.125V27.7079"
             fill="#8E00FE"
-            fill-opacity="0.53"
+            fillOpacity="0.53"
           />
           <path
             d="M27.875 27.7024C21.5583 27.7024 16.1889 30.9515 14.125 35.5V34.1154C14.125 25.8434 20.2039 19.0963 27.875 18.5903V12.125L38.875 23.125L27.875 34.125V27.7079"
             stroke="#8E00FE"
-            stroke-opacity="0.53"
-            stroke-width="2.0625"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeOpacity="0.53"
+            strokeWidth="2.0625"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
         <defs>
@@ -160,6 +165,11 @@ const Middle = ({ posts }) => {
   }
 
   const [loading, setLoading] = useState()
+  const [following, setFollowing] = useState([])
+
+
+  const { followLoading } = useSelector((state) => state.profile);
+
 
   const handleDownload = () => {
     try {
@@ -189,6 +199,25 @@ const Middle = ({ posts }) => {
       // toast.error("Invoice export failed, try again later");
     }
   }
+
+  const follow = async (e) => {
+    const data = await dispatch(followUser(e))
+    
+    // alert('folloe')
+    if (data?.payload?.success) {
+console.log(data?.payload)
+      if (data?.payload?.data?.follow){
+      setFollowing([
+        ...following,
+        data.payload?.data?.following.username
+      ])
+    }}
+    
+    if (!data?.payload?.data?.follow){
+      setFollowing(following.filter(val => val !== data.payload?.data?.username))
+    }
+  }
+
 
   return (
     <div className={style.main_middle_wrapper}>
@@ -258,7 +287,27 @@ const Middle = ({ posts }) => {
                     </div>
                   </div>
                   <div className="follow_btn">
-                    <ButtonPrimary padding="1rem 2rem">Follow</ButtonPrimary>
+                    <ButtonPrimary action={() => follow(User?.username)} padding="1rem 2rem">
+                    {!followLoading ? (
+                    following.includes(User.username) ? 'Unfollow' : User?.followedBy.length > 0 ? 'Unfollow' : 'Follow'
+                  ) : (
+                    <div
+                      // style={{ padding: "0.7rem" }}
+                      className="load-wrap"
+                    >
+                      <ThreeDots
+                        height="15"
+                        width="100"
+                        radius="9"
+                        color="#ffffff"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClassName=""
+                        visible={true}
+                      />
+                    </div>
+                  )}
+                      </ButtonPrimary>
                   </div>
                 </div>
               </div>

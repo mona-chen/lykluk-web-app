@@ -30,9 +30,10 @@ function EmailPhoneLogin({onFinish}) {
    }
   //  setPop(false);
     const data = await dispatch(login(payload))
-    // console.log(data, 'fini')
+    console.log(data, 'fini')
     if (data.payload?.success) {
       onFinish();
+      window.location.reload(false);
     }
   }
   return (

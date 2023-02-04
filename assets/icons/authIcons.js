@@ -20,12 +20,12 @@ export const authIcons = {
     ),
     cancel_modal : (<svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="23.5" cy="23.5" r="23.5" fill="#ECECEC"/>
-    <line x1="16.3164" y1="15" x2="31.0347" y2="29.7183" stroke="#8E00FE" stroke-width="3.2759" stroke-linecap="round"/>
-    <line x1="15.9653" y1="29.7187" x2="30.6836" y2="15.0005" stroke="#8E00FE" stroke-width="3.2759" stroke-linecap="round"/>
+    <line x1="16.3164" y1="15" x2="31.0347" y2="29.7183" stroke="#8E00FE" strokeWidth="3.2759" strokeLinecap="round"/>
+    <line x1="15.9653" y1="29.7187" x2="30.6836" y2="15.0005" stroke="#8E00FE" strokeWidth="3.2759" strokeLinecap="round"/>
     </svg>
     ),
     back: (<svg width="19" height="33" viewBox="0 0 19 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17 2.44824L3 16.4482L17 30.4482" stroke="#141822" stroke-width="3.31439" stroke-linecap="round"/>
+    <path d="M17 2.44824L3 16.4482L17 30.4482" stroke="#141822" strokeWidth="3.31439" strokeLinecap="round"/>
     </svg>
     ), email_icon: (<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path opacity="0.4" d="M20 12.9405C20 15.7305 17.76 17.9905 14.97 18.0005H14.96H5.05C2.27 18.0005 0 15.7505 0 12.9605V12.9505C0 12.9505 0.00600006 8.52449 0.0140001 6.29849C0.0150001 5.88049 0.495 5.64649 0.822 5.90649C3.198 7.79149 7.447 11.2285 7.5 11.2735C8.21001 11.8425 9.11001 12.1635 10.03 12.1635C10.95 12.1635 11.85 11.8425 12.56 11.2625C12.613 11.2275 16.767 7.89349 19.179 5.97749C19.507 5.71649 19.989 5.95049 19.99 6.36749C20 8.57649 20 12.9405 20 12.9405Z" fill="#8E00FE"/>

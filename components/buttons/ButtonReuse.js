@@ -23,8 +23,10 @@ export const ButtonPrimary = (props) => {
     height,
     width,
     disabled,
+    gap,
     btnStyle,
     marginTop,
+    svg,
   } = props
   return (
     <button
@@ -39,6 +41,7 @@ export const ButtonPrimary = (props) => {
         padding: !padding ? '1rem 4rem' : padding,
         opacity: disabled ? '0.2' : '',
         border: !border ? '' : border,
+        gap: gap && gap,
         transition: 'all 0.3s',
         marginTop: marginTop,
       }}
@@ -48,7 +51,8 @@ export const ButtonPrimary = (props) => {
       {icon && (
         <div className="icon">
           {' '}
-          <Image src={icon} alt="" width="100%" height="100%" />
+          {svg ? icon :
+          <Image src={icon} alt="" width="100%" height="100%" />}
         </div>
       )}
       <div className="btn_label">{label || props.children}</div>

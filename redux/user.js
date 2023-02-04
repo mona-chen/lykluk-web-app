@@ -30,11 +30,12 @@ export const login = createAsyncThunk(
           // alert('linsi')
         localStorage.setItem("token", (data?.data.access_token));
         await thunkAPI.dispatch(LOGIN(data))
+        // console.log(data, 'from react')
         return data
       }
     } catch (err) {
       // 
-      console.log(err,'errrr')
+      // console.log(err,'errrr')
         toast.error(err.response.data.message, {
           theme: 'colored',
           // position: 'top-right',
@@ -95,12 +96,12 @@ export const user = createSlice({
     LOGIN: (state, action) => {
     
       state.isAuth = true
-      useEffect(() => {
+      // useEffect(() => {
         if (typeof window !== 'undefined') {
           // Perform localStorage action
         localStorage.setItem("user", JSON.stringify(action?.payload?.data?.sigin_user));
         }
-      }, [])
+      // }, [])
 
       // state.fyp = action.payload
     },

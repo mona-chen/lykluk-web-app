@@ -12,7 +12,8 @@ import { useSelector } from 'react-redux';
 import { homeIcons } from '../../assets/icons/homeIcons';
 import { useEffect } from 'react';
 import env from '../../env';
-import { ThreeDots } from 'react-loader-spinner';
+// import { ThreeDots } from 'react-loader-spinner';
+import { toast } from 'react-hot-toast';
 
 
 
@@ -20,13 +21,19 @@ const Header = () => {
   const [search, setSearch] = useState()
   const [pop, setPop] = useState(false)
   const [profile, setProfile] = useState({})
-  const [profileDrop, setProfileDrop] = useState(true)
+  const [profileDrop, setProfileDrop] = useState(false)
   // retrieve posts from redux
   const { user, loadLogout } = useSelector((state) => state.user)
 
   useEffect(() => {
-    setProfile(user.profile)
+    setProfile(user?.profile)
   }, [user])
+
+  const handleLogout = () => {
+    toast.success('You have been logged out successfully')
+    localStorage.clear()
+    window.location.reload(false);
+  }
   
   return (
     <div className={style.header_main_wrapper}>
@@ -67,10 +74,26 @@ const Header = () => {
          {homeIcons.notification}
          <span>Notification</span>
        </figure>
-       <figure>
+       <figure onMouseEnter = {() => setProfileDrop(true)} onClick={() => setProfileDrop(!profileDrop)}>
         <Image src={env.cloudfront + profile.avatar} alt={'profile'} width='500' height='500' />
        </figure>
+       
        {/* profile box start */}
+        <div onMouseLeave={() => setProfileDrop(false)}  className={`${style.profile_drop_wrapper} ${profileDrop && style.profile_drop_show}`}>
+          <span>
+            {homeIcons.settings}
+            Settings
+          </span>
+          <span>
+          {homeIcons.language}
+            Language
+          </span>
+          <span onClick={() => handleLogout()}>
+            {homeIcons.logout}
+            Logout
+          </span>
+
+        </div>
         
       {/* profile box end */}
        </div> 
