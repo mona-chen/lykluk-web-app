@@ -27,8 +27,8 @@ export const homeIcons = {
           y2="65.2746"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#8E00FE" />
-          <stop offset="1" stopColor="#8E00FE" stop-opacity="0" />
+          <stop stop-color="#8E00FE" />
+          <stop offset="1" stop-color="#8E00FE" stop-opacity="0" />
         </linearGradient>
       </defs>
     </svg>
@@ -62,9 +62,9 @@ export const homeIcons = {
           y2="65.2746"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#27AE60" />
-          <stop offset="1" stopColor="#27AE60" stop-opacity="0" />
-          <stop offset="1" stopColor="#27AE60" stop-opacity="0" />
+          <stop stop-color="#27AE60" />
+          <stop offset="1" stop-color="#27AE60" stop-opacity="0" />
+          <stop offset="1" stop-color="#27AE60" stop-opacity="0" />
         </linearGradient>
       </defs>
     </svg>
@@ -100,8 +100,8 @@ export const homeIcons = {
           y2="65.2746"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#2F80ED" />
-          <stop offset="1" stopColor="#2F80ED" stop-opacity="0" />
+          <stop stop-color="#2F80ED" />
+          <stop offset="1" stop-color="#2F80ED" stop-opacity="0" />
         </linearGradient>
         <clipPath id="clip0_2259_7467">
           <rect
@@ -143,8 +143,8 @@ export const homeIcons = {
           y2="65.2746"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#F2994A" />
-          <stop offset="1" stopColor="#F2994A" stop-opacity="0" />
+          <stop stop-color="#F2994A" />
+          <stop offset="1" stop-color="#F2994A" stop-opacity="0" />
         </linearGradient>
       </defs>
     </svg>
@@ -180,8 +180,8 @@ export const homeIcons = {
           y2="65.2746"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#56CCF2" />
-          <stop offset="1" stopColor="#56CCF2" stop-opacity="0" />
+          <stop stop-color="#56CCF2" />
+          <stop offset="1" stop-color="#56CCF2" stop-opacity="0" />
         </linearGradient>
         <clipPath id="clip0_2259_7469">
           <rect
@@ -200,7 +200,7 @@ export const homeIcons = {
   <defs>
   <linearGradient id="paint0_linear_1185_10403" x1="89" y1="8" x2="167.5" y2="7.99999" gradientUnits="userSpaceOnUse">
   <stop/>
-  <stop offset="1" stopColor="#8E00FE"/>
+  <stop offset="1" stop-color="#8E00FE"/>
   </linearGradient>
   </defs>
   </svg>

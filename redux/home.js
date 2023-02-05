@@ -8,7 +8,7 @@ export const getFyp = createAsyncThunk(
   'luk/get_fyp',
   async (payload, thunkAPI) => {
     try {
-      const { data } = await instance.video.get('video/fyp', payload)
+      const { data } = await instance.video.get('fyp', payload)
       // console.log("we here", data)
 
       if (!data.success) {
@@ -34,7 +34,7 @@ export const getFyp = createAsyncThunk(
       }
       return thunkAPI.rejectWithValue(err)
     }
-  },
+  }
 )
 
 export const getTrending = createAsyncThunk(
@@ -42,7 +42,7 @@ export const getTrending = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await instance.discover.get('trending', payload)
-      console.log("trending", data)
+      console.log('trending', data)
 
       if (!data.success) {
         toast.error(data.message, {
@@ -67,7 +67,7 @@ export const getTrending = createAsyncThunk(
       }
       return thunkAPI.rejectWithValue(err)
     }
-  },
+  }
 )
 
 export const home = createSlice({
@@ -78,6 +78,7 @@ export const home = createSlice({
     loading: false,
     trending: {},
     fyp: {},
+    authModal: false,
     // token: JSON.parse(localStorage.getItem('token')) ,
   },
   reducers: {
@@ -87,10 +88,15 @@ export const home = createSlice({
       state.fyp = action.payload
     },
 
+    setAuthModal: (state, action) => {
+      state.isAuth = true
+      state.authModal = action.payload
+    },
+
     setTrending: (state, action) => {
       state.isAuth = true
       state.trending = action.payload
-    }
+    },
   },
 
   extraReducers: {
@@ -127,6 +133,6 @@ export const home = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setFyp, setTrending } = home.actions
+export const { setFyp, setTrending, setAuthModal } = home.actions
 
 export default home.reducer

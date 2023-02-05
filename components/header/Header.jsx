@@ -14,6 +14,8 @@ import { useEffect } from 'react';
 import env from '../../env';
 // import { ThreeDots } from 'react-loader-spinner';
 import { toast } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { setAuthModal } from '../../redux/home'
 
 
 
@@ -24,6 +26,7 @@ const Header = () => {
   const [profileDrop, setProfileDrop] = useState(false)
   // retrieve posts from redux
   const { user, loadLogout } = useSelector((state) => state.user)
+  const { authModal } = useSelector((state) => state.home)
 
   useEffect(() => {
     setProfile(user?.profile)
@@ -34,6 +37,11 @@ const Header = () => {
     localStorage.clear()
     window.location.reload(false);
   }
+
+  const dispatch = useDispatch()
+
+  const handleClose = () => dispatch(setAuthModal(false))
+  const handleOpen = () => dispatch(setAuthModal(true))
   
   return (
     <div className={style.header_main_wrapper}>
@@ -56,13 +64,14 @@ const Header = () => {
           <ButtonPrimary
           btnStyle={style.signup_btn}
           fill="white"
+          action={handleOpen}
           color="black"
           padding="0.5rem 2rem"
           icon={addIcon}
         >
           Post
         </ButtonPrimary>
-        <ButtonPrimary action={() => setPop(true)}>Log in</ButtonPrimary>
+        <ButtonPrimary action={handleOpen}>Log in</ButtonPrimary>
       </div>       
        :
        <div className={style.header_act_btn_loggedin}>
@@ -99,10 +108,8 @@ const Header = () => {
        </div> 
        }
       <AuthModal
-        show={pop}
-        onClose={(close) => {
-          setPop(close);
-        }}
+        show={authModal}
+        onClose={handleClose}
       ></AuthModal>
     </div>
   )

@@ -68,6 +68,14 @@ input[type='text'] {
   width: 100%;
 }
 
+input[type='date'] {
+  padding: 1rem;
+  border: 0.5px solid #cccccc;
+  border-radius: 12px;
+  width: 100%;
+}
+
+
 input[type='password'] {
   padding: 1rem;
   border: 0.5px solid #cccccc;

@@ -48,6 +48,46 @@ const RightSide = () => {
         </div>
 
         <div className={style.user_autoscroll}>
+        <div
+            style={{
+              backgroundImage:
+                'url(https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg)',
+            }}
+            className={style.popular_content_thumbnail}
+          >
+            <div>
+              <span className={style.user}>
+                <Image
+                  src="https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg"
+                  alt=""
+                  width="100"
+                  height="100"
+                />
+                <span>Davido 30BG</span>
+              </span>
+            </div>
+          </div>
+
+          <div
+            style={{
+              backgroundImage:
+                'url(https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg)',
+            }}
+            className={style.popular_content_thumbnail}
+          >
+            <div>
+              <span className={style.user}>
+                <Image
+                  src="https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg"
+                  alt=""
+                  width="100"
+                  height="100"
+                />
+                <span>Davido 30BG</span>
+              </span>
+            </div>
+          </div>
+
           <div
             style={{
               backgroundImage:

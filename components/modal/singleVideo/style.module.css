@@ -1,0 +1,137 @@
+.overlay {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+}
+
+.close_div {
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -4;
+}
+
+.popup {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  white-space: pre-wrap !important;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+.popup .single_video_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+  height: 100%;
+}
+.popup .single_video_wrapper .video_view_wrapper {
+  width: 70%;
+  background-color: aqua;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.popup .single_video_wrapper .video_view_wrapper .luk_player {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+.popup .single_video_wrapper .video_view_wrapper .luk_player video-js {
+  height: 100vh !important;
+}
+.popup .single_video_wrapper .video_view_wrapper .luk_player video {
+  height: 100% !important;
+}
+.popup .single_video_wrapper .comment_screen_wrapper {
+  width: 30%;
+  background-color: white;
+  padding-top: 3rem;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment {
+  width: 100%;
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .author {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .author figure {
+  border-radius: 50%;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .author figure img {
+  border-radius: 50%;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .author div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .author div h4 {
+  font-weight: 500;
+  color: #232832;
+  font-size: 1.8rem;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .author div small {
+  color: #a4a4a4;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .video_description {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: black;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .reactions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .reactions figure {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .reactions figure span {
+  color: #8e00fe;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .reactions figure svg {
+  width: 4rem;
+  height: 4rem;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .main_comment .original_sound {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  align-items: center;
+}
+.popup .single_video_wrapper .comment_screen_wrapper .comments_wrapper {
+  margin-top: 3rem;
+  padding-left: 3rem;
+  background-color: rgba(217, 217, 217, 0.4431372549);
+  padding-top: 1rem;
+}/*# sourceMappingURL=style.module.css.map */

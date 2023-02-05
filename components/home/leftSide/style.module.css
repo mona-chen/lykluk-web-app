@@ -51,9 +51,6 @@
   padding-bottom: 2rem;
   border-bottom: 1px solid #e0e0e0;
 }
-.main_leftside_wrapper .popular_accounts_wrapper .popular_accounts {
-  overflow-y: auto;
-}
 .main_leftside_wrapper .popular_accounts_wrapper .popular_accounts .accounts_wrapper {
   display: flex;
   height: -webkit-fit-content;
