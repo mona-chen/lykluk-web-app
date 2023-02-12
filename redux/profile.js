@@ -18,9 +18,9 @@ export const followUser = createAsyncThunk(
         // return thunkAPI.rejectWithValue(data);
       }
       if (data.success) {
-          toast.success(data.message, {
-            theme: "colored",
-          });
+        toast.success(data.message, {
+          theme: 'colored',
+        })
         // await thunkAPI.dispatch(setFyp(data))
         return data
       }
@@ -34,7 +34,7 @@ export const followUser = createAsyncThunk(
       }
       return thunkAPI.rejectWithValue(err)
     }
-  },
+  }
 )
 
 export const getTrending = createAsyncThunk(
@@ -67,7 +67,7 @@ export const getTrending = createAsyncThunk(
       }
       return thunkAPI.rejectWithValue(err)
     }
-  },
+  }
 )
 
 export const profile = createSlice({
@@ -88,11 +88,10 @@ export const profile = createSlice({
     setTrending: (state, action) => {
       state.isAuth = true
       state.trending = action.payload
-    }
+    },
   },
 
   extraReducers: {
-    
     [followUser.pending]: (state) => {
       state.followLoading = true
     },
@@ -105,11 +104,10 @@ export const profile = createSlice({
       state.isAuth = false
       state = null
     },
-
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {  } = profile.actions
+export const {} = profile.actions
 
 export default profile.reducer

@@ -37,7 +37,7 @@
 }
 .header_main_wrapper .header_act_btn_loggedin figure span {
   font-size: 1rem;
-  color: #8E00FE;
+  color: #8e00fe;
   font-weight: 400;
 }
 .header_main_wrapper .header_act_btn_loggedin svg {
@@ -87,7 +87,7 @@
   height: 1.8rem;
 }
 span:first-child .header_main_wrapper .header_act_btn_loggedin .profile_drop_wrapper span:nth-child(2) {
-  border-bottom: 0.41px solid #F1F1F1;
+  border-bottom: 0.41px solid #f1f1f1;
 }
 .header_main_wrapper .header_search {
   position: relative;

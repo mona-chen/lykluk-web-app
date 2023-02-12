@@ -8,6 +8,7 @@ import home from './home'
 import profile from './profile'
 import user from './user'
 import video from './video'
+import settings from './settings'
 import thunk from 'redux-thunk'
 
 const combinedReducer = combineReducers({
@@ -15,6 +16,7 @@ const combinedReducer = combineReducers({
   profile,
   user,
   video,
+  settings,
 })
 
 export const makeStore = () =>

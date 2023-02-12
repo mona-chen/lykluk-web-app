@@ -1,0 +1,13 @@
+.settings_main_wrapper {
+  display: flex;
+  padding: 3rem 12rem;
+  background-color: rgba(250, 250, 250, 1);
+  min-height: 100vh;
+
+  .left_section {
+    flex: 35%;
+  }
+  .right_section {
+    flex: 65%;
+  }
+}

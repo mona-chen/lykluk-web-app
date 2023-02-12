@@ -1,3 +1,4 @@
+
 import Header from "../components/header/Header";
 import LeftSide from "../components/home/leftSide/LeftSide";
 import Profile from "../components/profile/profile";
@@ -16,3 +17,23 @@ const ProfilePage = () => {
 }
  
 export default ProfilePage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+/* "w-full border py-2 rounded my-[5px] px-2 focus:outline-none" */
+
+.input {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 1rem;
+  margin: 5px auto;
+}
+
+.input:focus {
+  outline: none;
+}

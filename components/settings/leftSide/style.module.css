@@ -1,0 +1,29 @@
+.inner_div {
+  background: #ffffff;
+  box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  padding: 2rem;
+  position: relative;
+}
+.back_icon {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+}
+.option {
+  display: flex;
+  padding-top: 4rem;
+  padding-left: 2rem;
+  align-content: baseline;
+  cursor: pointer;
+}
+.option_links {
+  padding-left: 1.5rem;
+}
+.active_option_link {
+  padding-left: 1.5rem;
+  color: rgba(142, 0, 254, 1);
+}

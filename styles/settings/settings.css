@@ -1,0 +1,12 @@
+.settings_main_wrapper {
+  display: flex;
+  padding: 3rem 12rem;
+  background-color: rgb(250, 250, 250);
+  min-height: 100vh;
+}
+.settings_main_wrapper .left_section {
+  flex: 35%;
+}
+.settings_main_wrapper .right_section {
+  flex: 65%;
+}/*# sourceMappingURL=settings.css.map */
