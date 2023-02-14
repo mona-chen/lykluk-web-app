@@ -106,10 +106,6 @@ export const profile = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-<<<<<<< HEAD
-export const {} = profile.actions
-=======
 export const { setProfileVideos } = profile.actions
->>>>>>> 75f95a12c5e1c5e7de37653070966eded96d7d62
 
 export default profile.reducer
