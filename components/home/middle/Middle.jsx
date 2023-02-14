@@ -15,6 +15,8 @@ import { ThreeDots } from 'react-loader-spinner'
 import { setAuthModal } from '../../../redux/home'
 import SingleVideo from '../../modal/singleVideo/Modal'
 import { setVideo, setVideoModal } from '../../../redux/video'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Middle = ({ posts, user, trending, setPop }) => {
   const playerRef = React.useRef(null)
@@ -249,12 +251,16 @@ const Middle = ({ posts, user, trending, setPop }) => {
                 <div className={style.user_wrapper}>
                   <div className={style.user}>
                     <figure>
-                      <Image
-                        src={`${env.cloudfront}${User?.profile?.avatar}`}
-                        alt=""
-                        width="150"
-                        height="150"
-                      />
+                      {!User.profile.avatar ? (
+                        <Skeleton circle width={50} height={50} />
+                      ) : (
+                        <Image
+                          src={`${env.cloudfront}${User?.profile?.avatar}`}
+                          alt=""
+                          width="150"
+                          height="150"
+                        />
+                      )}
                     </figure>
                     <div className={style.post_wrapper}>
                       <div className={style.user_info}>

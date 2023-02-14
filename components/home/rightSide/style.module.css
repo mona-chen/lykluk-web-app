@@ -107,7 +107,7 @@
 }
 .main_rightside_wrapper .popular_users .user_autoscroll .popular_content_thumbnail div .user img {
   width: 3rem;
-  height: auto;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;

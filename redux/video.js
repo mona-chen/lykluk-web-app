@@ -4,10 +4,11 @@ import { toast } from 'react-toastify'
 
 export const getVideoComments = createAsyncThunk(
   'luk/get_fyp',
+
   async (payload, thunkAPI) => {
     try {
       const { data } = await instance.video.get(`comment/${payload}`, payload)
-      // console.log("we here", data)
+      console.warn('comments', data)
 
       if (!data.success) {
         toast.error(data.message, {
@@ -19,7 +20,98 @@ export const getVideoComments = createAsyncThunk(
         //   toast.success(data.data.message, {
         //     theme: "colored",
         //   });
-        await thunkAPI.dispatch(setComments(data))
+        await thunkAPI.dispatch(setComments(data.data))
+        return data
+      }
+    } catch (err) {
+      // ;
+      if (err.response.data.status === 'fail' && err.response.status !== 401) {
+        toast.error(err.response.data.message, {
+          theme: 'colored',
+          position: 'top-right',
+        })
+      }
+      return thunkAPI.rejectWithValue(err)
+    }
+  }
+)
+
+export const getTrendingVideos = createAsyncThunk(
+  'luk/get_trending',
+
+  async (payload, thunkAPI) => {
+    try {
+      const { data } = await instance.discover.get('trending', payload)
+      console.warn('trending', data)
+
+      if (!data.success) {
+        toast.error(data.message, {
+          theme: 'colored',
+        })
+        // return thunkAPI.rejectWithValue(data);
+      }
+      if (data.success) {
+        //   toast.success(data.data.message, {
+        //     theme: "colored",
+        //   });
+        await thunkAPI.dispatch(setTrendingVideos(data.data))
+        return data
+      }
+    } catch (err) {
+      // ;
+      if (err.response.data.status === 'fail' && err.response.status !== 401) {
+        toast.error(err.response.data.message, {
+          theme: 'colored',
+          position: 'top-right',
+        })
+      }
+      return thunkAPI.rejectWithValue(err)
+    }
+  }
+)
+
+export const uploadVideo = createAsyncThunk(
+  'luk/upload',
+  async (payload, thunkAPI) => {
+    const payloadData = payload
+
+    try {
+      const data = await instance.video.post('', payloadData)
+      if ('response' in data) {
+        if (!data.response?.data.success) {
+          toast.error('Oops, something went wrong', {
+            theme: 'colored',
+          })
+          return thunkAPI.rejectWithValue(data)
+        }
+        if (data.response?.data?.success) {
+          toast.success('Video uploaded succesfully', {
+            theme: 'colored',
+          })
+          // await thunkAPI.dispatch(setComments(data.data))
+          return data
+        }
+      }
+      console.log('video', data)
+
+      // if (data) {
+      //   alert('response')
+      //   toast.error(data.response.data.message[0], {
+      //     theme: 'colored',
+      //   })
+      // }
+
+      if (!data.success) {
+        toast.error('Oops, something went wrong', {
+          theme: 'colored',
+        })
+        return thunkAPI.rejectWithValue(data)
+      }
+      if (data?.payload?.data?.success) {
+        toast.success('Video uploaded succesfully', {
+          theme: 'colored',
+        })
+        // await thunkAPI.dispatch(setComments(data.data))
         return data
       }
     } catch (err) {
@@ -69,169 +161,14 @@ export const getVideoComments = createAsyncThunk(
 // )
 
 export const video = createSlice({
-  name: 'home',
+  name: 'video',
   initialState: {
     // user: JSON.parse(localStorage.getItem("user")),
     isAuth: false,
     loading: false,
     video: {},
-    comments: [
-      {
-        comment: 'testing comment 1',
-        id: 16,
-        videoId: 1,
-        createdAt: '2022-07-06T23:31:59.799Z',
-        deletedAt: null,
-        comment_likes: [],
-        User: {
-          username: '@wanogho3304492',
-        },
-        replyFrom: [],
-        _count: {
-          replyFrom: 0,
-          comment_likes: 0,
-        },
-      },
-      {
-        comment: 'ahhhhh',
-        id: 15,
-        videoId: 1,
-        createdAt: '2022-07-06T23:31:09.000Z',
-        deletedAt: null,
-        comment_likes: [],
-        User: {
-          username: '@wanogho3304492',
-        },
-        replyFrom: [],
-        _count: {
-          replyFrom: 0,
-          comment_likes: 0,
-        },
-      },
-      {
-        comment: 'testing comment ',
-        id: 14,
-        videoId: 1,
-        createdAt: '2022-07-06T23:30:53.331Z',
-        deletedAt: null,
-        comment_likes: [],
-        User: {
-          username: '@wanogho3304492',
-        },
-        replyFrom: [],
-        _count: {
-          replyFrom: 0,
-          comment_likes: 0,
-        },
-      },
-      {
-        comment: 'testing ',
-        id: 13,
-        videoId: 1,
-        createdAt: '2022-07-06T23:30:28.768Z',
-        deletedAt: null,
-        comment_likes: [],
-        User: {
-          username: '@wanogho3304492',
-        },
-        replyFrom: [],
-        _count: {
-          replyFrom: 0,
-          comment_likes: 0,
-        },
-      },
-      {
-        comment: '🤣🤣🤣🤣🤣🤣',
-        id: 12,
-        videoId: 1,
-        createdAt: '2022-07-06T23:30:21.554Z',
-        deletedAt: null,
-        comment_likes: [
-          {
-            User: {
-              username: '@hilary2380287',
-            },
-          },
-        ],
-        User: {
-          username: '@wanogho3304492',
-        },
-        replyFrom: [],
-        _count: {
-          replyFrom: 0,
-          comment_likes: 1,
-        },
-      },
-      {
-        comment: '🤣🤣🤣🤣🤣',
-        id: 11,
-        videoId: 1,
-        createdAt: '2022-07-06T23:30:15.945Z',
-        deletedAt: null,
-        comment_likes: [
-          {
-            User: {
-              username: '@hilary2380287',
-            },
-          },
-        ],
-        User: {
-          username: '@wanogho3304492',
-        },
-        replyFrom: [
-          {
-            comment: 'Reply to comment with ID 11',
-            id: 32,
-            videoId: 1,
-            User: {
-              username: '@hilary2380287',
-            },
-            deletedAt: null,
-            createdAt: '2022-07-07T23:13:47.662Z',
-            _count: {
-              comment_likes: 0,
-              replyFrom: 0,
-            },
-          },
-        ],
-        _count: {
-          replyFrom: 1,
-          comment_likes: 2,
-        },
-      },
-      {
-        comment: '🤣🤣🤣🤣🤣🤣🤣',
-        id: 10,
-        videoId: 1,
-        createdAt: '2022-07-06T23:29:53.813Z',
-        deletedAt: null,
-        comment_likes: [],
-        User: {
-          username: '@wanogho3304492',
-        },
-        replyFrom: [],
-        _count: {
-          replyFrom: 0,
-          comment_likes: 0,
-        },
-      },
-      {
-        comment: 'wahala for who know get boyfriend ',
-        id: 4,
-        videoId: 1,
-        createdAt: '2022-07-06T15:21:48.436Z',
-        deletedAt: null,
-        comment_likes: [],
-        User: {
-          username: '@confidence3640348',
-        },
-        replyFrom: [],
-        _count: {
-          replyFrom: 0,
-          comment_likes: 0,
-        },
-      },
-    ],
+    trendingVideos: {},
+    comments: [],
     videoModal: false,
 
     // token: JSON.parse(localStorage.getItem('token')) ,
@@ -252,9 +189,9 @@ export const video = createSlice({
       state.video = action.payload
     },
 
-    setTrending: (state, action) => {
+    setTrendingVideos: (state, action) => {
       state.isAuth = true
-      state.trending = action.payload
+      state.trendingVideos = action.payload
     },
   },
 
@@ -271,10 +208,37 @@ export const video = createSlice({
       state.isAuth = false
       state = null
     },
+
+    [getTrendingVideos.pending]: (state) => {
+      state.loading = true
+    },
+    [getTrendingVideos.fulfilled]: (state) => {
+      state.loading = false
+    },
+    [getTrendingVideos.rejected]: (state) => {
+      // localStorage.removeItem("token");
+      state.loading = false
+      state.isAuth = false
+      state = null
+    },
+
+    [uploadVideo.pending]: (state) => {
+      state.loading = true
+    },
+    [uploadVideo.fulfilled]: (state) => {
+      state.loading = false
+    },
+    [uploadVideo.rejected]: (state) => {
+      // localStorage.removeItem("token");
+      state.loading = false
+      state.isAuth = false
+      state = null
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setComments, setVideo, setVideoModal } = video.actions
+export const { setComments, setTrendingVideos, setVideo, setVideoModal } =
+  video.actions
 
 export default video.reducer

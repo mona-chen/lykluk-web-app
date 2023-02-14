@@ -37,12 +37,12 @@ export const getFyp = createAsyncThunk(
   }
 )
 
-export const getTrending = createAsyncThunk(
-  'luk/get_fyp',
+export const getHashtags = createAsyncThunk(
+  'luk/get_hashtags',
   async (payload, thunkAPI) => {
     try {
-      const { data } = await instance.discover.get('trending', payload)
-      console.log('trending', data)
+      const { data } = await instance.discover.get('trending/hashtags', payload)
+      console.log('hashtags', data)
 
       if (!data.success) {
         toast.error(data.message, {
@@ -54,7 +54,7 @@ export const getTrending = createAsyncThunk(
         //   toast.success(data.data.message, {
         //     theme: "colored",
         //   });
-        await thunkAPI.dispatch(setTrending(data))
+        await thunkAPI.dispatch(setTrendingHashtags(data))
         return data
       }
     } catch (err) {
@@ -76,7 +76,7 @@ export const home = createSlice({
     // user: JSON.parse(localStorage.getItem("user")),
     isAuth: false,
     loading: false,
-    trending: {},
+    trendingHashtags: {},
     fyp: {},
     authModal: false,
     // token: JSON.parse(localStorage.getItem('token')) ,
@@ -93,46 +93,42 @@ export const home = createSlice({
       state.authModal = action.payload
     },
 
-    setTrending: (state, action) => {
+    setTrendingHashtags: (state, action) => {
       state.isAuth = true
-      state.trending = action.payload
+      state.trendingHashtags = action.payload
     },
   },
 
   extraReducers: {
-    [HYDRATE]: (state, action) => {
-      return {
-        [getFyp.pending]: (state) => {
-          state.loading = true
-        },
-        [getFyp.fulfilled]: (state) => {
-          state.loading = false
-        },
-        [getFyp.rejected]: (state) => {
-          // localStorage.removeItem("token");
-          state.loading = false
-          state.isAuth = false
-          state = null
-        },
+    [getFyp.pending]: (state) => {
+      state.loading = true
+    },
+    [getFyp.fulfilled]: (state) => {
+      state.loading = false
+    },
+    [getFyp.rejected]: (state) => {
+      // localStorage.removeItem("token");
+      state.loading = false
+      state.isAuth = false
+      state = null
+    },
 
-        [setTrending.pending]: (state) => {
-          state.loading = true
-        },
-        [setTrending.fulfilled]: (state) => {
-          state.loading = false
-        },
-        [setTrending.rejected]: (state) => {
-          // localStorage.removeItem("token");
-          state.loading = false
-          state.isAuth = false
-          state = null
-        },
-      }
+    [getHashtags.pending]: (state) => {
+      state.loading = true
+    },
+    [getHashtags.fulfilled]: (state) => {
+      state.loading = false
+    },
+    [getHashtags.rejected]: (state) => {
+      // localStorage.removeItem("token");
+      state.loading = false
+      state.isAuth = false
+      state = null
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setFyp, setTrending, setAuthModal } = home.actions
+export const { setFyp, setAuthModal, setTrendingHashtags } = home.actions
 
 export default home.reducer

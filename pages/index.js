@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import Header from '../components/header/Header'
 import LeftSide from '../components/home/leftSide/LeftSide'
 import Middle from '../components/home/middle/Middle'
-import { getFyp, getTrending } from '../redux/home'
+import { getFyp, getHashtags } from '../redux/home'
 import { store } from '../redux/store'
 import RightSide from '../components/home/rightSide/RightSide'
+import { getTrendingVideos } from '../redux/video'
 
 export default function Home() {
   const dispatch = useDispatch()
 
   const fetchFyp = async (e) => {
     const data = await dispatch(getFyp())
-    dispatch(getTrending())
     if (data?.payload?.success) {
       // return data
     }
@@ -21,20 +21,23 @@ export default function Home() {
   // fetch posts on page load
   useEffect(() => {
     fetchFyp()
+    dispatch(getHashtags())
+    dispatch(getTrendingVideos())
   }, [])
 
   // retrieve posts from redux
-  const { fyp, trending } = useSelector((state) => state.home)
+  const { fyp, trendingHashtags } = useSelector((state) => state.home)
+  const { trendingVideos } = useSelector((state) => state.video)
   const { user } = useSelector((state) => state.user)
 
-  console.log(trending, 'this 1  FROM ')
+  // console.log(trendingHashtags, 'this 1  FROM ')
   return (
     <div className="window_wrapper">
       <Header />
       <div className="main_home_wrapper">
-        <LeftSide />
-        <Middle user={user} trending={trending} posts={fyp?.data} />
-        <RightSide />
+        <LeftSide hashtags={trendingHashtags} trending={trendingVideos} />
+        <Middle user={user} posts={fyp?.data} />
+        <RightSide trending={trendingVideos} />
       </div>
     </div>
   )
