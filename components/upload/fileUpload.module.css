@@ -1,0 +1,158 @@
+.upload {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border: 1px dashed #cccccc;
+  border-radius: 1.2rem;
+}
+
+.uploadBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.upload label {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 2rem;
+  font-weight: 500;
+  color: #878787;
+  text-align: center;
+  gap: 1rem;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  letter-spacing: -0.04em;
+  color: #000000;
+  padding-left: 2rem;
+}
+
+.fileUpload {
+  /* width: 72.3rem; */
+  height: 100%;
+  left: 1.6rem;
+  top: 60px;
+  margin-left: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  background: #f7f8f7;
+  border-radius: 0.8rem;
+}
+
+.fileOutput div:nth-child(1) {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.fileOutput div:nth-child(2) {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.fileOutput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#drop_zone {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  border: 1.1311px dashed #bbbbbb;
+  border-radius: 0.8rem;
+}
+
+#uploadBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+#previewImage {
+  display: flex;
+  width: 5rem;
+  height: 5rem;
+}
+
+#previewImage img {
+  border-radius: 0.8rem;
+  width: 100%;
+}
+
+#filePreview {
+  display: absolute;
+  margin-top: 3rem;
+  justify-content: space-between;
+}
+
+#fileOutput {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+#fileOutput p {
+  font-weight: 800;
+  font-size: 1.4rem;
+  line-height: 2.3rem;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+#fileOutput small {
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 140%;
+  display: flex;
+  letter-spacing: -0.02em;
+  color: #676767;
+}
+
+.luk_player {
+  position: relative;
+}
+
+#deleteBtn {
+  position: absolute;
+  top: 0;
+  display: grid;
+  place-items: center;
+  right: 0;
+  border-bottom-left-radius: 2rem;
+  width: 3.5rem;
+  cursor: pointer;
+  height: 3.5rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: #8e00fe;
+}
+#deleteBtn figure {
+  display: grid;
+  place-items: center;
+}
+#deleteBtn figure svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}/*# sourceMappingURL=fileUpload.module.css.map */

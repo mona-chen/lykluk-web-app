@@ -75,6 +75,8 @@
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  width: 100%;
+  overflow-x: auto;
 }
 .main_rightside_wrapper .popular_users .user_autoscroll .popular_content_thumbnail {
   display: flex;
@@ -91,7 +93,7 @@
   height: 30%;
   align-items: flex-end;
   gap: 2rem;
-  width: 100%;
+  width: 25rem;
   padding-bottom: 1rem;
   border-bottom-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
@@ -105,7 +107,7 @@
 }
 .main_rightside_wrapper .popular_users .user_autoscroll .popular_content_thumbnail div .user img {
   width: 3rem;
-  height: auto;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;

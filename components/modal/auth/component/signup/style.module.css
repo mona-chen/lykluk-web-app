@@ -27,7 +27,6 @@
   border-radius: 1.6rem;
   width: 45rem;
   min-height: 52rem;
-  height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
   background: #ffffff;
@@ -130,7 +129,6 @@
 }
 .overlay .popup .email_phone_auth_wrapper .auth_option_tab {
   background: #F4F5FA;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   padding: 1rem 2.5rem;

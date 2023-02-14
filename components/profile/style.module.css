@@ -67,7 +67,7 @@
   padding: 1.5rem 4rem;
 }
 .profile_wrapper .profile_details_wrapper .top_details_wrapper .bottom_details div div b {
-  color: #8E00FE;
+  color: #8e00fe;
 }
 .profile_wrapper .bio_contain {
   background: rgba(196, 196, 196, 0.12);
@@ -85,7 +85,32 @@
   gap: 0;
 }
 .profile_wrapper .video_gallery .gallery_toggle {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  padding: 1rem 10rem;
+  justify-content: space-between;
+}
+.profile_wrapper .video_gallery .gallery_toggle figure {
+  width: 3rem;
+  height: 3rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 20px;
+  place-items: center;
+}
+.profile_wrapper .video_gallery .gallery_toggle figure svg {
+  height: 100%;
+  width: 100%;
+}
+.profile_wrapper .video_gallery .no_video {
+  padding-top: 5rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+}
+.profile_wrapper .video_gallery .no_video span {
+  color: #999999;
+  font-size: 1.4rem;
 }/*# sourceMappingURL=style.module.css.map */

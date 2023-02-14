@@ -9,12 +9,16 @@ import dynamic from 'next/dynamic'
 import env from '../../../env'
 import ReactPlayer from 'react-player/lazy'
 import LukPlayer from '../../video/LukPlayer'
-import { followUser } from '../../../redux/profile';
-import { useDispatch, useSelector } from 'react-redux';
-import { ThreeDots } from 'react-loader-spinner';
+import { followUser } from '../../../redux/profile'
+import { useDispatch, useSelector } from 'react-redux'
+import { ThreeDots } from 'react-loader-spinner'
+import { setAuthModal } from '../../../redux/home'
+import SingleVideo from '../../modal/singleVideo/Modal'
+import { setVideo, setVideoModal } from '../../../redux/video'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
-const Middle = ({ posts, trending }) => {
-
+const Middle = ({ posts, user, trending, setPop }) => {
   const playerRef = React.useRef(null)
   const videoJsOptions = {
     // autoplay: true,
@@ -22,7 +26,7 @@ const Middle = ({ posts, trending }) => {
     autoplay: false,
     responsive: true,
     controlBar: {
-      fullscreenToggle: false
+      fullscreenToggle: false,
     },
     preload: 'true',
     fluid: true,
@@ -37,7 +41,13 @@ const Middle = ({ posts, trending }) => {
 
     // / You can handle player events here, for example:
     player.on('waiting', () => {
-      videojs.log('player is waiting')
+      // videojs.log('player is waiting')
+    })
+
+    player.on('fullscreenchange', function () {
+      if (player.isFullscreen()) {
+        player.exitFullscreen()
+      }
     })
 
     player.on('dispose', () => {
@@ -46,6 +56,15 @@ const Middle = ({ posts, trending }) => {
   }
 
   const dispatch = useDispatch()
+
+  const handleAuthOpen = () => dispatch(setAuthModal(true))
+  const handleVideoOpen = (e) => {
+    dispatch(setVideoModal(true))
+    dispatch(setVideo(e))
+  }
+  const handleVideoClose = () => dispatch(setVideoModal(false))
+
+  const { videoModal } = useSelector((state) => state.video)
 
   const verifiedIcon = (
     <svg
@@ -164,60 +183,27 @@ const Middle = ({ posts, trending }) => {
     ),
   }
 
-  const [loading, setLoading] = useState()
   const [following, setFollowing] = useState([])
 
-
-  const { followLoading } = useSelector((state) => state.profile);
-
-
-  const handleDownload = () => {
-    try {
-      setLoading(true)
-      instance({
-        url: `${env.cloudfront}${invoice.id}`, //your url
-        method: 'GET',
-        responseType: 'blob', // important
-      }).then((response) => {
-        // create file link in browser's memory
-        const href = URL.createObjectURL(response.data)
-
-        // create "a" HTML element with href to file & click
-        const link = document.createElement('a')
-        link.href = href
-        link.setAttribute('download', `${invoice.title}.pdf`) //or any other extension
-        document.body.appendChild(link)
-        link.click()
-        setLoading(false)
-
-        // clean up "a" element & remove ObjectURL
-        document.body.removeChild(link)
-        URL.revokeObjectURL(href)
-      })
-    } catch (error) {
-      setLoading(false)
-      // toast.error("Invoice export failed, try again later");
-    }
-  }
+  const { followLoading } = useSelector((state) => state.profile)
 
   const follow = async (e) => {
     const data = await dispatch(followUser(e))
-    
+
     // alert('folloe')
     if (data?.payload?.success) {
-console.log(data?.payload)
-      if (data?.payload?.data?.follow){
-      setFollowing([
-        ...following,
-        data.payload?.data?.following.username
-      ])
-    }}
-    
-    if (!data?.payload?.data?.follow){
-      setFollowing(following.filter(val => val !== data.payload?.data?.username))
+      console.log(data?.payload)
+      if (data?.payload?.data?.follow) {
+        setFollowing([...following, data.payload?.data?.following.username])
+      }
+    }
+
+    if (!data?.payload?.data?.follow) {
+      setFollowing(
+        following.filter((val) => val !== data.payload?.data?.username)
+      )
     }
   }
-
 
   return (
     <div className={style.main_middle_wrapper}>
@@ -238,17 +224,17 @@ console.log(data?.payload)
           // lukplayer2 ? lukplayer2.style.backgroundColor = "transparent" : ''
           lukplayer2
             ? lukplayer2.forEach(
-                (el) => (el.style.backgroundColor = 'transparent'),
+                (el) => (el.style.backgroundColor = 'transparent')
               )
             : ''
           lukplayer3
             ? lukplayer3.forEach(
-                (el) => (el.style.backgroundColor = 'transparent'),
+                (el) => (el.style.backgroundColor = 'transparent')
               )
             : ''
           lukplayer3
             ? lukplayer3.forEach(
-                (el) => (el.style.backgroundColor = 'transparent'),
+                (el) => (el.style.backgroundColor = 'transparent')
               )
             : ''
           // lukplayer3
@@ -257,7 +243,7 @@ console.log(data?.payload)
           //     )
           //   : ''
 
-
+          // console.log(user, 'from user')
 
           return (
             <div key={idx} className={style.feed_wrapper}>
@@ -265,12 +251,16 @@ console.log(data?.payload)
                 <div className={style.user_wrapper}>
                   <div className={style.user}>
                     <figure>
-                      <Image
-                        src={`${env.cloudfront}${User?.profile?.avatar}`}
-                        alt=""
-                        width="150"
-                        height="150"
-                      />
+                      {!User.profile.avatar ? (
+                        <Skeleton circle width={50} height={50} />
+                      ) : (
+                        <Image
+                          src={`${env.cloudfront}${User?.profile?.avatar}`}
+                          alt=""
+                          width="150"
+                          height="150"
+                        />
+                      )}
                     </figure>
                     <div className={style.post_wrapper}>
                       <div className={style.user_info}>
@@ -287,36 +277,48 @@ console.log(data?.payload)
                     </div>
                   </div>
                   <div className="follow_btn">
-                    <ButtonPrimary action={() => follow(User?.username)} padding="1rem 2rem">
-                    {!followLoading ? (
-                    following.includes(User.username) ? 'Unfollow' : User?.followedBy.length > 0 ? 'Unfollow' : 'Follow'
-                  ) : (
-                    <div
-                      // style={{ padding: "0.7rem" }}
-                      className="load-wrap"
+                    <ButtonPrimary
+                      action={() =>
+                        !user ? handleAuthOpen() : follow(User?.username)
+                      }
+                      padding="1rem 2rem"
                     >
-                      <ThreeDots
-                        height="15"
-                        width="100"
-                        radius="9"
-                        color="#ffffff"
-                        ariaLabel="three-dots-loading"
-                        wrapperStyle={{}}
-                        wrapperClassName=""
-                        visible={true}
-                      />
-                    </div>
-                  )}
-                      </ButtonPrimary>
+                      {!followLoading ? (
+                        following.includes(User.username) ? (
+                          'Following'
+                        ) : User?.followedBy?.length > 0 ? (
+                          'Unfollow'
+                        ) : (
+                          'Follow'
+                        )
+                      ) : (
+                        <div
+                          // style={{ padding: "0.7rem" }}
+                          className="load-wrap"
+                        >
+                          <ThreeDots
+                            height="15"
+                            width="50"
+                            radius="9"
+                            color="#ffffff"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClassName=""
+                            visible={true}
+                          />
+                        </div>
+                      )}
+                    </ButtonPrimary>
                   </div>
                 </div>
               </div>
               <div className={style.feed_player_wrapper}>
-                <div 
-                style={{ 
-                  backgroundImage: `url("${placeImage}")` 
-                }}
-                className={style.luk_player}>
+                <div
+                  style={{
+                    backgroundImage: `url("${placeImage}")`,
+                  }}
+                  className={style.luk_player}
+                >
                   <LukPlayer
                     width="720"
                     height="420"
@@ -345,7 +347,7 @@ console.log(data?.payload)
                     <span>4k</span>
                   </div>
 
-                  <div>
+                  <div onClick={() => handleVideoOpen(chi)}>
                     {icon.comment}
                     <span>{_count.comments}</span>
                   </div>
@@ -366,6 +368,7 @@ console.log(data?.payload)
           )
         })}
       </div>
+      <SingleVideo show={videoModal} onClose={handleVideoClose}></SingleVideo>
     </div>
   )
 }

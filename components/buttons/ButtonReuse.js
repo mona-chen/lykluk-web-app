@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 // require("./style.css");
 /**
- * Raven Primary Button Component.
+ * Lykluk Primary Button Component.
  *
  * Note: This API is a custom Button Component which accepts the following as props, "label,color, fill, icon, border, action, padding, height, width, & disabled"
  * @storybook documentation coming soon
@@ -51,8 +51,7 @@ export const ButtonPrimary = (props) => {
       {icon && (
         <div className="icon">
           {' '}
-          {svg ? icon :
-          <Image src={icon} alt="" width="100%" height="100%" />}
+          {svg ? icon : <Image src={icon} alt="" width="100%" height="100%" />}
         </div>
       )}
       <div className="btn_label">{label || props.children}</div>
@@ -61,7 +60,7 @@ export const ButtonPrimary = (props) => {
 }
 
 /**
- * Raven Secondary Button Component.
+ * Lykluk Secondary Button Component.
  *
  * Note: This API is a custom Button Component which accepts the following as props, "label,color, fill, icon, border, action, padding, height, width, & disabled"
  * @storybook documentation coming soon
@@ -106,7 +105,7 @@ export const ButtonSecondary = ({
 }
 
 /**
- * Raven Tertiary Button Component.
+ * Lykluk Tertiary Button Component.
  *
  * Note: This API is a custom Button Component which accepts the following as props, "label,color, fill, icon, border, action, padding, height, width, & disabled"
  * @storybook documentation coming soon
@@ -152,7 +151,7 @@ export const ButtonTertiary = ({
 }
 
 /**
- * Raven Icon Button Component.
+ * Lykluk Icon Button Component.
  *
  * Note: This API is a custom Button Component which accepts the following as props, "label,color, fill, icon, border, action, padding, height, width, & disabled"
  * @storybook documentation coming soon
