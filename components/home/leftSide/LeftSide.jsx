@@ -7,7 +7,8 @@ import env from '../../../env'
 import { getHashtags } from '../../../redux/home'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTrendingVideos } from '../../../redux/video'
-
+import AuthModal from '../../modal/auth/AuthModal'
+import { setAuthModal } from '../../../redux/home'
 const foryouIcon = (
   <svg
     width="36"
@@ -122,6 +123,8 @@ const LeftSide = () => {
   const { fyp, trendingHashtags } = useSelector((state) => state.home)
   const { trendingVideos } = useSelector((state) => state.video)
   const { user } = useSelector((state) => state.user)
+  const { authModal } = useSelector((state) => state.home)
+
 
   const trends = trendingVideos?.PopularVideos
   const hashtag = trendingHashtags?.data?.TrendingHashTags
@@ -132,6 +135,8 @@ const LeftSide = () => {
     dispatch(getHashtags())
     dispatch(getTrendingVideos())
   }, [])
+  const handleClose = () => dispatch(setAuthModal(false))
+  const handleOpen = () => dispatch(setAuthModal(true))
 
   // console.log(hashtags?.data?.TrendingHashTags, 'for rendering')
   return (
@@ -158,7 +163,12 @@ const LeftSide = () => {
           Don’t have an Account? Sign Up to share videos, follow creators, like
           videos and make comments
         </span>
-        <ButtonPrimary btnStyle={style.signup_btn} fill="none" width="100%">
+        <ButtonPrimary
+          btnStyle={style.signup_btn}
+          action={handleOpen}
+          fill="none"
+          width="100%"
+        >
           Sign Up
         </ButtonPrimary>
       </div>
@@ -210,6 +220,7 @@ const LeftSide = () => {
           })}
         </div>
       </div>
+      <AuthModal show={authModal} onClose={handleClose}></AuthModal>
     </div>
   )
 }
