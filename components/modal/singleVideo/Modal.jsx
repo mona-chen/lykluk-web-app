@@ -7,6 +7,7 @@ import { authIcons } from '../../../assets/icons/authIcons'
 import { LukPlayer } from '../../video/LukPlayer'
 import env from '../../../env'
 import { videoIcons } from '../../../assets/icons/videoIcons'
+import { getVideoComments } from '../../../redux/video'
 
 function SingleVideo(props, { chi }) {
   const [show, setShow] = useState(false)
@@ -14,7 +15,13 @@ function SingleVideo(props, { chi }) {
 
   const { video, comments } = useSelector((state) => state.video)
 
-  console.log(comments, 'commentsx')
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getVideoComments(video.id))
+  }, [])
+
+  // console.log(comments, 'commentsx')
   const closeHandler = () => {
     setShow(false)
     props.onClose(false)
@@ -63,9 +70,25 @@ function SingleVideo(props, { chi }) {
   const vidFormat = key?.split('.')[1]
   let avatar = env.cloudfront + User?.profile?.avatar
 
+  function keyPress(e) {
+    document.onkeydown = function (evt) {
+      evt = evt || window.event
+      var isEscape = false
+      if ('key' in evt) {
+        isEscape = evt.key === 'Escape' || evt.key === 'Esc'
+      } else {
+        isEscape = evt.keyCode === 27
+      }
+      if (isEscape) {
+        closeHandler()
+      }
+    }
+  }
+
   return (
     <>
       <div
+        onKeyUp={(e) => keyPress(e)}
         style={{
           visibility: show ? 'visible' : 'hidden',
           opacity: show ? '1' : '0',
@@ -140,10 +163,44 @@ function SingleVideo(props, { chi }) {
                 </div>
               </div>
               <div className={style.comments_wrapper}>
-                <figure>
-                  <Image src={avatar} alt="" width="70" height="70" />
-                </figure>
-                <div className={style.comment}></div>
+                <div className={style.count_comment}>
+                  <span>Comments</span>
+                  <span>({comments?.length})</span>
+                </div>
+                {comments?.map((chi, idx) => {
+                  const {
+                    comment,
+                    id,
+                    videoId,
+                    createdAt,
+                    comment_likes,
+                    User,
+                    replyFrom,
+                    _count,
+                  } = chi
+                  return (
+                    <div className={style.comment_container} key={idx}>
+                      <figure>
+                        <Image src={avatar} alt="" width="50" height="50" />
+                      </figure>
+
+                      <div className={style.comment}>
+                        <span>
+                          <h3>{User?.username}</h3>
+                          <h3>&#x2022; 7 minutes ago</h3>
+                        </span>
+
+                        <small>{comment}</small>
+
+                        <div className={style.comment_controls}>
+                          <span>Reply</span>
+                          <span>(4) Reply</span>
+                          <figure>{videoIcons.like_comment}</figure>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>

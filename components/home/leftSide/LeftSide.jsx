@@ -1,8 +1,12 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ButtonPrimary } from '../../buttons/ButtonReuse'
 import style from './style.module.css'
 import Link from 'next/link'
+import env from '../../../env'
+import { getHashtags } from '../../../redux/home'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTrendingVideos } from '../../../redux/video'
 
 const foryouIcon = (
   <svg
@@ -115,6 +119,21 @@ const verifiedIcon = (
 )
 
 const LeftSide = () => {
+  const { fyp, trendingHashtags } = useSelector((state) => state.home)
+  const { trendingVideos } = useSelector((state) => state.video)
+  const { user } = useSelector((state) => state.user)
+
+  const trends = trendingVideos?.PopularVideos
+  const hashtag = trendingHashtags?.data?.TrendingHashTags
+  const dispatch = useDispatch()
+
+  // fetch posts on page load
+  useEffect(() => {
+    dispatch(getHashtags())
+    dispatch(getTrendingVideos())
+  }, [])
+
+  // console.log(hashtags?.data?.TrendingHashTags, 'for rendering')
   return (
     <div className={style.main_leftside_wrapper}>
       <div className={style.left_quick_actions}>
@@ -148,77 +167,34 @@ const LeftSide = () => {
         <h3>Popular Accounts</h3>
         <div className={style.popular_accounts}>
           <div className={style.accounts_wrapper}>
-            <div className={style.accounts}>
-              <div className={style.user}>
-                <figure>
-                  <Image
-                    src="https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg"
-                    alt=""
-                    width="150"
-                    height="150"
-                  />
-                </figure>
-                <div className={style.user_info}>
-                  <span>
-                    Davido <figure>{verifiedIcon}</figure>
-                  </span>
-                  <span>@davido</span>
+            {trends?.map((chi, idx) => {
+              return (
+                <div key={idx} className={style.accounts}>
+                  <div className={style.user}>
+                    <figure>
+                      <Image
+                        src={env.cloudfront + chi?.User?.profile?.avatar}
+                        alt=""
+                        width="150"
+                        height="150"
+                      />
+                    </figure>
+                    <div className={style.user_info}>
+                      <span>
+                        {chi?.User?.username.slice(1, 18)}{' '}
+                        <figure>{verifiedIcon}</figure>
+                      </span>
+                      <span>{chi?.User?.username.slice(1, 18)}</span>
+                    </div>
+                  </div>
+                  <div className="follow_btn">
+                    <ButtonPrimary padding="0.5rem 2rem" fontSize="1.4rem">
+                      Follow
+                    </ButtonPrimary>
+                  </div>
                 </div>
-              </div>
-              <div className="follow_btn">
-                <ButtonPrimary padding="0.5rem 2rem" fontSize="1.4rem">
-                  Follow
-                </ButtonPrimary>
-              </div>
-            </div>
-
-            <div className={style.accounts}>
-              <div className={style.user}>
-                <figure>
-                  <Image
-                    src="https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg"
-                    alt=""
-                    width="150"
-                    height="150"
-                  />
-                </figure>
-                <div className={style.user_info}>
-                  <span>
-                    Davido <figure>{verifiedIcon}</figure>
-                  </span>
-                  <span>@davido</span>
-                </div>
-              </div>
-              <div className="follow_btn">
-                <ButtonPrimary padding="0.5rem 2rem" fontSize="1.4rem">
-                  Follow
-                </ButtonPrimary>
-              </div>
-            </div>
-
-            <div className={style.accounts}>
-              <div className={style.user}>
-                <figure>
-                  <Image
-                    src="https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg"
-                    alt=""
-                    width="150"
-                    height="150"
-                  />
-                </figure>
-                <div className={style.user_info}>
-                  <span>
-                    Davido <figure>{verifiedIcon}</figure>
-                  </span>
-                  <span>@davido</span>
-                </div>
-              </div>
-              <div className="follow_btn">
-                <ButtonPrimary padding="0.5rem 2rem" fontSize="1.4rem">
-                  Follow
-                </ButtonPrimary>
-              </div>
-            </div>
+              )
+            })}
           </div>
         </div>
 
@@ -227,13 +203,11 @@ const LeftSide = () => {
 
       <div className={style.trending_hashtags}>
         <h3>Trending Hashtags</h3>
+
         <div className={style.hashtags_wrapper}>
-          <span>#obix</span>
-          <span>#obix</span>
-          <span>#obix</span>
-          <span>#obix</span>
-          <span>#obix</span>
-          <span>#obix</span>
+          {hashtag?.map((chi, idx) => {
+            return <span key={idx}>{chi?.tag}</span>
+          })}
         </div>
       </div>
     </div>

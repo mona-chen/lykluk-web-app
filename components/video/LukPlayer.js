@@ -39,7 +39,7 @@ export const LukPlayer = (props) => {
       })
     }
     checkIfVideoInView()
-    
+
     return () => {
       document.removeEventListener('keydown', handleKeyPress)
       observerRef.current.disconnect()
@@ -74,19 +74,19 @@ export const LukPlayer = (props) => {
       entries.forEach((entry) => {
         playerRef.current.pause()
 
-
         if (entry.isIntersecting && entry.intersectionRatio > 0) {
-          console.log(entry.intersectionRect.height, 'intersection ratio')
+          // console.log(entry.intersectionRect.height, 'intersection ratio')
 
           // alert('int')
           // play video if it's in view
           // playerRef.current.play()
-          playerRef.current.tech_?.off('dblclick');
+          playerRef.current.tech_?.off('dblclick')
         } else {
           // pause video if it's not in view
           playerRef.current.pause()
         }
-      }), { threshold: [1] }
+      }),
+        { threshold: [1] }
     })
     observerRef.current.observe(videoRef.current)
 

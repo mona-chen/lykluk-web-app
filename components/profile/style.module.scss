@@ -1,0 +1,135 @@
+.profile_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 43%;
+  height: 100%;
+  // background-color: rgb(173, 125, 62);
+  margin-left: 5%;
+  margin-top: 5rem;
+
+  .profile_details_wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+
+    figure {
+      display: grid;
+      place-items: center;
+
+      img {
+        width: 12.5rem;
+        height: 12.5rem;
+        border-radius: 50%;
+      }
+    }
+
+    .top_details_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      width: 100%;
+
+      .top_details {
+        display: flex;
+        justify-content: space-between;
+        align-items: top;
+        width: 100%;
+        // background: blue;
+        flex-wrap: wrap;
+        gap: 0;
+
+        div:first-child {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          span {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            font-size: 2.4rem;
+            color: #717171;
+            font-weight: 300;
+          }
+        }
+      }
+      .bottom_details {
+        display: flex;
+        gap: 3rem;
+
+        div {
+          display: flex;
+          gap: 1rem;
+          flex-direction: row;
+          align-items: center;
+
+          div {
+            background: rgba(142, 0, 254, 0.04);
+            border-radius: 1.8rem;
+            font-size: 1.1rem;
+            padding: 1.5rem 4rem;
+
+            b {
+              color: #8e00fe;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bio_contain {
+    background: rgba(196, 196, 196, 0.12);
+    width: 100%;
+    padding: 2rem;
+    border-radius: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .video_gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    .gallery_toggle {
+      display: flex;
+      width: 100%;
+      background-color: white;
+      padding: 1rem 10rem;
+      justify-content: space-between;
+
+      figure {
+        width: 3rem;
+        height: 3rem;
+        display: grid;
+        place-items: center;
+
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    .no_video {
+      padding-top: 5rem;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      width: 100%;
+
+      span {
+        color: #999999;
+        font-size: 1.4rem;
+      }
+    }
+  }
+}

@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import instance from '../utils/axios'
-import setAuthToken from '../utils/auth'
-import { HYDRATE } from 'next-redux-wrapper'
-import { ToastBar, toast } from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 
 export const followUser = createAsyncThunk(
   'luk/get_fyp',
@@ -37,11 +35,11 @@ export const followUser = createAsyncThunk(
   }
 )
 
-export const getTrending = createAsyncThunk(
-  'luk/get_fyp',
+export const getprofileVideos = createAsyncThunk(
+  'luk/profile_videos',
   async (payload, thunkAPI) => {
     try {
-      const { data } = await instance.video.get('video/trending', payload)
+      const { data } = await instance.profile.get(`videos/${payload}`, payload)
       // console.log("we here", data)
 
       if (!data.success) {
@@ -54,7 +52,7 @@ export const getTrending = createAsyncThunk(
         //   toast.success(data.data.message, {
         //     theme: "colored",
         //   });
-        await thunkAPI.dispatch(setTrending(data))
+        await thunkAPI.dispatch(setProfileVideos(data))
         return data
       }
     } catch (err) {
@@ -75,7 +73,7 @@ export const profile = createSlice({
   initialState: {
     // user: JSON.parse(localStorage.getItem("user")),
     isAuth: false,
-    followLoading: false,
+    profileVideos: {},
     // token: JSON.parse(localStorage.getItem('token')) ,
   },
   reducers: {
@@ -85,9 +83,9 @@ export const profile = createSlice({
       state.fyp = action.payload
     },
 
-    setTrending: (state, action) => {
+    setProfileVideos: (state, action) => {
       state.isAuth = true
-      state.trending = action.payload
+      state.profileVideos = action.payload
     },
   },
 
@@ -108,6 +106,10 @@ export const profile = createSlice({
 })
 
 // Action creators are generated for each case reducer function
+<<<<<<< HEAD
 export const {} = profile.actions
+=======
+export const { setProfileVideos } = profile.actions
+>>>>>>> 75f95a12c5e1c5e7de37653070966eded96d7d62
 
 export default profile.reducer

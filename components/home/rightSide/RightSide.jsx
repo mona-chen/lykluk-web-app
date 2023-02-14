@@ -2,7 +2,10 @@ import Image from 'next/image'
 import React from 'react'
 import style from './style.module.css'
 import { homeIcons } from '../../../assets/icons/homeIcons'
-const RightSide = () => {
+import env from '../../../env'
+const RightSide = ({ trending }) => {
+  const trends = trending?.PopularVideos
+
   return (
     <div className={style.main_rightside_wrapper}>
       <div className={style.discover_banner_wrapper}>
@@ -44,89 +47,38 @@ const RightSide = () => {
       <div className={style.popular_users}>
         <div className={style.quick_popular_stats}>
           <h3>#Popular</h3>
-          <span>1.8m</span>
+          <span>{trends?.length}</span>
         </div>
 
         <div className={style.user_autoscroll}>
-        <div
-            style={{
-              backgroundImage:
-                'url(https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg)',
-            }}
-            className={style.popular_content_thumbnail}
-          >
-            <div>
-              <span className={style.user}>
-                <Image
-                  src="https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg"
-                  alt=""
-                  width="100"
-                  height="100"
-                />
-                <span>Davido 30BG</span>
-              </span>
-            </div>
-          </div>
-
-          <div
-            style={{
-              backgroundImage:
-                'url(https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg)',
-            }}
-            className={style.popular_content_thumbnail}
-          >
-            <div>
-              <span className={style.user}>
-                <Image
-                  src="https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg"
-                  alt=""
-                  width="100"
-                  height="100"
-                />
-                <span>Davido 30BG</span>
-              </span>
-            </div>
-          </div>
-
-          <div
-            style={{
-              backgroundImage:
-                'url(https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg)',
-            }}
-            className={style.popular_content_thumbnail}
-          >
-            <div>
-              <span className={style.user}>
-                <Image
-                  src="https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg"
-                  alt=""
-                  width="100"
-                  height="100"
-                />
-                <span>Davido 30BG</span>
-              </span>
-            </div>
-          </div>
-
-          <div
-            style={{
-              backgroundImage:
-                'url(https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg)',
-            }}
-            className={style.popular_content_thumbnail}
-          >
-            <div>
-              <span className={style.user}>
-                <Image
-                  src="https://divineflaver.com/wp-content/uploads/2022/01/1428.jpg"
-                  alt=""
-                  width="100"
-                  height="100"
-                />
-                <span>Davido 30BG</span>
-              </span>
-            </div>
-          </div>
+          {trends?.map((chi, idx) => {
+            return (
+              <div
+                key={idx}
+                style={{
+                  backgroundImage: `url(${env.cloudfront + chi?.thumbNail})`,
+                }}
+                className={style.popular_content_thumbnail}
+              >
+                <div>
+                  <span className={style.user}>
+                    <Image
+                      src={env.cloudfront + chi?.User?.profile?.avatar}
+                      alt=""
+                      width="100"
+                      height="100"
+                    />
+                    <span>
+                      {chi?.User?.username.slice(
+                        1,
+                        chi?.User?.username?.length
+                      )}
+                    </span>
+                  </span>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
 
