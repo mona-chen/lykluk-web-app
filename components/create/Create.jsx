@@ -12,6 +12,7 @@ import Image from 'next/image'
 function Create() {
   const [file, setFile] = React.useState()
   const [thumbnail, setThumbnail] = React.useState([{}])
+  const [onFinish, setFinish] = React.useState(true)
   const [thumb, setThumb] = React.useState([{}])
 
   const [form, setForm] = React.useState({
@@ -25,7 +26,7 @@ function Create() {
   const { loading } = useSelector((state) => state.video)
   const dispatch = useDispatch()
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     const formData = new FormData()
     formData.append('video', file[0])
     formData.append('comment_privacy', form.comment_privacy)
@@ -36,14 +37,20 @@ function Create() {
     formData.append('thumbnail', thumb)
     // formData.append('video', form.video)
 
-    const payload = {
-      ...form,
-      video: file[0],
-      thumbnail: thumb,
-    }
-    console.log(payload, 'the formData')
+    // const payload = {
+    //   ...form,
+    //   video: file[0],
+    //   thumbnail: thumb,
+    // }
 
-    dispatch(uploadVideo(formData))
+    let data = await dispatch(uploadVideo(formData))
+
+    if (data.payload.status) {
+      setFinish(!onFinish)
+      setFile()
+      setThumb([{}])
+      setThumbnail([{}])
+    }
   }
 
   return (
@@ -56,6 +63,7 @@ function Create() {
         <div className={style.uploader}>
           <FileUpload
             dragdrop
+            onFinish={onFinish}
             thumb={(data) => {
               setThumb(data)
             }}
@@ -120,7 +128,10 @@ function Create() {
           </div>
 
           <div className={style.actBtn_contain}>
-            <ButtonPrimary action={handleUpload}>
+            <ButtonPrimary
+              disabled={file ? false : true}
+              action={handleUpload}
+            >
               {!loading ? (
                 'Post'
               ) : (

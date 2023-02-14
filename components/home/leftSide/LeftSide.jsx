@@ -118,7 +118,7 @@ const verifiedIcon = (
   </svg>
 )
 
-const LeftSide = ({ trending, hashtags }) => {
+const LeftSide = () => {
   const { fyp, trendingHashtags } = useSelector((state) => state.home)
   const { trendingVideos } = useSelector((state) => state.video)
   const { user } = useSelector((state) => state.user)
@@ -184,7 +184,7 @@ const LeftSide = ({ trending, hashtags }) => {
                         {chi?.User?.username.slice(1, 18)}{' '}
                         <figure>{verifiedIcon}</figure>
                       </span>
-                      <span>{chi?.User?.username}</span>
+                      <span>{chi?.User?.username.slice(1, 18)}</span>
                     </div>
                   </div>
                   <div className="follow_btn">

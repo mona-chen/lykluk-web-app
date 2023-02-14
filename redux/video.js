@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import instance from '../utils/axios'
-import { toast } from 'react-toastify'
+import { toast } from 'react-hot-toast'
 
 export const getVideoComments = createAsyncThunk(
   'luk/get_fyp',
@@ -82,83 +82,27 @@ export const uploadVideo = createAsyncThunk(
           toast.error('Oops, something went wrong', {
             theme: 'colored',
           })
-          return thunkAPI.rejectWithValue(data)
+          return data
         }
         if (data.response?.data?.success) {
-          toast.success('Video uploaded succesfully', {
-            theme: 'colored',
-          })
-          // await thunkAPI.dispatch(setComments(data.data))
+          toast.success('Video uploaded succesfully', {})
           return data
         }
       }
-      console.log('video', data)
+      // console.log('video upload', data)
 
-      // if (data) {
-      //   alert('response')
-      //   toast.error(data.response.data.message[0], {
-      //     theme: 'colored',
-      //   })
-      // }
-
-      if (!data.success) {
-        toast.error('Oops, something went wrong', {
-          theme: 'colored',
-        })
-        return thunkAPI.rejectWithValue(data)
-      }
-      if (data?.payload?.data?.success) {
-        toast.success('Video uploaded succesfully', {
-          theme: 'colored',
-        })
-        // await thunkAPI.dispatch(setComments(data.data))
-        return data
+      if (data?.data?.success) {
+        toast.success('Video uploaded succesfully', {})
+        return data?.data
       }
     } catch (err) {
-      // ;
-      if (err.response.data.status === 'fail' && err.response.status !== 401) {
-        toast.error(err.response.data.message, {
-          theme: 'colored',
-          position: 'top-right',
-        })
+      if (!err.response.data.status) {
+        toast.error(err.response.data.message, {})
       }
       return thunkAPI.rejectWithValue(err)
     }
   }
 )
-
-// export const getTrending = createAsyncThunk(
-//   'luk/get_fyp',
-//   async (payload, thunkAPI) => {
-//     try {
-//       const { data } = await instance.discover.get('trending', payload)
-//       console.log('trending', data)
-
-//       if (!data.success) {
-//         toast.error(data.message, {
-//           theme: 'colored',
-//         })
-//         // return thunkAPI.rejectWithValue(data);
-//       }
-//       if (data.success) {
-//         //   toast.success(data.data.message, {
-//         //     theme: "colored",
-//         //   });
-//         await thunkAPI.dispatch(setTrending(data))
-//         return data
-//       }
-//     } catch (err) {
-//       // ;
-//       if (err.response.data.status === 'fail' && err.response.status !== 401) {
-//         toast.error(err.response.data.message, {
-//           theme: 'colored',
-//           position: 'top-right',
-//         })
-//       }
-//       return thunkAPI.rejectWithValue(err)
-//     }
-//   }
-// )
 
 export const video = createSlice({
   name: 'video',
