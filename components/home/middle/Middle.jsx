@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Image from 'next/image'
 import React, { useState } from 'react'
 import style from './style.module.css'
@@ -14,7 +15,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ThreeDots } from 'react-loader-spinner'
 import { setAuthModal } from '../../../redux/home'
 import SingleVideo from '../../modal/singleVideo/Modal'
-import { setVideo, setVideoModal } from '../../../redux/video'
+import {
+  dislikeVideo,
+  likeVideo,
+  setVideo,
+  setVideoModal,
+} from '../../../redux/video'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
@@ -184,9 +190,12 @@ const Middle = ({ posts, user, trending, setPop }) => {
   }
 
   const [following, setFollowing] = useState([])
+  const [likes, setLike] = useState([])
+  const [dislike, setDislike] = useState([])
 
   const { followLoading } = useSelector((state) => state.profile)
 
+  // handle video following
   const follow = async (e) => {
     const data = await dispatch(followUser(e))
 
@@ -205,11 +214,45 @@ const Middle = ({ posts, user, trending, setPop }) => {
     }
   }
 
+  //handle video like
+  const like = async (e) => {
+    const data = await dispatch(likeVideo(e))
+
+    // alert('folloe')
+    if (data?.payload?.success) {
+      console.log(data?.payload)
+      if (data?.payload?.data?.like) {
+        setLike([...likes, e])
+      }
+    }
+
+    if (!data?.payload?.data?.like) {
+      setLike(likes.filter((val) => val !== e))
+    }
+  }
+
+  //handle video like
+  const unlike = async (e) => {
+    const data = await dispatch(dislikeVideo(e))
+
+    // alert('folloe')
+    if (data?.payload?.success) {
+      console.log(data?.payload)
+      if (data?.payload?.data?.dislike) {
+        setDislike([...dislike, e])
+      }
+    }
+
+    if (!data?.payload?.data?.dislike) {
+      setDislike(dislike.filter((val) => val !== e))
+    }
+  }
+
   return (
     <div className={style.main_middle_wrapper}>
       <div className={style.post_container}>
         {posts?.map((chi, idx) => {
-          const { User, description, _count, thumbNail, key } = chi
+          const { User, id, description, _count, thumbNail, key } = chi
 
           const placeImage = env.cloudfront + thumbNail
           const video = env.cloudfront + key
@@ -283,31 +326,31 @@ const Middle = ({ posts, user, trending, setPop }) => {
                       }
                       padding="1rem 2rem"
                     >
-                      {!followLoading ? (
-                        following.includes(User.username) ? (
-                          'Following'
-                        ) : User?.followedBy?.length > 0 ? (
-                          'Unfollow'
-                        ) : (
-                          'Follow'
-                        )
-                      ) : (
-                        <div
-                          // style={{ padding: "0.7rem" }}
-                          className="load-wrap"
-                        >
-                          <ThreeDots
-                            height="15"
-                            width="50"
-                            radius="9"
-                            color="#ffffff"
-                            ariaLabel="three-dots-loading"
-                            wrapperStyle={{}}
-                            wrapperClassName=""
-                            visible={true}
-                          />
-                        </div>
-                      )}
+                      {
+                        // !followLoading ? (
+                        following.includes(User.username)
+                          ? 'Following'
+                          : User?.followedBy?.length > 0
+                          ? 'Unfollow'
+                          : 'Follow'
+                        // ) : (
+                        //   <div
+                        //     // style={{ padding: "0.7rem" }}
+                        //     className="load-wrap"
+                        //   >
+                        //     {/* <ThreeDots
+                        //       height="15"
+                        //       width="50"
+                        //       radius="9"
+                        //       color="#ffffff"
+                        //       ariaLabel="three-dots-loading"
+                        //       wrapperStyle={{}}
+                        //       wrapperClassName=""
+                        //       visible={true}
+                        //     /> */}
+                        //   </div>
+                        // )
+                      }
                     </ButtonPrimary>
                   </div>
                 </div>
@@ -337,15 +380,15 @@ const Middle = ({ posts, user, trending, setPop }) => {
                   />
                 </div>
                 <div className={style.player_controls}>
-                  <div>
+                  <div onClick={() => like(id)}>
                     {icon.like}
                     <span>{_count.video_likes}</span>
                   </div>
 
-                  <div>
+                  {/* <div onClick={() => unlike(id)}>
                     {icon.dislike}
                     <span>4k</span>
-                  </div>
+                  </div> */}
 
                   <div onClick={() => handleVideoOpen(chi)}>
                     {icon.comment}
@@ -354,7 +397,7 @@ const Middle = ({ posts, user, trending, setPop }) => {
 
                   <div>
                     {icon.share}
-                    <span>4k</span>
+                    <span>0</span>
                   </div>
                   <div>
                     <figure>

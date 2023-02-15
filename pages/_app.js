@@ -8,19 +8,18 @@ import { Provider } from 'react-redux'
 // import store from '../redux/store'
 import { wrapper } from '../redux/store'
 import { Toaster } from 'react-hot-toast'
-import setAuthToken from '../utils/auth';
-
+import setAuthToken from '../utils/auth'
 
 function App({ Component, ...rest }) {
   //configure axios auth token
   setAuthToken()
-  
+
   const { store, props } = wrapper.useWrappedStore(rest)
   const { pageProps } = props
 
   return (
     <Provider store={store}>
-      <Toaster/>
+      <Toaster />
       <Component {...pageProps} />
     </Provider>
   )

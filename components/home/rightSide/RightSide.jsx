@@ -7,7 +7,7 @@ const RightSide = ({ trending }) => {
   const trends = trending?.PopularVideos
 
   return (
-    <div className={style.main_rightside_wrapper}>
+    <div className={`desktop-only-2 ${style.main_rightside_wrapper}`}>
       <div className={style.discover_banner_wrapper}>
         <div className={style.banner_contents}>
           <h3>Discover trending videos around you</h3>

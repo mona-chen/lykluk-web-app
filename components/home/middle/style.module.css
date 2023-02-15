@@ -128,4 +128,70 @@
 .main_middle_wrapper .post_container .feed_wrapper .feed .user_wrapper .user .user_info span figure {
   display: grid;
   place-items: center;
+}
+
+@media only screen and (max-width: 1090px) {
+  .main_middle_wrapper {
+    width: 100%;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    align-self: center;
+  }
+}
+@media only screen and (max-width: 42em) {
+  .main_middle_wrapper {
+    width: 100%;
+    padding-left: 10rem;
+    padding-right: 0rem;
+    align-self: center;
+  }
+  .main_middle_wrapper .feed_wrapper {
+    padding: 0 1rem !important;
+  }
+  .main_middle_wrapper .player_controls {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    flex-direction: column;
+  }
+  .main_middle_wrapper .player_controls svg {
+    width: 4rem !important;
+    height: 4rem;
+  }
+  .main_middle_wrapper .player_controls figure {
+    display: grid;
+    place-items: center;
+  }
+  .main_middle_wrapper .player_controls figure img {
+    width: 4rem !important;
+    height: 4rem !important;
+  }
+  .main_middle_wrapper .player_controls div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #8e00fe;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 500;
+    justify-content: flex-end;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .hide-desktop-tablet .main_middle_wrapper {
+    width: 100%;
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+    align-self: center;
+  }
+  .hide-desktop-tablet .main_middle_wrapper .feed_wrapper {
+    padding: 0 0rem !important;
+  }
+  .hide-desktop-tablet .main_middle_wrapper .player_controls {
+    position: absolute;
+    right: 0;
+  }
 }/*# sourceMappingURL=style.module.css.map */

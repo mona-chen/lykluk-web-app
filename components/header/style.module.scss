@@ -76,6 +76,7 @@
       transform-origin: top right;
       box-shadow: 0 0.4rem 3rem rgba(0, 0, 0, 0.1);
       border-radius: 0.3rem;
+      z-index: 3000;
 
       span {
         padding: 1rem 4rem 1rem 1rem;
@@ -149,4 +150,10 @@
 
 .profile_drop_show {
   transform: scale(1) !important;
+}
+
+@media only screen and (max-width: 700px) {
+  .header_main_wrapper {
+    padding: 0 3rem !important;
+  }
 }

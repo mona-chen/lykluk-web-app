@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 43%;
+  width: 48%;
   height: 100%;
   margin-left: 5%;
   margin-top: 5rem;
@@ -113,4 +113,41 @@
 .profile_wrapper .video_gallery .no_video span {
   color: #999999;
   font-size: 1.4rem;
+}
+.profile_wrapper .video_gallery .user_videos {
+  margin-top: 1rem;
+  padding-bottom: 5rem;
+  height: 40rem;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.profile_wrapper .video_gallery .user_videos img {
+  cursor: pointer;
+  width: 23.75rem;
+  height: 23.75rem;
+}
+
+@media only screen and (max-width: 1090px) {
+  .profile_wrapper {
+    width: 100% !important;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    align-self: center;
+  }
+  .profile_wrapper .user_videos {
+    height: 65rem !important;
+  }
+}
+@media only screen and (max-width: 42em) {
+  .profile_wrapper {
+    width: 100%;
+    padding-left: 10rem;
+    padding-right: 0rem;
+    align-self: center;
+  }
+  .profile_wrapper .user_videos {
+    height: 100%;
+  }
 }/*# sourceMappingURL=style.module.css.map */

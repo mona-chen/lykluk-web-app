@@ -1,0 +1,38 @@
+.snack_menu_wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 2rem;
+  justify-content: space-between;
+  height: 8rem;
+  background-color: #00000024;
+  backdrop-filter: blur(72px);
+
+  figure {
+    width: 7rem;
+    height: 7rem;
+    background-color: #ffffff;
+    border: 5px solid #8e00fe;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+  }
+
+  span {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    // gap: 0.5rem;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
