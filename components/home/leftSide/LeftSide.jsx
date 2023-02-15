@@ -125,7 +125,6 @@ const LeftSide = () => {
   const { user } = useSelector((state) => state.user)
   const { authModal } = useSelector((state) => state.home)
 
-
   const trends = trendingVideos?.PopularVideos
   const hashtag = trendingHashtags?.data?.TrendingHashTags
   const dispatch = useDispatch()
@@ -265,12 +264,7 @@ const LeftSide = () => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-      <AuthModal show={authModal} onClose={handleClose}></AuthModal>
-    </div>
-=======
     </>
->>>>>>> 1d487bff326e0abf1ef2d29ba7ec39231923d64e
   )
 }
 
