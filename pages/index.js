@@ -39,7 +39,6 @@ export default function Home() {
         <LeftSide hashtags={trendingHashtags} trending={trendingVideos} />
         <Middle user={user} posts={fyp?.data} />
         <RightSide trending={trendingVideos} />
-        <SnackMenu />
       </div>
     </div>
   )

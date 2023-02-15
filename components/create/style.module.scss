@@ -93,3 +93,22 @@
     }
   }
 }
+
+@media only screen and (max-width: 700px) {
+  .create_wrapper {
+    width: 100%;
+    padding-top: 8rem;
+
+    .create_post_wrapper {
+      flex-direction: column;
+    }
+
+    .uploader {
+      width: 100% !important;
+    }
+
+    .video_options {
+      width: 100% !important;
+    }
+  }
+}

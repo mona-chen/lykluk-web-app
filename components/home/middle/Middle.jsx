@@ -250,6 +250,33 @@ const Middle = ({ posts, user, trending, setPop }) => {
 
   return (
     <div className={style.main_middle_wrapper}>
+      <div className={`mobile-only ${style.mobile_player_controls}`}>
+        <div onClick={() => like('id')}>
+          {icon.like}
+          <span>{0}</span>
+        </div>
+
+        {/* <div onClick={() => unlike(id)}>
+                    {icon.dislike}
+                    <span>4k</span>
+                  </div> */}
+
+        <div onClick={() => handleVideoOpen('chi')}>
+          {icon.comment}
+          <span>{0}</span>
+        </div>
+
+        <div>
+          {icon.share}
+          <span>0</span>
+        </div>
+        <div>
+          <figure>
+            <Image src={album} alt="" width={500} height={500} />
+          </figure>
+          {/* <span>4k</span> */}
+        </div>
+      </div>
       <div className={style.post_container}>
         {posts?.map((chi, idx) => {
           const { User, id, description, _count, thumbNail, key } = chi
@@ -291,8 +318,8 @@ const Middle = ({ posts, user, trending, setPop }) => {
           return (
             <div key={idx} className={style.feed_wrapper}>
               <div className={style.feed}>
-                <div className={style.user_wrapper}>
-                  <div className={style.user}>
+                <div className={` ${style.user_wrapper}`}>
+                  <div className={` ${style.user}`}>
                     <figure>
                       {!User.profile.avatar ? (
                         <Skeleton circle width={50} height={50} />
@@ -355,7 +382,8 @@ const Middle = ({ posts, user, trending, setPop }) => {
                   </div>
                 </div>
               </div>
-              <div className={style.feed_player_wrapper}>
+              {/* Desktop and tablet player starts here */}
+              <div className={`desktop-only ${style.feed_player_wrapper}`}>
                 <div
                   style={{
                     backgroundImage: `url("${placeImage}")`,
@@ -407,6 +435,37 @@ const Middle = ({ posts, user, trending, setPop }) => {
                   </div>
                 </div>
               </div>
+              {/* Desktop and tablet player ends here */}
+
+              {/* Mobile player starts here */}
+              <div
+                className={`mobile-only ${style.mobile_feed_player_wrapper}`}
+              >
+                <div
+                  style={{
+                    backgroundImage: `url("${placeImage}")`,
+                  }}
+                  className={style.luk_player}
+                >
+                  <LukPlayer
+                    width="720"
+                    height="420"
+                    options={{
+                      ...videoJsOptions,
+                      poster: placeImage,
+                      sources: [
+                        {
+                          src: video,
+                          type: vidFormat === 'mp4' ? `video/mp4` : `video/mp4`,
+                        },
+                      ],
+                    }}
+                    onReady={handlePlayerReady}
+                    className={style.luk_player}
+                  />
+                </div>
+              </div>
+              {/* Mobile player ends here */}
             </div>
           )
         })}

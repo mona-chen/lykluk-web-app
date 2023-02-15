@@ -9,7 +9,7 @@
 }
 .luk_player_wrapper video-js {
   background-color: transparent !important;
-  height: 50rem !important;
+  height: 50rem;
   width: 100% !important;
   padding: 0 !important;
   margin: 0 !important;
