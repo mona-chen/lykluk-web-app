@@ -143,11 +143,26 @@
 @media only screen and (max-width: 42em) {
   .profile_wrapper {
     width: 100%;
-    padding-left: 10rem;
+    padding-left: 0rem;
     padding-right: 0rem;
     align-self: center;
+    margin-top: 22rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
   .profile_wrapper .user_videos {
     height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile_wrapper .user_videos img {
+    width: 20rem !important;
+    height: 20rem !important;
+  }
+  .profile_wrapper .bio_contain {
+    margin: 1rem;
+    width: 92%;
   }
 }/*# sourceMappingURL=style.module.css.map */
