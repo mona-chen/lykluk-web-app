@@ -8,7 +8,6 @@
   --box-shadow: 0.1rem 0.1rem 8rem 0.1rem rgba(0, 0, 0, 0.05);
 }
 
-
 *,
 *::after,
 *::before {
@@ -170,7 +169,18 @@ input[type='email']:focus {
 .vjs-control-bar {
   background-color: transparent !important;
 }
+.PhoneInputInput {
+  padding: 1rem;
 
+  border: 0.5px solid #cccccc;
+  border-radius: 12px;
+  width: 100%;
+}
+.horizontal_rule {
+  border-top-width: 1px;
+  border-top-color: black;
+  border-top-style: solid;
+}
 /* .mobile-only {
   display: none;
   visibility: hidden;
@@ -210,5 +220,3 @@ input[type='email']:focus {
     display: flex;
   } */
 }
-
-

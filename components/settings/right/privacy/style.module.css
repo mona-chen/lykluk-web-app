@@ -1,0 +1,25 @@
+.main_heading {
+  margin-bottom: 2.25rem;
+  font-weight: 500;
+}
+.content_div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.2rem;
+  align-items: center;
+}
+.content_div .left h4 {
+  font-weight: 400;
+}
+.content_div .left p {
+  font-weight: 300;
+}
+.content_div .right .checkbox {
+  text-align: center;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+.contact_link {
+  color: rgba(142, 0, 254, 1);
+  margin-bottom: 2.5rem;
+}

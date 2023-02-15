@@ -1,0 +1,34 @@
+.main_container {
+  position: relative;
+}
+.main_heading {
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: rgba(142, 0, 254, 1);
+}
+.QR_container {
+  position: absolute;
+  top: 250%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4rem;
+  text-align: center;
+  box-shadow: -6.69159px 0px 6.69159px rgba(0, 0, 0, 0.05),
+    6.69159px 0px 6.69159px rgba(0, 0, 0, 0.05),
+    0px 10.0374px 6.69159px rgba(0, 0, 0, 0.05);
+  border-radius: 16.729px;
+}
+.QR_container .inner_div {
+  position: relative;
+}
+.QR_container .inner_div .profile_div {
+  position: absolute;
+  top: -35%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.QR_container p {
+  margin: 1rem auto;
+  font-weight: 300;
+  font-size: 14px;
+}

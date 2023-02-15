@@ -1,5 +1,24 @@
-.input_elements {
-  border-radius: 3px;
-  border: 1px solid black;
-  padding: 1.5rem;
+.input_field_div {
+  margin-bottom: 4rem;
+}
+.input_field_div .label {
+  margin-bottom: 2rem;
+}
+.horizontal_rule {
+  border-top: 1px solid rgba(238, 238, 238, 1);
+  margin-bottom: 3rem;
+}
+.button_div {
+  margin-bottom: 4rem;
+}
+.bottom_section {
+  display: flex;
+  align-items: center;
+}
+.bottom_section .left {
+  flex: 50%;
+}
+.bottom_section .right {
+  flex: 50%;
+  text-align: center;
 }

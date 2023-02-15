@@ -62,7 +62,7 @@ const LeftSide = () => {
               : styles.option_links
           }
         >
-          Notifications
+          Push Notifications
         </p>
       </div>
       <div
