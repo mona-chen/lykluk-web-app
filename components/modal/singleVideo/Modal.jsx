@@ -41,6 +41,35 @@ function SingleVideo(props, { chi }) {
   //   })
   // }
 
+  const cancelIcon = (
+    <svg
+      width="29"
+      height="29"
+      viewBox="0 0 29 29"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="3.83931"
+        y1="2.78613"
+        x2="25.6775"
+        y2="24.6243"
+        stroke="white"
+        strokeWidth="4.8606"
+        strokeLinecap="round"
+      />
+      <line
+        x1="3.32031"
+        y1="24.6246"
+        x2="25.1585"
+        y2="2.7864"
+        stroke="white"
+        strokeWidth="4.8606"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+
   const videoJsOptions = {
     // autoplay: true,
     controls: true,
@@ -95,9 +124,9 @@ function SingleVideo(props, { chi }) {
         }}
         className={style.overlay}
       >
-        <div onClick={() => closeHandler()} className={style.close_div}>
-          x
-        </div>
+        <button onClick={() => closeHandler()} className={style.close_div}>
+          {cancelIcon}
+        </button>
 
         <div className={style.popup}>
           <div className={style.single_video_wrapper}>

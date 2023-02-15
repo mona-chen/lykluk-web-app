@@ -135,82 +135,132 @@ const LeftSide = () => {
 
   // console.log(hashtags?.data?.TrendingHashTags, 'for rendering')
   return (
-    <div className={style.main_leftside_wrapper}>
-      <div className={style.left_quick_actions}>
-        <div className={style.item}>
-          <figure>{foryouIcon}</figure>
-          <span>Luk </span>
-        </div>
+    <>
+      <div className={`desktop-only-2 ${style.main_leftside_wrapper} `}>
+        <div className={style.left_quick_actions}>
+          <div className={style.item}>
+            <figure>{foryouIcon}</figure>
+            <span>Luk </span>
+          </div>
 
-        <div className={style.item}>
-          <figure>{discoverIcon}</figure>
-          <span>Discover </span>
-        </div>
+          <div className={style.item}>
+            <figure>{discoverIcon}</figure>
+            <span>Discover </span>
+          </div>
 
-        <div className={style.item}>
-          <figure>{followingIcon}</figure>
-          <span>Following </span>
-        </div>
-      </div>
-
-      <div className={style.dont_have_an_account}>
-        <span>
-          Don’t have an Account? Sign Up to share videos, follow creators, like
-          videos and make comments
-        </span>
-        <ButtonPrimary btnStyle={style.signup_btn} fill="none" width="100%">
-          Sign Up
-        </ButtonPrimary>
-      </div>
-
-      <div className={style.popular_accounts_wrapper}>
-        <h3>Popular Accounts</h3>
-        <div className={style.popular_accounts}>
-          <div className={style.accounts_wrapper}>
-            {trends?.map((chi, idx) => {
-              return (
-                <div key={idx} className={style.accounts}>
-                  <div className={style.user}>
-                    <figure>
-                      <Image
-                        src={env.cloudfront + chi?.User?.profile?.avatar}
-                        alt=""
-                        width="150"
-                        height="150"
-                      />
-                    </figure>
-                    <div className={style.user_info}>
-                      <span>
-                        {chi?.User?.username.slice(1, 18)}{' '}
-                        <figure>{verifiedIcon}</figure>
-                      </span>
-                      <span>{chi?.User?.username.slice(1, 18)}</span>
-                    </div>
-                  </div>
-                  <div className="follow_btn">
-                    <ButtonPrimary padding="0.5rem 2rem" fontSize="1.4rem">
-                      Follow
-                    </ButtonPrimary>
-                  </div>
-                </div>
-              )
-            })}
+          <div className={style.item}>
+            <figure>{followingIcon}</figure>
+            <span>Following </span>
           </div>
         </div>
 
-        <Link href="/">See more</Link>
-      </div>
+        <div className={style.dont_have_an_account}>
+          <span>
+            Don’t have an Account? Sign Up to share videos, follow creators,
+            like videos and make comments
+          </span>
+          <ButtonPrimary btnStyle={style.signup_btn} fill="none" width="100%">
+            Sign Up
+          </ButtonPrimary>
+        </div>
 
-      <div className={style.trending_hashtags}>
-        <h3>Trending Hashtags</h3>
+        <div className={style.popular_accounts_wrapper}>
+          <h3>Popular Accounts</h3>
+          <div className={style.popular_accounts}>
+            <div className={style.accounts_wrapper}>
+              {trends?.map((chi, idx) => {
+                return (
+                  <div key={idx} className={style.accounts}>
+                    <div className={style.user}>
+                      <figure>
+                        <Image
+                          src={env.cloudfront + chi?.User?.profile?.avatar}
+                          alt=""
+                          width="150"
+                          height="150"
+                        />
+                      </figure>
+                      <div className={style.user_info}>
+                        <span>
+                          {chi?.User?.username.slice(1, 18)}{' '}
+                          <figure>{verifiedIcon}</figure>
+                        </span>
+                        <span>{chi?.User?.username.slice(1, 18)}</span>
+                      </div>
+                    </div>
+                    <div className="follow_btn">
+                      <ButtonPrimary padding="0.5rem 2rem" fontSize="1.4rem">
+                        Follow
+                      </ButtonPrimary>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
 
-        <div className={style.hashtags_wrapper}>
-          {hashtag?.map((chi, idx) => {
-            return <span key={idx}>{chi?.tag}</span>
-          })}
+          <Link href="/">See more</Link>
+        </div>
+
+        <div className={style.trending_hashtags}>
+          <h3>Trending Hashtags</h3>
+
+          <div className={style.hashtags_wrapper}>
+            {hashtag?.map((chi, idx) => {
+              return <span key={idx}>{chi?.tag}</span>
+            })}
+          </div>
         </div>
       </div>
-    </div>
+      <div
+        className={`mobile-only-2 hide-desktop-tablet ${style.tablet_left_wrapper}`}
+      >
+        <div className={style.left_quick_actions}>
+          <div className={style.item}>
+            <figure>{foryouIcon}</figure>
+          </div>
+
+          <div className={style.item}>
+            <figure>{discoverIcon}</figure>
+          </div>
+
+          <div className={style.item}>
+            <figure>{followingIcon}</figure>
+          </div>
+        </div>
+
+        <div className={style.popular_accounts_wrapper}>
+          <div className={style.popular_accounts}>
+            <div className={style.accounts_wrapper}>
+              {trends?.map((chi, idx) => {
+                const user = chi?.User
+                return (
+                  <div key={idx} className={style.accounts}>
+                    <div className={style.user}>
+                      <figure>
+                        <Link
+                          href={`${env.app_url}/u/${user?.username?.slice(
+                            1,
+                            user?.username.length
+                          )}`}
+                        >
+                          <Image
+                            src={env.cloudfront + chi?.User?.profile?.avatar}
+                            alt=""
+                            width="150"
+                            height="150"
+                          />
+                        </Link>
+                      </figure>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 

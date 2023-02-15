@@ -50,7 +50,7 @@ const Header = () => {
           <Image src={logo} alt="" width="100%" height="100%" />
         </Link>
       </figure>
-      <div className={style.header_search}>
+      <div className={`desktop-only ${style.header_search}`}>
         <Image src={search_icon} alt="" width="100%" height="100%" />
         <input
           placeholder="Search"

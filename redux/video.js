@@ -104,6 +104,72 @@ export const uploadVideo = createAsyncThunk(
   }
 )
 
+export const likeVideo = createAsyncThunk(
+  'luk/get_fyp',
+  async (e, thunkAPI) => {
+    try {
+      const { data } = await instance.video.post(`like/${e}`, e)
+      // console.log("we here", data)
+
+      if (!data.success) {
+        toast.error(data.message, {
+          theme: 'colored',
+        })
+        // return thunkAPI.rejectWithValue(data);
+      }
+      if (data.success) {
+        toast.success(data.message, {
+          theme: 'colored',
+        })
+        // await thunkAPI.dispatch(setFyp(data))
+        return data
+      }
+    } catch (err) {
+      // ;
+      if (err.response.data.status === 'fail' && err.response.status !== 401) {
+        toast.error(err.response.data.message, {
+          theme: 'colored',
+          position: 'top-right',
+        })
+      }
+      return thunkAPI.rejectWithValue(err)
+    }
+  }
+)
+
+export const dislikeVideo = createAsyncThunk(
+  'luk/get_fyp',
+  async (e, thunkAPI) => {
+    try {
+      const { data } = await instance.video.post(`dislike/${e}`, e)
+      // console.log("we here", data)
+
+      if (!data.success) {
+        toast.error(data.message, {
+          theme: 'colored',
+        })
+        // return thunkAPI.rejectWithValue(data);
+      }
+      if (data.success) {
+        toast.success(data.message, {
+          theme: 'colored',
+        })
+        // await thunkAPI.dispatch(setFyp(data))
+        return data
+      }
+    } catch (err) {
+      // ;
+      if (err.response.data.status === 'fail' && err.response.status !== 401) {
+        toast.error(err.response.data.message, {
+          theme: 'colored',
+          position: 'top-right',
+        })
+      }
+      return thunkAPI.rejectWithValue(err)
+    }
+  }
+)
+
 export const video = createSlice({
   name: 'video',
   initialState: {

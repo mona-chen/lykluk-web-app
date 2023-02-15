@@ -8,7 +8,6 @@
   --box-shadow: 0.1rem 0.1rem 8rem 0.1rem rgba(0, 0, 0, 0.05);
 }
 
-
 *,
 *::after,
 *::before {
@@ -44,23 +43,45 @@ body {
   letter-spacing: -0.03rem;
   color: var(--lykluk-black-color);
 }
-body::-webkit-scrollbar:horizontal {
+::-webkit-scrollbar:horizontal {
   display: none;
 }
-body::-webkit-scrollbar {
-  width: 0.6rem;
+::-webkit-scrollbar {
+  width: 0.5rem;
 }
-body::-webkit-scrollbar-track {
+
+::-webkit-scrollbar-track {
   -webkit-box-shadow: none !important;
   background-color: transparent !important;
 }
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: var(--lykluk-black-color);
-  border-radius: 30rem;
+  // border-radius: 30rem;
 }
-body::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: var(--lykluk-black-color);
 }
+
+// /* width */
+// ::-webkit-scrollbar {
+//   width: 0.5rem;
+// }
+
+// /* Track */
+// ::-webkit-scrollbar-track {
+//   background: #f1f1f1;
+// }
+
+// /* Handle */
+// ::-webkit-scrollbar-thumb {
+//   background: #888;
+//   border-radius: 30rem;
+// }
+
+// /* Handle on hover */
+// ::-webkit-scrollbar-thumb:hover {
+//   background: #555;
+// }
 
 .modal-parent > div > div > div:nth-child(2) {
   -webkit-backdrop-filter: blur(0.3rem);
@@ -192,14 +213,39 @@ input[type='email']:focus {
 /* Declare mobile only screens - Desktop Queries */
 @media only screen and (min-width: 42em) {
   .mobile-only {
-    display: none;
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 1090px) {
+  .mobile-only-2 {
+    display: none !important;
+  }
+}
+
+// custom breakpoints
+@media only screen and (max-width: 1090px) {
+  .desktop-only-2 {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 1090px) {
+  .desktop-only-2 {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .hide-desktop-tablet {
+    display: none !important;
   }
 }
 
 /* Declare mobile only screens - Desktop Queries */
 @media only screen and (max-width: 42em) {
   .desktop-only {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -210,5 +256,3 @@ input[type='email']:focus {
     display: flex;
   } */
 }
-
-

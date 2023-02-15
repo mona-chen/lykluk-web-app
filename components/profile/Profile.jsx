@@ -6,36 +6,64 @@ import Image from 'next/image'
 import { ButtonPrimary } from '../buttons/ButtonReuse'
 import { profileIcons } from '../../assets/icons/profileIcons'
 import { useRouter } from 'next/router'
-import { getprofileVideos } from '../../redux/profile'
+import {
+  getFollowers,
+  getFollowing,
+  getUserProfile,
+  getprofileVideos,
+} from '../../redux/profile'
 import { useDispatch } from 'react-redux'
+import SingleVideo from '../modal/singleVideo/Modal'
+import { setVideo, setVideoModal } from '../../redux/video'
+import { ArrayTotal } from '../../helper/CalcArrayTotal'
 
 export default function ProfileComponent() {
   const router = useRouter()
   const dispatch = useDispatch()
-  const { username } = router.query
+  const username =
+    typeof window !== 'undefined' ? window.location.pathname.split('/')[2] : ''
 
   const [account, setAccount] = useState({})
-  const { profile } = account
 
   // console.warn(user)
   const { user, loadLogout } = useSelector((state) => state.user)
-  const { profileVideos } = useSelector((state) => state.profile)
+  const { profileVideos, following, followers, userProfile } = useSelector(
+    (state) => state.profile
+  )
 
   /* @todo: we are temporarily storing redux states in react state to prevent hydration error.
     this is issue #1 and should be resolved */
-  useEffect(() => {
-    setAccount(user)
-    fetchVideos()
-  }, [user])
-
-  //hydration error fix ends here
-
   //fetch profile videos
   const fetchVideos = () => {
     dispatch(getprofileVideos(username))
+    dispatch(getUserProfile(username))
   }
 
-  console.log(user, 'po po')
+  const handleVideoOpen = (e) => {
+    dispatch(setVideoModal(true))
+    dispatch(setVideo(e))
+  }
+  const handleVideoClose = () => dispatch(setVideoModal(false))
+  const { videoModal } = useSelector((state) => state.video)
+
+  useEffect(() => {
+    setAccount(userProfile)
+    dispatch(getFollowers(username))
+    dispatch(getFollowing(username))
+    fetchVideos()
+  }, [user])
+
+  const videos = profileVideos?.data?.videos
+  const counts = videos?.map((video) => video._count)
+
+  // hydration error fix ends here
+  // calculate total views
+  const videoArr = counts ? counts : []
+  const views = new ArrayTotal(...videoArr)
+
+  const profile = userProfile?.profile
+
+  console.log(userProfile, 'po po')
   return (
     <div className={style.profile_wrapper}>
       <div className={style.profile_details_wrapper}>
@@ -73,17 +101,17 @@ export default function ProfileComponent() {
           <div className={style.bottom_details}>
             <div>
               <div>
-                <b>134</b>
+                <b>{following?.data?.profiles?.length}</b>
                 Following
               </div>
 
               <div>
-                <b>134</b>
+                <b>{followers?.data?.profiles?.length}</b>
                 Followers
               </div>
 
               <div>
-                <b>134</b>
+                <b>{views.sum('video_likes')}</b>
                 Likes
               </div>
             </div>
@@ -106,12 +134,30 @@ export default function ProfileComponent() {
           <figure>{profileIcons.tabs}</figure>
           <figure>{profileIcons.private_heart}</figure>
         </div>
-        <div className={style.no_video}>
-          <figure>{profileIcons.videoReels}</figure>
-          <span>You haven’t posted any videos yet</span>
-          <ButtonPrimary>Upload Video</ButtonPrimary>
-        </div>
+        {!profileVideos ? (
+          <div className={style.no_video}>
+            <figure>{profileIcons.videoReels}</figure>
+            <span>You haven’t posted any videos yet</span>
+            <ButtonPrimary>Upload Video</ButtonPrimary>
+          </div>
+        ) : (
+          <div className={style.user_videos}>
+            {videos?.map((chi, idx) => {
+              return (
+                <Image
+                  onClick={() => handleVideoOpen(chi)}
+                  key={idx}
+                  src={env.cloudfront + chi?.thumbNail}
+                  alt=""
+                  width="1000"
+                  height="1000"
+                />
+              )
+            })}
+          </div>
+        )}
       </div>
+      <SingleVideo show={videoModal} onClose={handleVideoClose}></SingleVideo>
     </div>
   )
 }

@@ -3,7 +3,6 @@
   height: 100%;
   overflow: auto;
   padding-bottom: 10rem;
-
   margin-top: 5rem;
   width: 50%;
   justify-content: center;
@@ -158,6 +157,85 @@
             // }
           }
         }
+      }
+    }
+  }
+}
+
+// custom breakpoints
+@media only screen and (max-width: 1090px) {
+  .main_middle_wrapper {
+    width: 100%;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    align-self: center;
+  }
+}
+
+@media only screen and (max-width: 42em) {
+  .main_middle_wrapper {
+    width: 100%;
+    padding-left: 10rem;
+    padding-right: 0rem;
+    align-self: center;
+
+    .feed_wrapper {
+      padding: 0 1rem !important;
+    }
+
+    .player_controls {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2rem;
+      flex-direction: column;
+      // background-color: red;
+
+      svg {
+        width: 4rem !important;
+        height: 4rem;
+      }
+
+      figure {
+        display: grid;
+        place-items: center;
+        img {
+          width: 4rem !important;
+          height: 4rem !important;
+        }
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        color: #8e00fe;
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-weight: 500;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .hide-desktop-tablet {
+    .main_middle_wrapper {
+      width: 100%;
+      padding-left: 0rem !important;
+      padding-right: 0rem !important;
+      align-self: center;
+
+      .feed_wrapper {
+        padding: 0 0rem !important;
+      }
+
+      .player_controls {
+        position: absolute;
+        right: 0;
       }
     }
   }

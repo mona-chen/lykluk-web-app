@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import instance from '../utils/axios'
 import setAuthToken from '../utils/auth'
 // import { toast } from 'react-toastify'
-import { HYDRATE } from 'next-redux-wrapper'
 import { toast } from 'react-hot-toast'
 import { useEffect } from 'react'
 

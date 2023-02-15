@@ -1,0 +1,35 @@
+.snack_menu_wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 2rem;
+  justify-content: space-between;
+  height: 8rem;
+  background-color: rgba(0, 0, 0, 0.1411764706);
+  -webkit-backdrop-filter: blur(72px);
+          backdrop-filter: blur(72px);
+}
+.snack_menu_wrapper figure {
+  width: 7rem;
+  height: 7rem;
+  background-color: #ffffff;
+  border: 5px solid #8e00fe;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.snack_menu_wrapper span {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.snack_menu_wrapper span svg {
+  width: 2rem;
+  height: 2rem;
+}/*# sourceMappingURL=style.module.css.map */
