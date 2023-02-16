@@ -14,7 +14,7 @@
   padding: 0 !important;
   margin: 0 !important;
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   margin-bottom: 10rem;
   background-size: cover !important;
   background-repeat: no-repeat;
@@ -23,10 +23,10 @@
 }
 .luk_player_wrapper .vjs-poster {
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   background-color: transparent !important;
   background-size: cover !important;
   background-repeat: no-repeat;
   background-position: center !important;
   border-radius: 0.8rem;
-}/*# sourceMappingURL=style.module.css.map */
+} /*# sourceMappingURL=style.module.css.map */

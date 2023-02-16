@@ -189,17 +189,18 @@
   .mobile_player_controls {
     height: 100%;
     position: absolute;
-    right: 3rem;
+    right: 1rem;
     display: flex;
     gap: 1rem;
+    top: 70%;
+    bottom: 0;
     margin: auto;
-    top: 50vh;
     z-index: 8000;
     flex-direction: column;
   }
   .mobile_player_controls svg {
-    width: 7rem !important;
-    height: 7rem;
+    width: 4rem !important;
+    height: 4rem;
   }
   .mobile_player_controls figure {
     display: grid;
@@ -220,4 +221,14 @@
     font-weight: 500;
     justify-content: flex-end;
   }
+}
+.mobile_sound {
+  display: flex;
+  margin-top: 5rem;
+  width: 10rem;
+  height: 10rem;
+}
+.mobile_sound svg {
+  width: 10rem !important;
+  height: 10rem !important;
 }/*# sourceMappingURL=style.module.css.map */

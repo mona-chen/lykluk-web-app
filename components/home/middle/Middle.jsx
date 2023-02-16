@@ -23,9 +23,15 @@ import {
 } from '../../../redux/video'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { mobileIcons, Sound } from '../../../assets/icons/mobileIcons'
 
 const Middle = ({ posts, user, trending, setPop }) => {
   const playerRef = React.useRef(null)
+  const lukRef = React.useRef(null)
+  const observerRef = React.useRef(null)
+
+
+
   const videoJsOptions = {
     // autoplay: true,
     controls: true,
@@ -40,10 +46,22 @@ const Middle = ({ posts, user, trending, setPop }) => {
     height: 50,
     loop: true,
     aspectRatio: '9:16',
+    html5: {
+      nativeControlsForTouch: false, // This prevents the native fullscreen control from being used
+      // hls: {
+      //   withCredentials: true,
+      // },
+      // Add the playsinline attribute to the video element
+      attributes: {
+        playsinline: true,
+      },
+    },
   }
 
   const handlePlayerReady = (player) => {
     playerRef.current = player
+
+    console.log(player, 'this')
 
     // / You can handle player events here, for example:
     player.on('waiting', () => {
@@ -57,7 +75,7 @@ const Middle = ({ posts, user, trending, setPop }) => {
     })
 
     player.on('dispose', () => {
-      videojs.log('player will dispose')
+      // videojs.log('player will dispose')
     })
   }
 
@@ -70,7 +88,7 @@ const Middle = ({ posts, user, trending, setPop }) => {
   }
   const handleVideoClose = () => dispatch(setVideoModal(false))
 
-  const { videoModal } = useSelector((state) => state.video)
+  const { videoModal, playing } = useSelector((state) => state.video)
 
   const verifiedIcon = (
     <svg
@@ -252,7 +270,7 @@ const Middle = ({ posts, user, trending, setPop }) => {
     <div className={style.main_middle_wrapper}>
       <div className={`mobile-only ${style.mobile_player_controls}`}>
         <div onClick={() => like('id')}>
-          {icon.like}
+          {mobileIcons.like}
           <span>{0}</span>
         </div>
 
@@ -262,18 +280,19 @@ const Middle = ({ posts, user, trending, setPop }) => {
                   </div> */}
 
         <div onClick={() => handleVideoOpen('chi')}>
-          {icon.comment}
+          {mobileIcons.comment}
           <span>{0}</span>
         </div>
 
         <div>
-          {icon.share}
+          {mobileIcons.share}
           <span>0</span>
         </div>
-        <div>
-          <figure>
+        <div className={style.mobile_sound}>
+          <Sound />
+          {/* <figure>
             <Image src={album} alt="" width={500} height={500} />
-          </figure>
+          </figure> */}
           {/* <span>4k</span> */}
         </div>
       </div>
@@ -284,14 +303,9 @@ const Middle = ({ posts, user, trending, setPop }) => {
           const placeImage = env.cloudfront + thumbNail
           const video = env.cloudfront + key
           const vidFormat = key.split('.')[1]
-          const lukplayer = document.querySelector('video-js')
-          // const lukplayer2 = document.querySelector(".vjs-poster")
           const lukplayer3 = document.querySelectorAll('video-js')
           const lukplayer2 = document.querySelectorAll('.vjs-poster')
 
-          // console.log(lukplayer2, 'vkf')
-          // lukplayer ? lukplayer.style.background = `url(${placeImage})` : ''
-          // lukplayer2 ? lukplayer2.style.backgroundColor = "transparent" : ''
           lukplayer2
             ? lukplayer2.forEach(
                 (el) => (el.style.backgroundColor = 'transparent')
@@ -393,9 +407,11 @@ const Middle = ({ posts, user, trending, setPop }) => {
                   <LukPlayer
                     width="720"
                     height="420"
+                    ref={lukRef}
                     options={{
                       ...videoJsOptions,
                       poster: placeImage,
+
                       sources: [
                         {
                           src: video,
@@ -450,6 +466,8 @@ const Middle = ({ posts, user, trending, setPop }) => {
                   <LukPlayer
                     width="720"
                     height="420"
+                    ref={lukRef}
+                    data={chi}
                     options={{
                       ...videoJsOptions,
                       poster: placeImage,

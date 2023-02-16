@@ -227,44 +227,17 @@
   .post_container {
     gap: 0.1rem !important;
   }
+}
 
-  .mobile_player_controls {
-    height: 100%;
-    position: absolute;
-    right: 3rem;
-    display: flex;
-    gap: 1rem;
-    margin: auto;
-    top: 50vh;
-    z-index: 8000;
-    flex-direction: column;
-    // background-color: red;
+.mobile_sound {
+  display: flex;
+  margin-top: 5rem;
+  width: 10rem;
+  height: 10rem;
 
-    svg {
-      width: 7rem !important;
-      height: 7rem;
-    }
-
-    figure {
-      display: grid;
-      place-items: center;
-      img {
-        width: 10rem !important;
-        height: 10rem !important;
-      }
-    }
-
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: #8e00fe;
-      cursor: pointer;
-      font-size: 1.2rem;
-      font-weight: 500;
-      justify-content: flex-end;
-    }
+  svg {
+    width: 10rem !important;
+    height: 10rem !important;
   }
 }
 
