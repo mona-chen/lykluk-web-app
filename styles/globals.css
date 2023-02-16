@@ -30,38 +30,39 @@ body {
       perspective: 5000; */
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100vw;
   font-family: "Rubik", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   font-size: 1.5rem;
   overscroll-behavior-y: none;
-  overflow-x: hidden;
+  overflow: hidden;
   transition: background 0.3s ease-in-out;
   width: 100vw;
   letter-spacing: -0.03rem;
   color: var(--lykluk-black-color);
 }
 
-body::-webkit-scrollbar:horizontal {
+::-webkit-scrollbar:horizontal {
   display: none;
 }
 
-body::-webkit-scrollbar {
-  width: 0.6rem;
+::-webkit-scrollbar {
+  width: 0.5rem;
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   -webkit-box-shadow: none !important;
   background-color: transparent !important;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: var(--lykluk-black-color);
-  border-radius: 30rem;
 }
 
-body::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: var(--lykluk-black-color);
 }
 
@@ -193,13 +194,38 @@ input[type=email]:focus {
 /* Declare mobile only screens - Desktop Queries */
 @media only screen and (min-width: 42em) {
   .mobile-only {
-    display: none;
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 1090px) {
+  .mobile-only-2 {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 1090px) {
+  .desktop-only-2 {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 1090px) {
+  .desktop-only-2 {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 42em) {
+  .hide-desktop-tablet {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 480px) {
+  .hide-mobile {
+    display: none !important;
   }
 }
 /* Declare mobile only screens - Desktop Queries */
 @media only screen and (max-width: 42em) {
   .desktop-only {
-    display: none;
+    display: none !important;
   }
 }
 /* Declare Tablet media queries */

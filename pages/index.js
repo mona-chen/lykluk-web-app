@@ -7,6 +7,7 @@ import { getFyp, getHashtags } from '../redux/home'
 import { store } from '../redux/store'
 import RightSide from '../components/home/rightSide/RightSide'
 import { getTrendingVideos } from '../redux/video'
+import SnackMenu from '../components/mobile/snackbars/SnackMenu'
 
 export default function Home() {
   const dispatch = useDispatch()

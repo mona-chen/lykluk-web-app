@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import stile from './fileUpload.module.css'
 import { LukPlayer } from '../video/LukPlayer'
-import { createFFmpeg, fetchfile } from '@ffmpeg/ffmpeg'
+import { createFFmpeg } from '@ffmpeg/ffmpeg'
 import { generateVideoThumbnails } from '../../helper/generatVideoCover'
 import Image from 'next/image'
 import { videoIcons } from '../../assets/icons/videoIcons'
@@ -14,7 +14,7 @@ const ffmpeg = createFFmpeg({
   corePath: 'https://unpkg.com/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js',
 })
 
-export default function FileUpload(props) {
+export default function FileUpload(props, { onFinish }) {
   const [value, setValue] = useState()
   const [path, setPath] = useState({})
   const [preview, setPreview] = useState('')
@@ -198,6 +198,14 @@ export default function FileUpload(props) {
   useEffect(() => {
     Array.of(thumbnail).map((chi, idx) => setThumb(chi[0]))
   }, [thumbnail])
+
+  onFinish
+    ? onFinish(() => {
+        setPreview()
+        setPath()
+        setValue()
+      })
+    : ''
 
   return (
     <>
