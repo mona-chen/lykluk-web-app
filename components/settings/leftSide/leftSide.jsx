@@ -1,4 +1,5 @@
 /* eslint-disable todo-plz/ticket-ref */
+
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useDispatch, useSelector } from 'react-redux'
@@ -53,30 +54,34 @@ const LeftSide = () => {
     },
   ]
   return (
-    <div className={styles.inner_div}>
-      <div className={styles.back_icon}>
-        <Image src="/backIcon.svg" width={15} height={15}></Image>
-      </div>
-      {settings_links.map((link, i) => {
-        return (
-          <div
-            className={styles.option}
-            key={i}
-            onClick={() => dispatch(set_current_settings(link.onclick_fuction))}
-          >
-            <Image src={link.icon} width={13} height={13}></Image>
-            <p
-              className={
-                selected_setting === link.onclick_fuction
-                  ? styles.active_option_link
-                  : styles.option_links
+    <div className={styles.outer_div}>
+      <div className={styles.inner_div}>
+        <div className={styles.back_icon}>
+          <Image src="/backIcon.svg" width={15} height={15}></Image>
+        </div>
+        {settings_links.map((link, i) => {
+          return (
+            <div
+              className={styles.option}
+              key={i}
+              onClick={() =>
+                dispatch(set_current_settings(link.onclick_fuction))
               }
             >
-              {link.name}
-            </p>
-          </div>
-        )
-      })}
+              <Image src={link.icon} width={13} height={13}></Image>
+              <p
+                className={
+                  selected_setting === link.onclick_fuction
+                    ? styles.active_option_link
+                    : styles.option_links
+                }
+              >
+                {link.name}
+              </p>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

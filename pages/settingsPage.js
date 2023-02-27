@@ -11,13 +11,8 @@ const SettingsPage = () => {
       <div className="window_wrapper">
         <Header />
         <div className="settings_main_wrapper">
-          <div className="left_section">
-            <LeftSide></LeftSide>
-          </div>
-
-          <div className="right_section">
-            <RightSide></RightSide>
-          </div>
+          <LeftSide></LeftSide>
+          <RightSide></RightSide>
         </div>
       </div>
     </>
