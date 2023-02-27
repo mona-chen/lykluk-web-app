@@ -61,6 +61,7 @@ export const signup = createAsyncThunk(
         toast.error(data.message, {
           theme: 'colored',
         })
+
         // return thunkAPI.rejectWithValue(data);
       }
       if (data.success) {

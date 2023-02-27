@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import '../styles/reset.css'
+import "../styles/settings/settings.css"
 import '../styles/button/style.css'
 import '../styles/home/home.css'
 import '../styles/header/profile.css'

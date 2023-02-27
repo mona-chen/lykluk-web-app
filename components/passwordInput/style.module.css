@@ -1,0 +1,16 @@
+.container {
+  position: relative;
+}
+.input_icon {
+  position: absolute;
+  right: 0.8rem;
+  width: 21px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.input_field {
+  width: 100%;
+  padding: 0.5rem;
+  border: 12px;
+  margin: 0.5rem auto;
+}

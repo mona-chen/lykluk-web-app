@@ -1,0 +1,41 @@
+.section_heading {
+  color: rgba(142, 0, 254, 1);
+  margin-bottom: 1rem;
+}
+.link_div {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 3rem;
+  cursor: pointer;
+}
+.link_div:hover {
+  color: rgba(142, 0, 254, 1);
+}
+.link_div .left h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.link_div_bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 3rem;
+  cursor: pointer;
+}
+.link_div_bottom :hover {
+  color: rgba(142, 0, 254, 1);
+}
+.link_div_bottom .left h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 640px) {
+  .link_div_bottom {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

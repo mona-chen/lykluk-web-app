@@ -1,0 +1,21 @@
+.main_heading {
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.section {
+  margin-bottom: 3rem;
+}
+.content_div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.content_div .left p {
+  font-weight: 400;
+}
+.content_div .right .checkbox {
+  text-align: center;
+  width: 2.25rem;
+  height: 2.25rem;
+}

@@ -7,7 +7,8 @@ import env from '../../../env'
 import { getHashtags } from '../../../redux/home'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTrendingVideos } from '../../../redux/video'
-
+import AuthModal from '../../modal/auth/AuthModal'
+import { setAuthModal } from '../../../redux/home'
 const foryouIcon = (
   <svg
     width="36"
@@ -122,6 +123,7 @@ const LeftSide = () => {
   const { fyp, trendingHashtags } = useSelector((state) => state.home)
   const { trendingVideos } = useSelector((state) => state.video)
   const { user } = useSelector((state) => state.user)
+  const { authModal } = useSelector((state) => state.home)
 
   const trends = trendingVideos?.PopularVideos
   const hashtag = trendingHashtags?.data?.TrendingHashTags
@@ -132,6 +134,8 @@ const LeftSide = () => {
     dispatch(getHashtags())
     dispatch(getTrendingVideos())
   }, [])
+  const handleClose = () => dispatch(setAuthModal(false))
+  const handleOpen = () => dispatch(setAuthModal(true))
 
   // console.log(hashtags?.data?.TrendingHashTags, 'for rendering')
   return (
