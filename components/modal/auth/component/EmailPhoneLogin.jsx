@@ -5,7 +5,7 @@ import { authIcons } from '../../../../assets/icons/authIcons'
 import { useState } from 'react'
 import { ButtonPrimary } from '../../../buttons/ButtonReuse'
 import { PhoneInput } from 'react-international-phone'
-import 'react-international-phone/style.css'
+
 import { login } from '../../../../redux/user'
 import { useDispatch, useSelector } from 'react-redux'
 import { ThreeDots } from 'react-loader-spinner'
@@ -13,7 +13,7 @@ import { ThreeDots } from 'react-loader-spinner'
 function EmailPhoneLogin({ onFinish }) {
   const [tab, setTab] = useState('phone')
   const [visible, setVisible] = useState(true)
-  const [phone, setPhone] = useState('')
+  // const [phone, setPhone] = useState('')
 
   const [formData, setFormData] = useState({
     username: '',

@@ -1,5 +1,3 @@
-/* eslint-disable todo-plz/ticket-ref */
-
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useDispatch, useSelector } from 'react-redux'
