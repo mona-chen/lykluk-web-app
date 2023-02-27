@@ -66,13 +66,13 @@ const AccountManagement = () => {
             </div>
             <h3 className={styles.section_heading}>Account Avalability</h3>
 
-            <div className={styles.link_div}>
+            <div className={styles.link_div_bottom}>
               <div className={styles.left}>
                 <h4>Account Deactivation</h4>
                 <p>Your account and posts will be deleted permanently.</p>
               </div>
               <div className={styles.right}>
-                <ButtonPrimary fill={'rgba(204, 204, 204, 1)'} width={'150px'}>
+                <ButtonPrimary fill={'rgba(204, 204, 204, 1)'} width={'120px'}>
                   Delete
                 </ButtonPrimary>
               </div>

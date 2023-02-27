@@ -43,6 +43,7 @@
     "video.js": "^7.20.3"
   },
   "devDependencies": {
+    "@iconify/react": "^4.1.0",
     "@next/eslint-plugin-next": "^13.1.2",
     "eslint": "^8.33.0",
     "eslint-config-airbnb": "^19.0.4",

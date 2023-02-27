@@ -17,28 +17,25 @@
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
-
-/* .input_field_div {
-  margin-bottom: 4rem;
-}
-.input_field_div .label {
-  margin-bottom: 2rem;
-}
-.horizontal_rule {
-  border-top: 1px solid rgba(238, 238, 238, 1);
-  margin-bottom: 3rem;
-}
-.button_div {
-  margin-bottom: 4rem;
-}
-.bottom_section {
+.link_div_bottom {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 3rem;
+  cursor: pointer;
 }
-.bottom_section .left {
-  flex: 50%;
+.link_div_bottom :hover {
+  color: rgba(142, 0, 254, 1);
 }
-.bottom_section .right {
-  flex: 50%;
-  text-align: center;
-} */
+.link_div_bottom .left h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 640px) {
+  .link_div_bottom {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

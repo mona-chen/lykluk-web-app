@@ -1,14 +1,4 @@
 .outer_div {
-  /* background-color: rgba(255, 255, 255, 1);
-  height: 100%;
-  width: 80%;
-  margin: auto;
-  padding: 2rem;
-  padding-top: 5rem;
-  box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  overflow: auto; */
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -27,4 +17,20 @@
   border-radius: 20px;
   height: 85vh;
   margin: 2rem auto;
+}
+
+@media only screen and (max-width: 640px) {
+  .inner_div {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 390px) {
+  .inner_div {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .outer_div {
+    width: 90%;
+  }
 }
