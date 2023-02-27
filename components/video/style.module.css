@@ -14,7 +14,7 @@
   padding: 0 !important;
   margin: 0 !important;
   -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   margin-bottom: 10rem;
   background-size: cover !important;
   background-repeat: no-repeat;
@@ -23,10 +23,46 @@
 }
 .luk_player_wrapper .vjs-poster {
   -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   background-color: transparent !important;
   background-size: cover !important;
   background-repeat: no-repeat;
   background-position: center !important;
   border-radius: 0.8rem;
-} /*# sourceMappingURL=style.module.css.map */
+}
+
+.mobile_player_controls {
+  height: 100%;
+  position: absolute;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  top: 7 0%;
+  bottom: 0;
+  margin: auto;
+  z-index: 8000;
+  flex-direction: column;
+}
+.mobile_player_controls svg {
+  width: 4rem !important;
+  height: 4rem;
+}
+.mobile_player_controls figure {
+  display: grid;
+  place-items: center;
+}
+.mobile_player_controls figure img {
+  width: 10rem !important;
+  height: 10rem !important;
+}
+.mobile_player_controls div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #8e00fe;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 500;
+  justify-content: flex-end;
+}/*# sourceMappingURL=style.module.css.map */

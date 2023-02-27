@@ -32,6 +32,7 @@ const Middle = ({ posts, user, trending, setPop }) => {
 
 
 
+
   const videoJsOptions = {
     // autoplay: true,
     controls: true,

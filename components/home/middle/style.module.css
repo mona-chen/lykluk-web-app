@@ -186,41 +186,6 @@
   .post_container {
     gap: 0.1rem !important;
   }
-  .mobile_player_controls {
-    height: 100%;
-    position: absolute;
-    right: 1rem;
-    display: flex;
-    gap: 1rem;
-    top: 70%;
-    bottom: 0;
-    margin: auto;
-    z-index: 8000;
-    flex-direction: column;
-  }
-  .mobile_player_controls svg {
-    width: 4rem !important;
-    height: 4rem;
-  }
-  .mobile_player_controls figure {
-    display: grid;
-    place-items: center;
-  }
-  .mobile_player_controls figure img {
-    width: 10rem !important;
-    height: 10rem !important;
-  }
-  .mobile_player_controls div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: #8e00fe;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: 500;
-    justify-content: flex-end;
-  }
 }
 .mobile_sound {
   display: flex;
