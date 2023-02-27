@@ -179,6 +179,7 @@ export const video = createSlice({
     video: {},
     trendingVideos: {},
     comments: [],
+    playing: {},
     videoModal: false,
 
     // token: JSON.parse(localStorage.getItem('token')) ,
@@ -188,6 +189,12 @@ export const video = createSlice({
       //   localStorage.setItem("user", JSON.stringify(action.payload));
       state.isAuth = true
       state.comments = action.payload
+    },
+
+    setPlaying: (state, action) => {
+      //   localStorage.setItem("user", JSON.stringify(action.payload));
+      state.isAuth = true
+      state.playing = action.payload
     },
 
     setVideoModal: (state, action) => {
@@ -248,7 +255,12 @@ export const video = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setComments, setTrendingVideos, setVideo, setVideoModal } =
-  video.actions
+export const {
+  setComments,
+  setPlaying,
+  setTrendingVideos,
+  setVideo,
+  setVideoModal,
+} = video.actions
 
 export default video.reducer

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import style from './style.module.css'
 
@@ -106,14 +107,18 @@ function SnackMenu() {
   return (
     <div className={`mobile-only ${style.snack_menu_wrapper}`}>
       <span>
-        {icons.home}
+        <Link href="/">{icons.home}</Link>
         <p>Home</p>
       </span>
       <span>
+        <Link href="/" />
         {icons.discover}
         <p>Discover</p>
       </span>
-      <figure>{icons.add}</figure>
+
+      <figure>
+        <Link href="/create">{icons.add}</Link>
+      </figure>
       <span>
         {icons.notification}
         <p>Notification</p>

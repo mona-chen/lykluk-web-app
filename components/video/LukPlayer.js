@@ -7,7 +7,7 @@ export const LukPlayer = (props) => {
   const videoRef = React.useRef(null)
   const playerRef = React.useRef(null)
   const observerRef = React.useRef(null)
-  const { options, onReady } = props
+  const { options, onReady, data } = props
 
   // // Add event listener for spacebar key press
   React.useEffect(() => {
@@ -25,7 +25,6 @@ export const LukPlayer = (props) => {
       }
     }
 
-    // document.addEventListener('keydown', handleKeyPress)
     // check if the video element is in view
     const checkIfVideoInView = (entries) => {
       entries?.forEach((entry) => {
@@ -67,35 +66,34 @@ export const LukPlayer = (props) => {
 
       player.autoplay(options.autoplay)
       player.src(options.sources)
+      player.state = data
     }
 
     // create an observer and observe the element
+    const videoNode = videoRef.current
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5,
+    }
+    const player = playerRef.current
+
     observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        playerRef.current.pause()
-
-        if (entry.isIntersecting && entry.intersectionRatio > 0) {
-          // console.log(entry.intersectionRect.height, 'intersection ratio')
-
-          // alert('int')
-          // play video if it's in view
-          // playerRef.current.play()
-          playerRef.current.tech_?.off('dblclick')
+        if (entry.isIntersecting) {
+          player.play()
         } else {
-          // pause video if it's not in view
-          playerRef.current.pause()
+          player.pause()
         }
-      }),
-        { threshold: [1] }
-    })
-    observerRef.current.observe(videoRef.current)
+      })
+    }, observerOptions)
+    observerRef.current.observe(videoNode)
 
     return () => {
       observerRef.current.disconnect()
     }
   }, [options, videoRef])
-
-  //pause video when a user swipes up or down
 
   // Dispose the Video.js player when the functional component unmounts
   React.useEffect(() => {
@@ -105,6 +103,9 @@ export const LukPlayer = (props) => {
       if (player && !player.isDisposed()) {
         player.dispose()
         playerRef.current = null
+      }
+      if (observerRef.current) {
+        observerRef.current.disconnect()
       }
     }
   }, [playerRef])

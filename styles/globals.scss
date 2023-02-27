@@ -31,13 +31,15 @@ body {
       perspective: 5000; */
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100vw;
   font-family: 'Rubik', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   font-size: 1.5rem;
   overscroll-behavior-y: none;
-  overflow-x: hidden;
+  overflow: hidden;
   transition: background 0.3s ease-in-out;
   width: 100vw;
   letter-spacing: -0.03rem;
@@ -247,8 +249,14 @@ input[type='email']:focus {
   }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 42em) {
   .hide-desktop-tablet {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .hide-mobile {
     display: none !important;
   }
 }

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import stile from './fileUpload.module.css'
 import { LukPlayer } from '../video/LukPlayer'
-import { createFFmpeg, fetchfile } from '@ffmpeg/ffmpeg'
+import { createFFmpeg } from '@ffmpeg/ffmpeg'
 import { generateVideoThumbnails } from '../../helper/generatVideoCover'
 import Image from 'next/image'
 import { videoIcons } from '../../assets/icons/videoIcons'
