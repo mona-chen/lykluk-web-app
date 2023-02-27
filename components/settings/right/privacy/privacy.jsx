@@ -1,9 +1,26 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import styles from './style.module.css'
 import { Hr } from '../../horizontalRule/hr'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ButtonPrimary } from '../../../buttons/ButtonReuse'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { setAccountPrivacy } from '../../../../redux/settings'
 const Privacy = () => {
+  const dispatch = useDispatch()
+  const setPrivacyFunction = () => {
+    if (privacyValue) {
+      dispatch(setAccountPrivacy({ profile_privacy: 2 }))
+    } else {
+      dispatch(setAccountPrivacy({ profile_privacy: 1 }))
+    }
+  }
+  const [privacyValue, setPrivacyValue] = useState(false)
+  const changeFunction = () => {
+    setPrivacyValue(!privacyValue)
+  }
+
   return (
     <>
       <h3 className={styles.main_heading}>Account Preference</h3>
@@ -16,19 +33,14 @@ const Privacy = () => {
           </p>
         </div>
         <div className={styles.right}>
-          <input className={styles.checkbox} type="checkbox" name="" id="" />
-        </div>
-      </div>
-      <div className={styles.content_div}>
-        <div className={styles.left}>
-          <h4>Public Account</h4>
-          <p>
-            When your account is made public, your posts, profile and comments
-            can be seen by everyone.
-          </p>
-        </div>
-        <div className={styles.right}>
-          <input className={styles.checkbox} type="checkbox" name="" id="" />
+          <input
+            className={styles.checkbox}
+            type="checkbox"
+            name="privacy"
+            id=""
+            checked={privacyValue}
+            onChange={changeFunction}
+          />
         </div>
       </div>
       <Hr color={'rgba(238, 238, 238, 1)'} marginBottom={'3rem'}></Hr>
@@ -51,9 +63,26 @@ const Privacy = () => {
       <Link href="/">
         <p className={styles.contact_link}>contact support</p>
       </Link>
-      <ButtonPrimary width={'200px'}>Save Changes</ButtonPrimary>
+      <ButtonPrimary width={'200px'} action={setPrivacyFunction}>
+        Save Changes
+      </ButtonPrimary>
     </>
   )
 }
 
 export default Privacy
+
+{
+  /* <div className={styles.content_div}>
+        <div className={styles.left}>
+          <h4>Public Account</h4>
+          <p>
+            When your account is made public, your posts, profile and comments
+            can be seen by everyone.
+          </p>
+        </div>
+        <div className={styles.right}>
+          <input className={styles.checkbox} type="checkbox" name="" id="" />
+        </div>
+      </div> */
+}

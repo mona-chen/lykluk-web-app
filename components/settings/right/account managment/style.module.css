@@ -1,4 +1,24 @@
-.input_field_div {
+.section_heading {
+  color: rgba(142, 0, 254, 1);
+  margin-bottom: 1rem;
+}
+.link_div {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 3rem;
+  cursor: pointer;
+}
+.link_div:hover {
+  color: rgba(142, 0, 254, 1);
+}
+.link_div .left h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* .input_field_div {
   margin-bottom: 4rem;
 }
 .input_field_div .label {
@@ -21,4 +41,4 @@
 .bottom_section .right {
   flex: 50%;
   text-align: center;
-}
+} */

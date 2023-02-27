@@ -5,7 +5,7 @@ import Header from '../components/header/Header'
 import LeftSide from '../components/settings/leftSide/leftSide'
 import RightSide from '../components/settings/right/rightSide'
 
-const ProfilePage = () => {
+const SettingsPage = () => {
   return (
     <>
       <div className="window_wrapper">
@@ -24,4 +24,4 @@ const ProfilePage = () => {
   )
 }
 
-export default ProfilePage
+export default SettingsPage

@@ -2,7 +2,9 @@
   display: flex;
   padding: 3rem 12rem;
   background-color: rgb(250, 250, 250);
+  overflow: auto !important;
   min-height: 100vh;
+  overflow: scroll;
 }
 .settings_main_wrapper .left_section {
   flex: 35%;

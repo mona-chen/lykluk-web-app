@@ -1,0 +1,35 @@
+.main_div {
+  position: relative;
+}
+.profile_pic_div {
+  padding-top: 2.5rem;
+  text-align: center;
+}
+.profile_pic_change_text {
+  text-align: center;
+}
+.input_field_div {
+  margin-bottom: 2rem;
+}
+.input_field_div input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 7px;
+  border: 1px solid black;
+  outline: none;
+}
+.input_field_div input:focus {
+  outline: none;
+}
+
+.input_field_div .label {
+  margin-bottom: 1rem;
+}
+.button_div {
+  margin-top: 1rem;
+}
+.error_message {
+  margin-left: 1rem;
+
+  color: red;
+}

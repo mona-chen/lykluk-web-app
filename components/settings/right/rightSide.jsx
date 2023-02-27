@@ -5,7 +5,12 @@ import AccountManagement from './account managment/accountManagement'
 import Privacy from './privacy/privacy'
 import Notification from './notification/notifiction'
 import QRCode from './QR Code/QRCode'
+import { useDispatch } from 'react-redux'
+import { set_is_password_reset , set_is_profile_edited} from '../../../redux/settings'
 const RightSide = () => {
+  const dispatch = useDispatch()
+  dispatch(set_is_password_reset(false))
+  dispatch(set_is_profile_edited(false))
   const { selected_setting } = useSelector((state) => state.settings)
   return (
     <div className={styles.inner_div}>

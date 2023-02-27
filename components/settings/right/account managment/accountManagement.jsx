@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable import/no-unresolved */
 import 'react-phone-number-input/style.css'
+import Image from 'next/image'
 import PhoneInput from 'react-phone-number-input'
 import flags from 'react-phone-number-input/flags'
 import PasswordInput from '../../../passwordInput/passwordInput'
@@ -8,35 +10,89 @@ import styles from './style.module.css'
 import { passwordInputType } from '../../../../utils/passwordInputField'
 import { ButtonPrimary } from '../../../buttons/ButtonReuse'
 import { Hr } from '../../horizontalRule/hr'
+import EditProfile from './editProfile/editProfile'
+import ChangePassword from './changePassword/changePassword'
 
-const defaultFormFields = {
-  email: '',
-  password: '',
-}
 const AccountManagement = () => {
-  const [formFields, setFormFields] = useState(defaultFormFields)
-  const { email, password } = formFields
+  // const [formFields, setFormFields] = useState(defaultFormFields)
+  // const { email, password } = formFields
 
-  const changeHandler = (e) => {
-    const { name, value } = e.target
-    setFormFields({ ...formFields, [name]: value })
+  // const changeHandler = (e) => {
+  //   const { name, value } = e.target
+  //   setFormFields({ ...formFields, [name]: value })
+  // }
+  const [mainPage, setMainPage] = useState(true)
+  const [profilePage, setProfilePage] = useState(false)
+  const [changePasswordPage, setChangePasswordPage] = useState(false)
+  const goto_edit_profile = () => {
+    setMainPage(false)
+    setChangePasswordPage(false)
+    setProfilePage(true)
   }
-  // phone number input
-  const [phoneField, setPhoneField] = useState('')
+  const goto_main_page = () => {
+    setChangePasswordPage(false)
+    setProfilePage(false)
+    setMainPage(true)
+  }
+  const goto_change_password = () => {
+    setProfilePage(false)
+    setMainPage(false)
+    setChangePasswordPage(true)
+  }
 
   return (
-    <div>
-      <div className={styles.input_field_div}>
-        <p className={styles.label}>Email</p>
-        <input
-          name="email"
-          onChange={changeHandler}
-          type="text"
-          placeholder="change your email"
-          className={styles.input_elements}
-        ></input>
-      </div>
-      <div className={styles.input_field_div}>
+    <>
+      {mainPage ? (
+        <>
+          <div>
+            <h3 className={styles.section_heading}>Account information</h3>
+            <div className={styles.link_div} onClick={goto_edit_profile}>
+              <div className={styles.left}>
+                <h4>Profile</h4>
+                <p>Edit Profile</p>
+              </div>
+              <div className={styles.right}>
+                <Image src="/goto.svg" width={15} height={15}></Image>
+              </div>
+            </div>
+            <div className={styles.link_div} onClick={goto_change_password}>
+              <div className={styles.left}>
+                <h4>Change Password</h4>
+                <p>change your password</p>
+              </div>
+              <div className={styles.right}>
+                <Image src="/goto.svg" width={15} height={15}></Image>
+              </div>
+            </div>
+            <h3 className={styles.section_heading}>Account Avalability</h3>
+
+            <div className={styles.link_div}>
+              <div className={styles.left}>
+                <h4>Account Deactivation</h4>
+                <p>Your account and posts will be deleted permanently.</p>
+              </div>
+              <div className={styles.right}>
+                <ButtonPrimary fill={'rgba(204, 204, 204, 1)'} width={'150px'}>
+                  Delete
+                </ButtonPrimary>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : null}
+      {profilePage ? (
+        <EditProfile goBackToMainPage={goto_main_page}></EditProfile>
+      ) : null}
+      {changePasswordPage ? (
+        <ChangePassword goBackToMainPage={goto_main_page}></ChangePassword>
+      ) : null}
+    </>
+  )
+}
+
+export default AccountManagement
+{
+  /* <div className={styles.input_field_div}>
         <p className={styles.label}>Phone Number</p>
         <PhoneInput
           flags={flags}
@@ -45,8 +101,10 @@ const AccountManagement = () => {
           international={true}
           value={phoneField}
         />
-      </div>
-      <div className={styles.input_field_div}>
+      </div> */
+}
+{
+  /* <div className={styles.input_field_div}>
         <p className={styles.label}>Change Password</p>
         <PasswordInput
           type={passwordInputType.password}
@@ -56,24 +114,10 @@ const AccountManagement = () => {
         ></PasswordInput>
       </div>
       <div className={styles.button_div}>
-        <ButtonPrimary width={'200px'}> Save Changes</ButtonPrimary>
+        <ButtonPrimary width={'200px'} action={show}>
+          {' '}
+          Save Changes
+        </ButtonPrimary>
       </div>
-      <Hr color={'rgba(238, 238, 238, 1)'} marginBottom={'3rem'}></Hr>
-
-      
-      <div className={styles.bottom_section}>
-        <div className={styles.left}>
-          <h4>Account Deactivation</h4>
-          <p>Your account and posts will be deleted permanently.</p>
-        </div>
-        <div className={styles.right}>
-          <ButtonPrimary fill={'rgba(204, 204, 204, 1)'} width={'150px'}>
-            Delete
-          </ButtonPrimary>
-        </div>
-      </div>
-    </div>
-  )
+      <Hr color={'rgba(238, 238, 238, 1)'} marginBottom={'3rem'}></Hr> */
 }
-
-export default AccountManagement
