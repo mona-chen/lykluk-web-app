@@ -1,10 +1,13 @@
+/* eslint-disable import/namespace */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from 'react'
 import stile from './fileUpload.module.css'
 import { LukPlayer } from '../video/LukPlayer'
 import { createFFmpeg } from '@ffmpeg/ffmpeg'
+
 import { generateVideoThumbnails } from '../../helper/generatVideoCover'
+
 import Image from 'next/image'
 import { videoIcons } from '../../assets/icons/videoIcons'
 
