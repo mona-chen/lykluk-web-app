@@ -2,7 +2,6 @@
 /* eslint-disable import/no-unresolved */
 import 'react-phone-number-input/style.css'
 import Image from 'next/image'
-import PhoneInput from 'react-phone-number-input'
 import flags from 'react-phone-number-input/flags'
 import PasswordInput from '../../../passwordInput/passwordInput'
 import { useState } from 'react'
